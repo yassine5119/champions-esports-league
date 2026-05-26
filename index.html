@@ -1,73 +1,464 @@
 <!DOCTYPE html>
-    </div>
-  </section>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champions Esports League</title>
 
-  <section class="features">
-    <div class="section-title">
-      <h2>WHY CHOOSE US</h2>
-      <p>The next generation of esports competition in Morocco.</p>
-    </div>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <div class="feature-grid">
-      <div class="feature">
-        <span>🏆</span>
-        <h3>Elite Tournaments</h3>
-        <p>Compete against the best eFootball players and dominate the leaderboards.</p>
-      </div>
+<style>
 
-      <div class="feature">
-        <span>⚡</span>
-        <h3>Fast Match System</h3>
-        <p>Instant scheduling, automated brackets, and seamless tournament progression.</p>
-      </div>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-      <div class="feature">
-        <span>🎮</span>
-        <h3>Squads & Clans</h3>
-        <p>Create your esports squad, recruit players, and battle for glory.</p>
-      </div>
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+color:white;
+overflow-x:hidden;
+}
 
-      <div class="feature">
-        <span>📈</span>
-        <h3>Live Rankings</h3>
-        <p>Track your stats, victories, MVP awards, and performance history.</p>
-      </div>
-    </div>
-  </section>
+body::before{
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top right, rgba(0,255,170,0.18), transparent 30%),
+radial-gradient(circle at bottom left, rgba(0,140,255,0.18), transparent 30%);
+z-index:-1;
+}
 
-  <section class="tournaments">
-    <div class="section-title">
-      <h2>LIVE TOURNAMENTS</h2>
-      <p>Enter the arena and compete for massive prizes.</p>
-    </div>
+nav{
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:fixed;
+top:0;
+z-index:1000;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
-    <div class="tournament-box">
-      <div class="tournament">
-        <h3>WEEKLY CUP</h3>
-        <p>Fast-paced eFootball battles with weekly rewards and rankings.</p>
-        <div class="price">30DH ENTRY</div>
-        <a href="#" class="btn btn-primary">REGISTER NOW</a>
-      </div>
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:1.5rem;
+font-weight:900;
+color:#00ffae;
+letter-spacing:2px;
+}
 
-      <div class="tournament">
-        <h3>CHAMPIONS LEAGUE</h3>
-        <p>The most competitive tournament featuring elite players and squads.</p>
-        <div class="price">1000DH PRIZE</div>
-        <a href="#" class="btn btn-primary">JOIN NOW</a>
-      </div>
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
 
-      <div class="tournament">
-        <h3>SQUAD BATTLE</h3>
-        <p>Team-based esports warfare where squads fight for dominance.</p>
-        <div class="price">5v5 MODE</div>
-        <a href="#" class="btn btn-primary">CREATE SQUAD</a>
-      </div>
-    </div>
-  </section>
+nav ul li a{
+color:white;
+text-decoration:none;
+transition:.3s;
+font-size:.95rem;
+}
 
-  <footer>
-    © 2026 Champions Esports League — Built For Champions.
-  </footer>
+nav ul li a:hover{
+color:#00ffae;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:0 8%;
+position:relative;
+}
+
+.hero-content{
+max-width:1000px;
+animation:fadeUp 1s ease;
+}
+
+.hero h1{
+font-size:5.5rem;
+line-height:1;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+margin-bottom:25px;
+background:linear-gradient(90deg,#00ffae,#00aaff,#00ffae);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-transform:uppercase;
+}
+
+.hero p{
+font-size:1.2rem;
+color:rgba(255,255,255,0.75);
+line-height:1.8;
+max-width:760px;
+margin:auto;
+}
+
+.hero-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:16px 34px;
+border-radius:14px;
+font-weight:600;
+border:none;
+cursor:pointer;
+transition:.35s;
+text-decoration:none;
+}
+
+.btn-primary{
+background:linear-gradient(90deg,#00ffae,#00aaff);
+color:black;
+box-shadow:0 0 30px rgba(0,255,170,0.35);
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+}
+
+.btn-secondary{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.08);
+color:white;
+}
+
+.btn-secondary:hover{
+background:rgba(255,255,255,0.15);
+}
+
+.stats{
+padding:80px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+padding:35px;
+border-radius:24px;
+backdrop-filter:blur(10px);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+border-color:rgba(0,255,170,0.35);
+box-shadow:0 0 30px rgba(0,255,170,0.15);
+}
+
+.card h2{
+font-size:3rem;
+font-family:'Orbitron',sans-serif;
+color:#00ffae;
+margin-bottom:10px;
+}
+
+.card p{
+color:rgba(255,255,255,0.7);
+}
+
+.section-title{
+text-align:center;
+margin-bottom:70px;
+}
+
+.section-title h2{
+font-size:3rem;
+font-family:'Orbitron',sans-serif;
+color:#00ffae;
+margin-bottom:15px;
+}
+
+.section-title p{
+color:rgba(255,255,255,0.7);
+}
+
+.features{
+padding:80px 8%;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.feature{
+background:rgba(255,255,255,0.04);
+padding:35px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,0.08);
+transition:.35s;
+}
+
+.feature:hover{
+transform:translateY(-8px);
+border-color:rgba(0,255,170,0.35);
+box-shadow:0 0 30px rgba(0,255,170,0.15);
+}
+
+.feature span{
+font-size:2.5rem;
+display:block;
+margin-bottom:18px;
+}
+
+.feature h3{
+margin-bottom:14px;
+font-size:1.4rem;
+}
+
+.feature p{
+color:rgba(255,255,255,0.7);
+line-height:1.7;
+}
+
+.tournaments{
+padding:80px 8% 120px;
+}
+
+.tournament-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.tournament{
+background:linear-gradient(145deg,rgba(0,255,170,0.12),rgba(0,140,255,0.08));
+padding:40px;
+border-radius:26px;
+border:1px solid rgba(255,255,255,0.08);
+transition:.35s;
+}
+
+.tournament:hover{
+transform:scale(1.03);
+}
+
+.tournament h3{
+font-size:2rem;
+margin-bottom:15px;
+font-family:'Orbitron',sans-serif;
+}
+
+.tournament p{
+color:rgba(255,255,255,0.75);
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.price{
+font-size:2.5rem;
+color:#00ffae;
+font-weight:700;
+margin-bottom:20px;
+}
+
+footer{
+padding:40px 8%;
+text-align:center;
+border-top:1px solid rgba(255,255,255,0.08);
+color:rgba(255,255,255,0.6);
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+nav ul{
+display:none;
+}
+
+.section-title h2{
+font-size:2.2rem;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+CHAMPIONS ESPORTS
+</div>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Tournaments</a></li>
+<li><a href="#">Rankings</a></li>
+<li><a href="#">Squads</a></li>
+<li><a href="#">Live</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+DOMINATE<br>THE GAME
+</h1>
+
+<p>
+The ultimate eFootball esports experience in Morocco.
+Compete in elite tournaments, create your squad,
+climb the rankings and become a champion.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#" class="btn btn-primary">
+JOIN TOURNAMENT
+</a>
+
+<a href="#" class="btn btn-secondary">
+WATCH LIVE
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="card">
+<h2>10K+</h2>
+<p>Competitive Players</p>
+</div>
+
+<div class="card">
+<h2>250+</h2>
+<p>Esports Squads</p>
+</div>
+
+<div class="card">
+<h2>5K DH</h2>
+<p>Prize Pools</p>
+</div>
+
+<div class="card">
+<h2>24/7</h2>
+<p>Gaming Action</p>
+</div>
+
+</section>
+
+<section class="features">
+
+<div class="section-title">
+<h2>WHY CHOOSE US</h2>
+<p>The future of Moroccan esports starts here.</p>
+</div>
+
+<div class="feature-grid">
+
+<div class="feature">
+<span>🏆</span>
+<h3>Elite Tournaments</h3>
+<p>Play against the best eFootball players and dominate the rankings.</p>
+</div>
+
+<div class="feature">
+<span>⚡</span>
+<h3>Fast Match System</h3>
+<p>Automated brackets and smooth tournament progression.</p>
+</div>
+
+<div class="feature">
+<span>🎮</span>
+<h3>Squads & Clans</h3>
+<p>Create your esports squad and battle for glory.</p>
+</div>
+
+<div class="feature">
+<span>📈</span>
+<h3>Live Rankings</h3>
+<p>Track wins, MVP awards and player performance.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="tournaments">
+
+<div class="section-title">
+<h2>LIVE TOURNAMENTS</h2>
+<p>Enter the arena and win massive prizes.</p>
+</div>
+
+<div class="tournament-grid">
+
+<div class="tournament">
+<h3>WEEKLY CUP</h3>
+<p>Weekly eFootball tournament with rewards and rankings.</p>
+<div class="price">30DH ENTRY</div>
+<a href="#" class="btn btn-primary">REGISTER NOW</a>
+</div>
+
+<div class="tournament">
+<h3>CHAMPIONS LEAGUE</h3>
+<p>The biggest competition featuring elite squads and players.</p>
+<div class="price">1000DH PRIZE</div>
+<a href="#" class="btn btn-primary">JOIN NOW</a>
+</div>
+
+<div class="tournament">
+<h3>SQUAD BATTLE</h3>
+<p>5v5 esports wars where squads fight for dominance.</p>
+<div class="price">5v5 MODE</div>
+<a href="#" class="btn btn-primary">CREATE SQUAD</a>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Champions Esports League — Built For Champions.
+</footer>
 
 </body>
 </html>
