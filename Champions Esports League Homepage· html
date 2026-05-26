@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="section-title">
+      <h2>WHY CHOOSE US</h2>
+      <p>The next generation of esports competition in Morocco.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <span>🏆</span>
+        <h3>Elite Tournaments</h3>
+        <p>Compete against the best eFootball players and dominate the leaderboards.</p>
+      </div>
+
+      <div class="feature">
+        <span>⚡</span>
+        <h3>Fast Match System</h3>
+        <p>Instant scheduling, automated brackets, and seamless tournament progression.</p>
+      </div>
+
+      <div class="feature">
+        <span>🎮</span>
+        <h3>Squads & Clans</h3>
+        <p>Create your esports squad, recruit players, and battle for glory.</p>
+      </div>
+
+      <div class="feature">
+        <span>📈</span>
+        <h3>Live Rankings</h3>
+        <p>Track your stats, victories, MVP awards, and performance history.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tournaments">
+    <div class="section-title">
+      <h2>LIVE TOURNAMENTS</h2>
+      <p>Enter the arena and compete for massive prizes.</p>
+    </div>
+
+    <div class="tournament-box">
+      <div class="tournament">
+        <h3>WEEKLY CUP</h3>
+        <p>Fast-paced eFootball battles with weekly rewards and rankings.</p>
+        <div class="price">30DH ENTRY</div>
+        <a href="#" class="btn btn-primary">REGISTER NOW</a>
+      </div>
+
+      <div class="tournament">
+        <h3>CHAMPIONS LEAGUE</h3>
+        <p>The most competitive tournament featuring elite players and squads.</p>
+        <div class="price">1000DH PRIZE</div>
+        <a href="#" class="btn btn-primary">JOIN NOW</a>
+      </div>
+
+      <div class="tournament">
+        <h3>SQUAD BATTLE</h3>
+        <p>Team-based esports warfare where squads fight for dominance.</p>
+        <div class="price">5v5 MODE</div>
+        <a href="#" class="btn btn-primary">CREATE SQUAD</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Champions Esports League — Built For Champions.
+  </footer>
+
+</body>
+</html>
