@@ -160,21 +160,6 @@ nav ul li a:hover{
 color:#00ffae;
 }
 
-nav ul li a::after{
-content:'';
-position:absolute;
-width:0;
-height:2px;
-background:#00ffae;
-left:0;
-bottom:-8px;
-transition:.3s;
-}
-
-nav ul li a:hover::after{
-width:100%;
-}
-
 /* HERO */
 
 .hero{
@@ -191,19 +176,6 @@ position:relative;
 overflow:hidden;
 box-shadow:0 0 45px rgba(0,255,170,.08);
 margin-bottom:60px;
-}
-
-.hero-box::before{
-content:'';
-position:absolute;
-width:350px;
-height:350px;
-background:#00ffae;
-filter:blur(140px);
-opacity:.08;
-top:-120px;
-right:-120px;
-border-radius:50%;
 }
 
 .hero h1{
@@ -244,19 +216,10 @@ color:black;
 box-shadow:0 0 35px rgba(0,255,170,.35);
 }
 
-.btn-main:hover{
-transform:translateY(-5px);
-box-shadow:0 0 45px rgba(0,255,170,.65);
-}
-
 .btn-second{
 border:1px solid rgba(255,255,255,.12);
 color:white;
 background:rgba(255,255,255,.04);
-}
-
-.btn-second:hover{
-background:rgba(255,255,255,.08);
 }
 
 /* STATS */
@@ -275,12 +238,6 @@ padding:35px;
 border-radius:28px;
 backdrop-filter:blur(12px);
 transition:.35s;
-}
-
-.stat:hover{
-transform:translateY(-10px);
-border-color:#00ffae;
-box-shadow:0 0 40px rgba(0,255,170,.18);
 }
 
 .stat h2{
@@ -325,12 +282,6 @@ backdrop-filter:blur(12px);
 position:relative;
 }
 
-.card:hover{
-transform:translateY(-12px);
-border-color:#00ffae;
-box-shadow:0 0 45px rgba(0,255,170,.18);
-}
-
 .banner{
 width:100%;
 height:240px;
@@ -352,14 +303,6 @@ margin-bottom:20px;
 width:90px;
 height:90px;
 object-fit:contain;
-filter:drop-shadow(0 0 25px rgba(0,255,170,.4));
-animation:floatLogo 3s infinite ease-in-out;
-}
-
-@keyframes floatLogo{
-0%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0);}
 }
 
 .content h2{
@@ -403,12 +346,6 @@ color:#00ffae;
 font-size:1rem;
 }
 
-.join-box p{
-margin:0;
-font-size:.95rem;
-line-height:1.9;
-}
-
 .join-btn{
 display:inline-block;
 padding:18px 32px;
@@ -417,92 +354,13 @@ background:linear-gradient(90deg,#00ffae,#00aaff);
 color:black;
 font-weight:700;
 text-decoration:none;
-transition:.35s;
-box-shadow:0 0 30px rgba(0,255,170,.35);
 }
-
-.join-btn:hover{
-transform:translateY(-5px);
-box-shadow:0 0 45px rgba(0,255,170,.7);
-}
-
-/* LOCKED */
-
-.locked{
-opacity:.65;
-}
-
-.locked::before{
-content:'COMING SOON';
-position:absolute;
-top:18px;
-right:18px;
-padding:10px 16px;
-border-radius:14px;
-background:#ff0055;
-font-size:.8rem;
-font-weight:700;
-z-index:10;
-}
-
-/* LIVE */
-
-.live{
-margin-top:80px;
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-padding:35px;
-border-radius:30px;
-backdrop-filter:blur(12px);
-}
-
-.live-top{
-display:flex;
-align-items:center;
-gap:14px;
-margin-bottom:20px;
-}
-
-.live-dot{
-width:14px;
-height:14px;
-border-radius:50%;
-background:red;
-animation:livePulse 1s infinite;
-}
-
-@keyframes livePulse{
-0%{opacity:1;}
-50%{opacity:.3;}
-100%{opacity:1;}
-}
-
-.live h2{
-font-family:'Orbitron',sans-serif;
-font-size:2rem;
-}
-
-.live-box{
-padding:25px;
-border-radius:20px;
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.live-box p{
-line-height:1.9;
-color:rgba(255,255,255,.72);
-}
-
-/* FOOTER */
 
 footer{
 padding:50px 6%;
 text-align:center;
 color:rgba(255,255,255,.6);
 }
-
-/* MOBILE */
 
 @media(max-width:950px){
 
@@ -520,61 +378,6 @@ grid-template-columns:1fr;
 
 }
 
-@media(max-width:600px){
-
-.hero{
-padding:130px 5% 70px;
-}
-
-.hero-box{
-padding:35px 24px;
-}
-
-.hero h1{
-font-size:2rem;
-}
-
-.hero p{
-font-size:1rem;
-}
-
-.logo-text{
-font-size:1.1rem;
-}
-
-.stats{
-grid-template-columns:1fr;
-}
-
-.game-top{
-align-items:flex-start;
-}
-
-.game-logo{
-width:70px;
-height:70px;
-}
-
-.content h2{
-font-size:1.4rem;
-}
-
-.join-btn{
-width:100%;
-text-align:center;
-}
-
-.hero-buttons{
-flex-direction:column;
-}
-
-.hero-btn{
-width:100%;
-text-align:center;
-}
-
-}
-
 </style>
 
 </head>
@@ -587,8 +390,6 @@ text-align:center;
 <div class="light light2"></div>
 
 </div>
-
-<!-- NAVBAR -->
 
 <nav>
 
@@ -617,8 +418,6 @@ CHAMPIONS ESPORTS
 </ul>
 
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -652,13 +451,13 @@ WATCH LIVE
 <div class="stats">
 
 <div class="stat">
-<h2>100+</h2>
+<h2>128</h2>
 <p>Competitive Players</p>
 </div>
 
 <div class="stat">
-<h2>2000DH</h2>
-<p>Total Prize Pool</p>
+<h2>1500DH</h2>
+<p>1st Place Prize</p>
 </div>
 
 <div class="stat">
@@ -673,17 +472,11 @@ WATCH LIVE
 
 </div>
 
-<!-- TITLE -->
-
 <div class="section-title">
 <h2>ACTIVE TOURNAMENTS</h2>
 </div>
 
-<!-- TOURNAMENTS -->
-
 <div class="grid">
-
-<!-- EFOOTBALL -->
 
 <div class="card">
 
@@ -709,7 +502,7 @@ cash prizes and livestream finals.
 <div class="info">
 
 <div class="info-box">
-👥 100 Players
+👥 128 Players
 </div>
 
 <div class="info-box">
@@ -756,112 +549,58 @@ JOIN NOW
 
 </div>
 
-<!-- FREE FIRE -->
-
-<div class="card locked">
-
-<img class="banner"
-src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
-
-<div class="content">
-
-<div class="game-top">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h2>Free Fire Arena</h2>
-
 </div>
-
-<p>
-Competitive Free Fire tournaments coming soon.
-</p>
-
-<div class="info">
-
-<div class="info-box">
-🔒 Locked
-</div>
-
-<div class="info-box">
-🚀 Coming Soon
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PUBG -->
-
-<div class="card locked">
-
-<img class="banner"
-src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
-
-<div class="content">
-
-<div class="game-top">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
-
-<h2>PUBG Mobile Battle</h2>
-
-</div>
-
-<p>
-Professional PUBG Mobile tournaments will be available soon.
-</p>
-
-<div class="info">
-
-<div class="info-box">
-🔒 Locked
-</div>
-
-<div class="info-box">
-🚀 Coming Soon
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- LIVE -->
-
-<div class="live">
-
-<div class="live-top">
-
-<div class="live-dot"></div>
-
-<h2>LIVE EVENTS</h2>
-
-</div>
-
-<div class="live-box">
-
-<p>
-No live tournaments right now. Livestream finals and competitive battles
-will appear here during active events.
-</p>
-
-</div>
-
-</div>
-
-</section>
 
 <footer>
 © 2026 Champions Esports — Built For Legends.
 </footer>
+
+<!-- FIREBASE AUTH -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+
+authDomain: "champions-esports-league.firebaseapp.com",
+
+projectId: "champions-esports-league",
+
+storageBucket: "champions-esports-league.firebasestorage.app",
+
+messagingSenderId: "618814749744",
+
+appId: "1:618814749744:web:308bbc15b4862b02f381f5",
+
+measurementId: "G-KRSG32J9J9"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href = "login.html";
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
