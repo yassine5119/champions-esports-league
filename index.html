@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Champions Esports League</title>
+<title>Champions Esports</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -23,16 +23,20 @@ color:white;
 overflow-x:hidden;
 }
 
+/* BACKGROUND */
+
 body::before{
 content:'';
 position:fixed;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at top right, rgba(0,255,170,0.18), transparent 30%),
-radial-gradient(circle at bottom left, rgba(0,140,255,0.18), transparent 30%);
+radial-gradient(circle at top right, rgba(0,255,170,0.15), transparent 30%),
+radial-gradient(circle at bottom left, rgba(0,140,255,0.15), transparent 30%);
 z-index:-1;
 }
+
+/* NAVBAR */
 
 nav{
 width:100%;
@@ -42,29 +46,45 @@ justify-content:space-between;
 align-items:center;
 position:fixed;
 top:0;
-z-index:1000;
+z-index:999;
 background:rgba(0,0,0,0.45);
 backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
+display:flex;
+align-items:center;
+gap:12px;
 font-family:'Orbitron',sans-serif;
-font-size:1.5rem;
 font-weight:900;
+font-size:1.4rem;
 color:#00ffae;
 letter-spacing:2px;
 }
 
+.logo-circle{
+width:45px;
+height:45px;
+border-radius:50%;
+background:linear-gradient(135deg,#00ffae,#0088ff);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:1.2rem;
+font-weight:900;
+box-shadow:0 0 20px rgba(0,255,170,0.45);
+}
+
 nav ul{
 display:flex;
-gap:35px;
 list-style:none;
+gap:30px;
 }
 
 nav ul li a{
-color:white;
 text-decoration:none;
+color:white;
 transition:.3s;
 font-size:.95rem;
 }
@@ -73,23 +93,37 @@ nav ul li a:hover{
 color:#00ffae;
 }
 
+/* HERO */
+
 .hero{
 min-height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 text-align:center;
 padding:0 8%;
 position:relative;
 }
 
+.hero::before{
+content:'';
+position:absolute;
+width:700px;
+height:700px;
+background:rgba(0,255,170,0.08);
+filter:blur(120px);
+border-radius:50%;
+}
+
 .hero-content{
 max-width:1000px;
-animation:fadeUp 1s ease;
+position:relative;
+z-index:2;
+animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
-font-size:5.5rem;
+font-size:6rem;
 line-height:1;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
@@ -102,14 +136,14 @@ text-transform:uppercase;
 
 .hero p{
 font-size:1.2rem;
-color:rgba(255,255,255,0.75);
+color:rgba(255,255,255,0.72);
 line-height:1.8;
-max-width:760px;
+max-width:750px;
 margin:auto;
 }
 
 .hero-buttons{
-margin-top:40px;
+margin-top:45px;
 display:flex;
 justify-content:center;
 gap:20px;
@@ -120,34 +154,60 @@ flex-wrap:wrap;
 padding:16px 34px;
 border-radius:14px;
 font-weight:600;
-border:none;
-cursor:pointer;
-transition:.35s;
 text-decoration:none;
+transition:.35s;
 }
 
 .btn-primary{
 background:linear-gradient(90deg,#00ffae,#00aaff);
 color:black;
-box-shadow:0 0 30px rgba(0,255,170,0.35);
+box-shadow:0 0 25px rgba(0,255,170,0.4);
 }
 
 .btn-primary:hover{
-transform:translateY(-4px);
+transform:translateY(-5px) scale(1.03);
 }
 
 .btn-secondary{
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.05);
 color:white;
 }
 
 .btn-secondary:hover{
-background:rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.12);
 }
 
+/* GAMES */
+
+.games{
+padding:60px 8%;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.game{
+padding:18px 28px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:16px;
+backdrop-filter:blur(10px);
+font-weight:600;
+transition:.35s;
+}
+
+.game:hover{
+transform:translateY(-8px);
+border-color:#00ffae;
+box-shadow:0 0 25px rgba(0,255,170,0.2);
+}
+
+/* STATS */
+
 .stats{
-padding:80px 8%;
+padding:100px 8%;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
@@ -155,16 +215,16 @@ gap:25px;
 
 .card{
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
 padding:35px;
 border-radius:24px;
+border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(10px);
 transition:.35s;
 }
 
 .card:hover{
-transform:translateY(-8px);
-border-color:rgba(0,255,170,0.35);
+transform:translateY(-10px);
+border-color:#00ffae;
 box-shadow:0 0 30px rgba(0,255,170,0.15);
 }
 
@@ -177,6 +237,12 @@ margin-bottom:10px;
 
 .card p{
 color:rgba(255,255,255,0.7);
+}
+
+/* FEATURES */
+
+.features{
+padding:100px 8%;
 }
 
 .section-title{
@@ -195,10 +261,6 @@ margin-bottom:15px;
 color:rgba(255,255,255,0.7);
 }
 
-.features{
-padding:80px 8%;
-}
-
 .feature-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -206,8 +268,8 @@ gap:25px;
 }
 
 .feature{
-background:rgba(255,255,255,0.04);
 padding:35px;
+background:rgba(255,255,255,0.04);
 border-radius:24px;
 border:1px solid rgba(255,255,255,0.08);
 transition:.35s;
@@ -215,7 +277,7 @@ transition:.35s;
 
 .feature:hover{
 transform:translateY(-8px);
-border-color:rgba(0,255,170,0.35);
+border-color:#00ffae;
 box-shadow:0 0 30px rgba(0,255,170,0.15);
 }
 
@@ -235,8 +297,10 @@ color:rgba(255,255,255,0.7);
 line-height:1.7;
 }
 
+/* TOURNAMENTS */
+
 .tournaments{
-padding:80px 8% 120px;
+padding:100px 8%;
 }
 
 .tournament-grid{
@@ -246,9 +310,9 @@ gap:25px;
 }
 
 .tournament{
-background:linear-gradient(145deg,rgba(0,255,170,0.12),rgba(0,140,255,0.08));
 padding:40px;
 border-radius:26px;
+background:linear-gradient(145deg,rgba(0,255,170,0.12),rgba(0,140,255,0.08));
 border:1px solid rgba(255,255,255,0.08);
 transition:.35s;
 }
@@ -271,10 +335,12 @@ margin-bottom:20px;
 
 .price{
 font-size:2.5rem;
-color:#00ffae;
 font-weight:700;
+color:#00ffae;
 margin-bottom:20px;
 }
+
+/* FOOTER */
 
 footer{
 padding:40px 8%;
@@ -283,10 +349,12 @@ border-top:1px solid rgba(255,255,255,0.08);
 color:rgba(255,255,255,0.6);
 }
 
+/* ANIMATION */
+
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(40px);
+transform:translateY(50px);
 }
 to{
 opacity:1;
@@ -294,18 +362,28 @@ transform:translateY(0);
 }
 }
 
-@media(max-width:768px){
+/* MOBILE */
 
-.hero h1{
-font-size:3rem;
-}
+@media(max-width:768px){
 
 nav ul{
 display:none;
 }
 
+.hero h1{
+font-size:3.3rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
 .section-title h2{
 font-size:2.2rem;
+}
+
+.logo{
+font-size:1rem;
 }
 
 }
@@ -315,10 +393,18 @@ font-size:2.2rem;
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
 
 <div class="logo">
+
+<div class="logo-circle">
+CE
+</div>
+
 CHAMPIONS ESPORTS
+
 </div>
 
 <ul>
@@ -331,18 +417,21 @@ CHAMPIONS ESPORTS
 
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-content">
 
 <h1>
-DOMINATE<br>THE GAME
+THE FUTURE<br>
+OF ESPORTS
 </h1>
 
 <p>
-The ultimate eFootball esports experience in Morocco.
-Compete in elite tournaments, create your squad,
-climb the rankings and become a champion.
+Compete in elite tournaments, dominate the rankings,
+create your squad and become legendary in the biggest
+gaming platform in Morocco.
 </p>
 
 <div class="hero-buttons">
@@ -361,35 +450,52 @@ WATCH LIVE
 
 </section>
 
+<!-- GAMES -->
+
+<section class="games">
+
+<div class="game">⚽ eFootball</div>
+<div class="game">🔥 Free Fire</div>
+<div class="game">🎯 PUBG</div>
+<div class="game">⚔️ League Of Legends</div>
+<div class="game">💥 Valorant</div>
+<div class="game">🏆 FC Mobile</div>
+
+</section>
+
+<!-- STATS -->
+
 <section class="stats">
 
 <div class="card">
-<h2>10K+</h2>
+<h2>25K+</h2>
 <p>Competitive Players</p>
 </div>
 
 <div class="card">
-<h2>250+</h2>
-<p>Esports Squads</p>
+<h2>700+</h2>
+<p>Gaming Squads</p>
 </div>
 
 <div class="card">
-<h2>5K DH</h2>
+<h2>50K DH</h2>
 <p>Prize Pools</p>
 </div>
 
 <div class="card">
 <h2>24/7</h2>
-<p>Gaming Action</p>
+<p>Esports Action</p>
 </div>
 
 </section>
+
+<!-- FEATURES -->
 
 <section class="features">
 
 <div class="section-title">
 <h2>WHY CHOOSE US</h2>
-<p>The future of Moroccan esports starts here.</p>
+<p>The next generation of esports competition.</p>
 </div>
 
 <div class="feature-grid">
@@ -397,7 +503,7 @@ WATCH LIVE
 <div class="feature">
 <span>🏆</span>
 <h3>Elite Tournaments</h3>
-<p>Play against the best eFootball players and dominate the rankings.</p>
+<p>Compete against the best players and dominate the leaderboards.</p>
 </div>
 
 <div class="feature">
@@ -408,48 +514,83 @@ WATCH LIVE
 
 <div class="feature">
 <span>🎮</span>
-<h3>Squads & Clans</h3>
-<p>Create your esports squad and battle for glory.</p>
+<h3>Gaming Squads</h3>
+<p>Create your team, recruit players and become legendary.</p>
 </div>
 
 <div class="feature">
 <span>📈</span>
 <h3>Live Rankings</h3>
-<p>Track wins, MVP awards and player performance.</p>
+<p>Track wins, MVP awards and player performance in real time.</p>
 </div>
 
 </div>
 
 </section>
 
+<!-- TOURNAMENTS -->
+
 <section class="tournaments">
 
 <div class="section-title">
 <h2>LIVE TOURNAMENTS</h2>
-<p>Enter the arena and win massive prizes.</p>
+<p>Massive prizes and competitive esports battles.</p>
 </div>
 
 <div class="tournament-grid">
 
 <div class="tournament">
+
 <h3>WEEKLY CUP</h3>
-<p>Weekly eFootball tournament with rewards and rankings.</p>
-<div class="price">30DH ENTRY</div>
-<a href="#" class="btn btn-primary">REGISTER NOW</a>
+
+<p>
+Fast-paced tournaments with rewards, rankings and livestreams.
+</p>
+
+<div class="price">
+30DH ENTRY
+</div>
+
+<a href="#" class="btn btn-primary">
+REGISTER NOW
+</a>
+
 </div>
 
 <div class="tournament">
+
 <h3>CHAMPIONS LEAGUE</h3>
-<p>The biggest competition featuring elite squads and players.</p>
-<div class="price">1000DH PRIZE</div>
-<a href="#" class="btn btn-primary">JOIN NOW</a>
+
+<p>
+The biggest esports competition featuring elite players and squads.
+</p>
+
+<div class="price">
+1000DH PRIZE
+</div>
+
+<a href="#" class="btn btn-primary">
+JOIN NOW
+</a>
+
 </div>
 
 <div class="tournament">
-<h3>SQUAD BATTLE</h3>
-<p>5v5 esports wars where squads fight for dominance.</p>
-<div class="price">5v5 MODE</div>
-<a href="#" class="btn btn-primary">CREATE SQUAD</a>
+
+<h3>GLOBAL ARENA</h3>
+
+<p>
+Multi-game esports tournaments including PUBG, Free Fire and eFootball.
+</p>
+
+<div class="price">
+LIVE EVENTS
+</div>
+
+<a href="#" class="btn btn-primary">
+WATCH NOW
+</a>
+
 </div>
 
 </div>
@@ -457,7 +598,7 @@ WATCH LIVE
 </section>
 
 <footer>
-© 2026 Champions Esports League — Built For Champions.
+© 2026 Champions Esports — Built For Legends.
 </footer>
 
 </body>
