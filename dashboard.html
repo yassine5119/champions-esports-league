@@ -49,7 +49,7 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.93)),
+linear-gradient(rgba(0,0,0,.87),rgba(0,0,0,.94)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
@@ -113,8 +113,8 @@ gap:15px;
 }
 
 .logo-icon{
-width:55px;
-height:55px;
+width:58px;
+height:58px;
 border-radius:18px;
 background:linear-gradient(135deg,#00ffae,#00aaff);
 display:flex;
@@ -207,32 +207,48 @@ right:0;
 /* HERO */
 
 .hero{
-padding:150px 7% 70px;
+padding:150px 7% 80px;
 }
 
-.welcome{
+.hero-box{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-border-radius:30px;
-padding:45px;
+border-radius:35px;
+padding:50px;
 backdrop-filter:blur(14px);
-margin-bottom:45px;
+margin-bottom:55px;
 box-shadow:0 0 40px rgba(0,255,170,.08);
 animation:fadeUp 1s ease;
+position:relative;
+overflow:hidden;
 }
 
-.welcome h1{
-font-size:3.5rem;
+.hero-box::before{
+content:'';
+position:absolute;
+width:300px;
+height:300px;
+background:#00ffae;
+filter:blur(120px);
+opacity:.08;
+top:-120px;
+right:-120px;
+border-radius:50%;
+}
+
+.hero-box h1{
+font-size:4rem;
 font-family:'Orbitron',sans-serif;
-margin-bottom:15px;
+margin-bottom:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.welcome p{
+.hero-box p{
 line-height:1.9;
 color:rgba(255,255,255,.72);
+max-width:700px;
 }
 
 /* STATS */
@@ -241,7 +257,7 @@ color:rgba(255,255,255,.72);
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
-margin-bottom:60px;
+margin-bottom:65px;
 }
 
 .stat{
@@ -267,14 +283,14 @@ color:#00ffae;
 margin-bottom:10px;
 }
 
-/* SECTION */
+/* TITLES */
 
 .section-title{
 margin-bottom:35px;
 }
 
 .section-title h2{
-font-size:2.6rem;
+font-size:2.5rem;
 font-family:'Orbitron',sans-serif;
 color:#00ffae;
 }
@@ -283,14 +299,14 @@ color:#00ffae;
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-gap:28px;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:30px;
 }
 
 .card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-border-radius:28px;
+border-radius:30px;
 overflow:hidden;
 backdrop-filter:blur(14px);
 transition:.35s;
@@ -300,12 +316,12 @@ position:relative;
 .card:hover{
 transform:translateY(-12px);
 border-color:#00ffae;
-box-shadow:0 0 40px rgba(0,255,170,.18);
+box-shadow:0 0 45px rgba(0,255,170,.18);
 }
 
 .card-banner{
 width:100%;
-height:220px;
+height:230px;
 object-fit:cover;
 }
 
@@ -314,12 +330,12 @@ padding:30px;
 }
 
 .game-logo{
-width:70px;
-height:70px;
+width:85px;
+height:85px;
 object-fit:contain;
-margin-bottom:18px;
+margin-bottom:20px;
 animation:floatLogo 3s ease-in-out infinite;
-filter:drop-shadow(0 0 20px rgba(0,255,170,.4));
+filter:drop-shadow(0 0 25px rgba(0,255,170,.5));
 }
 
 @keyframes floatLogo{
@@ -329,7 +345,7 @@ filter:drop-shadow(0 0 20px rgba(0,255,170,.4));
 }
 
 .card-content h2{
-font-size:1.9rem;
+font-size:2rem;
 margin-bottom:15px;
 font-family:'Orbitron',sans-serif;
 }
@@ -356,7 +372,7 @@ font-size:.9rem;
 }
 
 .btn{
-padding:16px 32px;
+padding:17px 32px;
 border-radius:18px;
 display:inline-block;
 text-decoration:none;
@@ -375,7 +391,7 @@ box-shadow:0 0 45px rgba(0,255,170,.7);
 /* LOCKED */
 
 .locked{
-opacity:.6;
+opacity:.65;
 }
 
 .locked::before{
@@ -394,10 +410,10 @@ z-index:10;
 /* LIVE */
 
 .live{
-margin-top:60px;
+margin-top:70px;
 background:rgba(255,255,255,.05);
 padding:35px;
-border-radius:28px;
+border-radius:30px;
 border:1px solid rgba(255,255,255,.08);
 backdrop-filter:blur(12px);
 }
@@ -443,7 +459,7 @@ color:rgba(255,255,255,.72);
 /* RULES */
 
 .rules{
-margin-top:60px;
+margin-top:70px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 gap:25px;
@@ -476,9 +492,9 @@ color:rgba(255,255,255,.72);
 /* RANKING */
 
 .ranking{
-margin-top:60px;
+margin-top:70px;
 background:rgba(255,255,255,.05);
-border-radius:28px;
+border-radius:30px;
 overflow:hidden;
 border:1px solid rgba(255,255,255,.08);
 }
@@ -549,8 +565,8 @@ grid-template-columns:1fr 1fr;
 font-size:1.1rem;
 }
 
-.welcome h1{
-font-size:2.2rem;
+.hero-box h1{
+font-size:2.4rem;
 }
 
 .section-title h2{
@@ -571,12 +587,12 @@ height:46px;
 font-size:1rem;
 }
 
-.welcome{
+.hero-box{
 padding:30px 22px;
 }
 
-.welcome h1{
-font-size:1.8rem;
+.hero-box h1{
+font-size:1.9rem;
 line-height:1.3;
 }
 
@@ -672,15 +688,15 @@ Champions Esports
 
 <section class="hero">
 
-<div class="welcome">
+<div class="hero-box">
 
 <h1>
-WELCOME BACK PLAYER
+ENTER THE NEXT LEVEL OF ESPORTS
 </h1>
 
 <p>
-Access tournaments, rankings, livestreams and professional esports battles.
-Compete against elite players and dominate the competition.
+Join professional tournaments, livestream battles and competitive rankings.
+Build your legacy inside Champions Esports.
 </p>
 
 </div>
@@ -688,11 +704,6 @@ Compete against elite players and dominate the competition.
 <!-- STATS -->
 
 <div class="stats">
-
-<div class="stat">
-<h2>4</h2>
-<p>Games Available</p>
-</div>
 
 <div class="stat">
 <h2>100+</h2>
@@ -705,13 +716,18 @@ Compete against elite players and dominate the competition.
 </div>
 
 <div class="stat">
+<h2>4</h2>
+<p>Competitive Games</p>
+</div>
+
+<div class="stat">
 <h2>LIVE</h2>
 <p>Esports Events</p>
 </div>
 
 </div>
 
-<!-- SECTION -->
+<!-- TOURNAMENTS -->
 
 <div class="section-title">
 <h2>ACTIVE TOURNAMENTS</h2>
@@ -729,13 +745,13 @@ src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&au
 <div class="card-content">
 
 <img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/732/732228.png">
+src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 
 <h2>eFootball Mobile Cup</h2>
 
 <p>
 Official tournament of this month with livestream finals,
-rankings and competitive gameplay.
+competitive rankings and cash prizes.
 </p>
 
 <div class="info">
@@ -758,7 +774,7 @@ rankings and competitive gameplay.
 
 </div>
 
-<a href="#" class="btn">
+<a href="join.html" class="btn">
 JOIN NOW
 </a>
 
@@ -781,7 +797,7 @@ src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 <h2>Free Fire Arena</h2>
 
 <p>
-Competitive Free Fire tournaments with rankings and live events.
+Competitive Free Fire tournaments with livestream finals and rankings.
 </p>
 
 <div class="info">
@@ -851,7 +867,7 @@ Professional PUBG Mobile tournaments coming soon.
 <div class="live-box">
 
 <p>
-No live events right now. Livestream finals and tournaments
+No live tournaments right now. Livestream finals and esports battles
 will appear here during active competitions.
 </p>
 
@@ -878,7 +894,7 @@ Cheating or unfair gameplay will result in permanent bans.
 <h3>📸 Match Proof</h3>
 
 <p>
-Players must submit screenshots or videos after matches.
+Players must submit screenshots after every match.
 </p>
 
 </div>
@@ -888,7 +904,7 @@ Players must submit screenshots or videos after matches.
 <h3>🏆 Ranking System</h3>
 
 <p>
-Players gain points depending on tournament performance.
+Players gain ranking points depending on tournament performance.
 </p>
 
 </div>
@@ -907,7 +923,7 @@ Semi-finals and finals are livestreamed for the community.
 
 <!-- RANKING -->
 
-<div class="section-title" style="margin-top:60px;">
+<div class="section-title" style="margin-top:70px;">
 <h2>TOP PLAYERS</h2>
 </div>
 
