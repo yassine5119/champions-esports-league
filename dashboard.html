@@ -49,8 +49,9 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.94)),
+linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.95)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+
 background-size:cover;
 background-position:center;
 z-index:-5;
@@ -218,8 +219,6 @@ padding:50px;
 backdrop-filter:blur(14px);
 margin-bottom:55px;
 box-shadow:0 0 40px rgba(0,255,170,.08);
-position:relative;
-overflow:hidden;
 }
 
 .hero-box h1{
@@ -269,7 +268,7 @@ color:#00ffae;
 margin-bottom:10px;
 }
 
-/* TITLES */
+/* TITLE */
 
 .section-title{
 margin-bottom:35px;
@@ -281,11 +280,11 @@ font-family:'Orbitron',sans-serif;
 color:#00ffae;
 }
 
-/* TOURNAMENTS */
+/* TOURNAMENT */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
 gap:30px;
 }
 
@@ -296,7 +295,6 @@ border-radius:30px;
 overflow:hidden;
 backdrop-filter:blur(14px);
 transition:.35s;
-position:relative;
 }
 
 .card:hover{
@@ -315,24 +313,29 @@ object-fit:cover;
 padding:30px;
 }
 
-.game-logo{
-width:85px;
-height:85px;
-object-fit:contain;
+.game-header{
+display:flex;
+align-items:center;
+gap:18px;
 margin-bottom:20px;
-animation:floatLogo 3s ease-in-out infinite;
+}
+
+.game-logo{
+width:90px;
+height:90px;
+object-fit:contain;
 filter:drop-shadow(0 0 25px rgba(0,255,170,.5));
+animation:floatLogo 3s ease-in-out infinite;
 }
 
 @keyframes floatLogo{
 0%{transform:translateY(0px);}
-50%{transform:translateY(-10px);}
+50%{transform:translateY(-8px);}
 100%{transform:translateY(0px);}
 }
 
 .card-content h2{
 font-size:2rem;
-margin-bottom:15px;
 font-family:'Orbitron',sans-serif;
 }
 
@@ -357,6 +360,8 @@ border:1px solid rgba(255,255,255,.08);
 font-size:.9rem;
 }
 
+/* HOW TO JOIN */
+
 .join-steps{
 background:rgba(255,255,255,.05);
 padding:20px;
@@ -378,42 +383,7 @@ font-size:.93rem;
 color:rgba(255,255,255,.72);
 }
 
-.whatsapp-box{
-background:rgba(0,255,170,.05);
-padding:20px;
-border-radius:20px;
-border:1px solid rgba(0,255,170,.12);
-margin-bottom:22px;
-}
-
-.whatsapp-box h3{
-margin-bottom:12px;
-color:#00ffae;
-font-family:'Orbitron',sans-serif;
-}
-
-.whatsapp-box p{
-line-height:1.8;
-font-size:.92rem;
-margin-bottom:18px;
-color:rgba(255,255,255,.72);
-}
-
-.whatsapp-btn{
-display:inline-block;
-padding:14px 22px;
-border-radius:16px;
-background:#25D366;
-color:white;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.whatsapp-btn:hover{
-transform:translateY(-4px);
-box-shadow:0 0 25px rgba(37,211,102,.5);
-}
+/* BUTTON */
 
 .btn{
 padding:17px 32px;
@@ -436,6 +406,7 @@ box-shadow:0 0 45px rgba(0,255,170,.7);
 
 .locked{
 opacity:.65;
+position:relative;
 }
 
 .locked::before{
@@ -459,7 +430,6 @@ background:rgba(255,255,255,.05);
 padding:35px;
 border-radius:30px;
 border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
 }
 
 .live-header{
@@ -498,6 +468,14 @@ border:1px solid rgba(255,255,255,.08);
 .live-box p{
 line-height:1.8;
 color:rgba(255,255,255,.72);
+}
+
+/* FOOTER */
+
+footer{
+padding:50px 7%;
+text-align:center;
+color:rgba(255,255,255,.6);
 }
 
 /* MOBILE */
@@ -560,7 +538,16 @@ padding:22px;
 }
 
 .card-content h2{
-font-size:1.5rem;
+font-size:1.4rem;
+}
+
+.game-logo{
+width:70px;
+height:70px;
+}
+
+.game-header{
+gap:12px;
 }
 
 .info{
@@ -594,6 +581,8 @@ padding:25px;
 <div class="glow2"></div>
 </div>
 
+<!-- NAVBAR -->
+
 <nav>
 
 <div class="logo">
@@ -621,6 +610,8 @@ Champions Esports
 
 </nav>
 
+<!-- MOBILE MENU -->
+
 <div class="mobile-menu" id="mobileMenu">
 
 <a href="#">Dashboard</a>
@@ -629,6 +620,8 @@ Champions Esports
 <a href="#">Live</a>
 
 </div>
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -639,11 +632,13 @@ ENTER THE NEXT LEVEL OF ESPORTS
 </h1>
 
 <p>
-Join professional tournaments, livestream battles and competitive rankings.
-Build your legacy inside Champions Esports.
+Join competitive esports tournaments and become one of the top players
+inside Champions Esports.
 </p>
 
 </div>
+
+<!-- STATS -->
 
 <div class="stats">
 
@@ -669,9 +664,13 @@ Build your legacy inside Champions Esports.
 
 </div>
 
+<!-- TITLE -->
+
 <div class="section-title">
 <h2>ACTIVE TOURNAMENTS</h2>
 </div>
+
+<!-- GRID -->
 
 <div class="grid">
 
@@ -684,14 +683,18 @@ src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&au
 
 <div class="card-content">
 
+<div class="game-header">
+
 <img class="game-logo"
 src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 
 <h2>eFootball Mobile Cup</h2>
 
+</div>
+
 <p>
 Official tournament of this month with livestream finals,
-competitive rankings and cash prizes.
+cash prizes and competitive gameplay.
 </p>
 
 <div class="info">
@@ -722,38 +725,17 @@ HOW TO JOIN
 
 <p>
 
-1️⃣ Complete the payment<br><br>
+1️⃣ Click JOIN NOW<br><br>
 
-2️⃣ Submit registration form<br><br>
+2️⃣ Submit your information<br><br>
 
-3️⃣ Wait for admin verification<br><br>
+3️⃣ Admin team contacts you<br><br>
 
-4️⃣ Join official WhatsApp group<br><br>
+4️⃣ Complete payment<br><br>
 
 5️⃣ Receive tournament access
 
 </p>
-
-</div>
-
-<div class="whatsapp-box">
-
-<h3>
-WHATSAPP COMMUNITY
-</h3>
-
-<p>
-Verified players will receive access to the official tournament WhatsApp group
-for matches, livestreams and announcements.
-</p>
-
-<a href="https://chat.whatsapp.com/"
-target="_blank"
-class="whatsapp-btn">
-
-JOIN WHATSAPP
-
-</a>
 
 </div>
 
@@ -774,13 +756,55 @@ src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=
 
 <div class="card-content">
 
+<div class="game-header">
+
 <img class="game-logo"
 src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 
 <h2>Free Fire Arena</h2>
 
+</div>
+
 <p>
-Competitive Free Fire tournaments with livestream finals and rankings.
+Competitive Free Fire tournaments coming soon.
+</p>
+
+<div class="info">
+
+<div class="info-box">
+🔒 Locked
+</div>
+
+<div class="info-box">
+🚀 Coming Soon
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PUBG -->
+
+<div class="card locked">
+
+<img class="card-banner"
+src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+
+<div class="card-content">
+
+<div class="game-header">
+
+<img class="game-logo"
+src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
+
+<h2>PUBG Mobile Battle</h2>
+
+</div>
+
+<p>
+Professional PUBG tournaments will be available soon.
 </p>
 
 <div class="info">
@@ -801,6 +825,8 @@ Competitive Free Fire tournaments with livestream finals and rankings.
 
 </div>
 
+<!-- LIVE -->
+
 <div class="live">
 
 <div class="live-header">
@@ -814,8 +840,8 @@ Competitive Free Fire tournaments with livestream finals and rankings.
 <div class="live-box">
 
 <p>
-No live tournaments right now. Livestream finals and esports battles
-will appear here during active competitions.
+No live tournaments right now. Livestream battles and finals
+will appear here during competitions.
 </p>
 
 </div>
@@ -823,6 +849,10 @@ will appear here during active competitions.
 </div>
 
 </section>
+
+<footer>
+© 2026 Champions Esports — Built For Legends.
+</footer>
 
 <script>
 
