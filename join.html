@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Join Tournament - Champions Esports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+overflow-x:hidden;
+color:white;
+}
+
+/* BACKGROUND */
+
+.background{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.93)),
+url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+z-index:-5;
+}
+
+.background::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
+radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+}
+
+/* CONTAINER */
+
+.container{
+width:100%;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:flex-start;
+padding:120px 18px 70px;
+}
+
+/* CARD */
+
+.card{
+width:100%;
+max-width:650px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(16px);
+padding:45px;
+border-radius:30px;
+box-shadow:0 0 40px rgba(0,255,170,.08);
+animation:fadeUp 1s ease;
+}
+
+/* TITLE */
+
+.logo{
+text-align:center;
+font-size:2.4rem;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+margin-bottom:12px;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+text-align:center;
+color:rgba(255,255,255,.7);
+margin-bottom:35px;
+line-height:1.8;
+}
+
+/* ALERT */
+
+.alert{
+background:rgba(255,0,85,.08);
+border:1px solid rgba(255,0,85,.25);
+padding:22px;
+border-radius:22px;
+margin-bottom:35px;
+text-align:center;
+}
+
+.alert h2{
+color:#ff2f70;
+margin-bottom:12px;
+font-family:'Orbitron',sans-serif;
+font-size:1.3rem;
+}
+
+.alert p{
+line-height:1.8;
+color:rgba(255,255,255,.75);
+}
+
+/* TOURNAMENT */
+
+.tournament-box{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:28px;
+margin-bottom:35px;
+}
+
+.tournament-box h2{
+font-family:'Orbitron',sans-serif;
+margin-bottom:20px;
+font-size:1.8rem;
+color:#00ffae;
+}
+
+.info{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.info-box{
+padding:12px 16px;
+background:rgba(255,255,255,.06);
+border-radius:14px;
+border:1px solid rgba(255,255,255,.08);
+font-size:.9rem;
+}
+
+/* PAYMENT */
+
+.payment{
+margin-bottom:35px;
+background:rgba(0,255,170,.05);
+border:1px solid rgba(0,255,170,.12);
+padding:28px;
+border-radius:24px;
+}
+
+.payment h2{
+font-family:'Orbitron',sans-serif;
+margin-bottom:20px;
+color:#00ffae;
+font-size:1.5rem;
+}
+
+.payment-box{
+margin-bottom:15px;
+padding:16px;
+background:rgba(255,255,255,.04);
+border-radius:16px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* INPUTS */
+
+.input-group{
+margin-bottom:22px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:10px;
+font-size:.95rem;
+font-weight:500;
+color:rgba(255,255,255,.88);
+}
+
+.input-group input{
+width:100%;
+padding:17px 18px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.05);
+color:white;
+font-size:1rem;
+outline:none;
+transition:.3s;
+}
+
+.input-group input:focus{
+border-color:#00ffae;
+box-shadow:0 0 20px rgba(0,255,170,.2);
+}
+
+.input-group input::placeholder{
+color:rgba(255,255,255,.45);
+}
+
+/* FILE */
+
+.file-box{
+margin-bottom:28px;
+}
+
+.file-box input{
+width:100%;
+padding:18px;
+border-radius:16px;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+color:white;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:19px;
+border:none;
+border-radius:18px;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+font-size:1rem;
+font-weight:700;
+cursor:pointer;
+transition:.35s;
+color:black;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 35px rgba(0,255,170,.45);
+}
+
+/* SUCCESS */
+
+.success{
+margin-top:22px;
+padding:18px;
+border-radius:18px;
+background:rgba(0,255,170,.08);
+border:1px solid rgba(0,255,170,.18);
+text-align:center;
+color:#00ffae;
+display:none;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.container{
+padding:135px 14px 80px;
+}
+
+.card{
+padding:34px 22px;
+border-radius:24px;
+}
+
+.logo{
+font-size:1.8rem;
+}
+
+.subtitle{
+font-size:.92rem;
+}
+
+.alert h2{
+font-size:1rem;
+}
+
+.tournament-box h2,
+.payment h2{
+font-size:1.3rem;
+}
+
+.info{
+gap:8px;
+}
+
+.info-box{
+font-size:.8rem;
+padding:10px 12px;
+}
+
+.input-group input{
+padding:15px 16px;
+font-size:.94rem;
+}
+
+.btn{
+padding:17px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">
+JOIN TOURNAMENT
+</div>
+
+<div class="subtitle">
+Complete the payment and submit your tournament registration.
+Only verified players can access the competition.
+</div>
+
+<!-- ALERT -->
+
+<div class="alert">
+
+<h2>
+⚠ PAYMENT REQUIRED
+</h2>
+
+<p>
+To join this tournament you must complete the entry payment
+and upload the payment screenshot for verification.
+</p>
+
+</div>
+
+<!-- TOURNAMENT -->
+
+<div class="tournament-box">
+
+<h2>
+⚽ eFootball Mobile Cup
+</h2>
+
+<div class="info">
+
+<div class="info-box">
+👥 100 Players
+</div>
+
+<div class="info-box">
+💰 30DH Entry
+</div>
+
+<div class="info-box">
+🏆 1500DH Prize
+</div>
+
+<div class="info-box">
+📅 This Month
+</div>
+
+</div>
+
+</div>
+
+<!-- PAYMENT -->
+
+<div class="payment">
+
+<h2>
+💳 PAYMENT INFORMATION
+</h2>
+
+<div class="payment-box">
+📱 Orange Money: +2126XXXXXXXX
+</div>
+
+<div class="payment-box">
+🏦 CIH Bank: XXXX XXXX XXXX
+</div>
+
+<div class="payment-box">
+💰 Tournament Entry Fee: 30DH
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<form onsubmit="showSuccess(event)">
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" required>
+</div>
+
+<div class="input-group">
+<label>Phone Number</label>
+<input type="text" placeholder="+212XXXXXXXXX" required>
+</div>
+
+<div class="input-group">
+<label>Instagram Username</label>
+<input type="text" placeholder="@yourinstagram" required>
+</div>
+
+<div class="input-group">
+<label>Game ID</label>
+<input type="text" placeholder="Enter your Game ID" required>
+</div>
+
+<div class="file-box">
+
+<label style="display:block;margin-bottom:12px;">
+Upload Payment Screenshot
+</label>
+
+<input type="file" required>
+
+</div>
+
+<button class="btn">
+SUBMIT REGISTRATION
+</button>
+
+<div class="success" id="successBox">
+✅ Registration Submitted Successfully.<br>
+Your payment will be reviewed by the admin team.
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<script>
+
+function showSuccess(event){
+event.preventDefault();
+document.getElementById("successBox").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
