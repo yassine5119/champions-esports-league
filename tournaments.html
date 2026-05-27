@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tournaments - Champions Esports</title>
+<title>Champions Esports Tournaments</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,52 +19,85 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-overflow-x:hidden;
+font-family:'Rajdhani',sans-serif;
+background:#02030d;
 color:white;
+overflow-x:hidden;
 }
 
 /* BACKGROUND */
 
-.background{
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 top:0;
 left:0;
+z-index:-5;
 background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
+linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.95)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+
 background-size:cover;
 background-position:center;
-z-index:-5;
 }
 
-.background::before{
+.bg::before{
 content:'';
 position:absolute;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
-radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+radial-gradient(circle at top left, rgba(0,255,170,.16), transparent 30%),
+radial-gradient(circle at bottom right, rgba(0,120,255,.16), transparent 30%);
+}
+
+/* LIGHTS */
+
+.light{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+opacity:.14;
+animation:float 8s infinite alternate;
+}
+
+.light1{
+width:350px;
+height:350px;
+background:#00ffae;
+top:-100px;
+left:-100px;
+}
+
+.light2{
+width:400px;
+height:400px;
+background:#0088ff;
+bottom:-120px;
+right:-120px;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{transform:translate(0,0);}
+100%{transform:translate(60px,60px);}
 }
 
 /* NAVBAR */
 
 nav{
 width:100%;
-padding:20px 7%;
+padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 position:fixed;
 top:0;
-z-index:999;
-background:rgba(0,0,0,.45);
+z-index:9999;
+background:rgba(0,0,0,.35);
 backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .logo{
@@ -73,158 +106,301 @@ align-items:center;
 gap:15px;
 }
 
-.logo-icon{
-width:55px;
-height:55px;
+.logo-box{
+width:58px;
+height:58px;
 border-radius:18px;
 background:linear-gradient(135deg,#00ffae,#00aaff);
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:1.4rem;
 font-family:'Orbitron',sans-serif;
+font-size:1.2rem;
 font-weight:900;
 color:black;
-box-shadow:0 0 30px rgba(0,255,170,.5);
+box-shadow:0 0 35px rgba(0,255,170,.4);
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+100%{transform:scale(1.08);}
 }
 
 .logo-text{
-font-size:1.8rem;
 font-family:'Orbitron',sans-serif;
+font-size:1.8rem;
 font-weight:900;
-text-transform:uppercase;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 letter-spacing:2px;
 }
 
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:1.1rem;
+font-weight:600;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#00ffae;
+}
+
 /* HERO */
 
 .hero{
-padding:180px 7% 80px;
+padding:160px 6% 70px;
 text-align:center;
 }
 
 .hero h1{
-font-size:5rem;
 font-family:'Orbitron',sans-serif;
-font-weight:900;
+font-size:5rem;
+line-height:1.1;
 margin-bottom:20px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-text-transform:uppercase;
 }
 
 .hero p{
+font-size:1.2rem;
+line-height:1.9;
 max-width:850px;
 margin:auto;
-line-height:1.9;
 color:rgba(255,255,255,.72);
-font-size:1.1rem;
 }
 
-/* TOURNAMENTS */
+/* TOURNAMENT GRID */
 
-.tournaments{
-padding:50px 7% 120px;
-}
-
-.cards{
+.grid{
+padding:0 6% 90px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:28px;
+grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+gap:35px;
 }
+
+/* CARD */
 
 .card{
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
-border-radius:28px;
+border-radius:35px;
 overflow:hidden;
-backdrop-filter:blur(12px);
 transition:.35s;
+backdrop-filter:blur(12px);
+position:relative;
 }
 
 .card:hover{
 transform:translateY(-12px);
 border-color:#00ffae;
-box-shadow:0 0 40px rgba(0,255,170,.18);
+box-shadow:0 0 45px rgba(0,255,170,.18);
 }
 
-.card img{
+/* ACTIVE CARD */
+
+.active{
+box-shadow:0 0 55px rgba(0,255,170,.15);
+}
+
+/* LOCKED */
+
+.locked{
+opacity:.6;
+}
+
+.locked::before{
+content:'COMING SOON';
+position:absolute;
+top:18px;
+right:18px;
+padding:10px 16px;
+border-radius:14px;
+background:#ff0055;
+font-size:.8rem;
+font-weight:700;
+z-index:10;
+}
+
+/* BANNER */
+
+.banner{
 width:100%;
-height:230px;
+height:240px;
 object-fit:cover;
 }
 
-.card-content{
-padding:30px;
+/* CONTENT */
+
+.content{
+padding:32px;
 }
 
-.card-content h2{
-font-size:2rem;
-margin-bottom:15px;
+.game-top{
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:22px;
+}
+
+.game-logo{
+width:90px;
+height:90px;
+object-fit:contain;
+filter:drop-shadow(0 0 25px rgba(0,255,170,.45));
+animation:floatLogo 3s infinite ease-in-out;
+}
+
+@keyframes floatLogo{
+0%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0);}
+}
+
+.content h2{
 font-family:'Orbitron',sans-serif;
+font-size:2rem;
 }
 
-.card-content p{
-line-height:1.8;
-color:rgba(255,255,255,.75);
-margin-bottom:20px;
+.content p{
+line-height:1.9;
+color:rgba(255,255,255,.72);
+margin-bottom:25px;
 }
+
+/* INFO */
 
 .info{
 display:flex;
 flex-wrap:wrap;
-gap:15px;
+gap:12px;
 margin-bottom:25px;
 }
 
 .info-box{
-padding:12px 18px;
-background:rgba(255,255,255,.06);
+padding:12px 16px;
 border-radius:14px;
+background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 font-size:.95rem;
 }
 
-.btn{
-padding:16px 34px;
-border-radius:18px;
-text-decoration:none;
-font-weight:700;
-transition:.35s;
-display:inline-block;
-background:linear-gradient(90deg,#00ffae,#00aaff);
-color:black;
-box-shadow:0 0 35px rgba(0,255,170,.35);
+/* JOIN BOX */
+
+.join-box{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:22px;
+border-radius:22px;
+margin-bottom:24px;
 }
 
-.btn:hover{
-transform:translateY(-5px) scale(1.03);
+.join-box h3{
+font-family:'Orbitron',sans-serif;
+margin-bottom:15px;
+color:#00ffae;
+font-size:1rem;
+}
+
+.join-box p{
+margin:0;
+font-size:.95rem;
+line-height:1.9;
+}
+
+/* BUTTON */
+
+.join-btn{
+display:inline-block;
+padding:18px 34px;
+border-radius:18px;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+color:black;
+font-weight:700;
+text-decoration:none;
+transition:.35s;
+box-shadow:0 0 30px rgba(0,255,170,.35);
+}
+
+.join-btn:hover{
+transform:translateY(-5px);
 box-shadow:0 0 45px rgba(0,255,170,.7);
 }
 
 /* FOOTER */
 
 footer{
-padding:50px 7%;
+padding:50px 6%;
 text-align:center;
-border-top:1px solid rgba(255,255,255,.08);
 color:rgba(255,255,255,.6);
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:950px){
+
+nav ul{
+display:none;
+}
 
 .hero h1{
 font-size:3rem;
 }
 
+.grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+padding:130px 5% 60px;
+}
+
+.hero h1{
+font-size:2rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
 .logo-text{
-font-size:1.2rem;
+font-size:1.1rem;
+}
+
+.content{
+padding:24px;
+}
+
+.content h2{
+font-size:1.4rem;
+}
+
+.game-logo{
+width:70px;
+height:70px;
+}
+
+.join-btn{
+width:100%;
+text-align:center;
+}
+
+.grid{
+padding:0 5% 70px;
 }
 
 }
@@ -235,7 +411,12 @@ font-size:1.2rem;
 
 <body>
 
-<div class="background"></div>
+<div class="bg">
+
+<div class="light light1"></div>
+<div class="light light2"></div>
+
+</div>
 
 <!-- NAVBAR -->
 
@@ -243,15 +424,24 @@ font-size:1.2rem;
 
 <div class="logo">
 
-<div class="logo-icon">
+<div class="logo-box">
 CE
 </div>
 
 <div class="logo-text">
-Champions Esports
+CHAMPIONS ESPORTS
 </div>
 
 </div>
+
+<ul>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="tournaments.html">Tournaments</a></li>
+<li><a href="ranking.html">Ranking</a></li>
+<li><a href="live.html">Live</a></li>
+
+</ul>
 
 </nav>
 
@@ -260,36 +450,41 @@ Champions Esports
 <section class="hero">
 
 <h1>
-LIVE TOURNAMENTS
+ESPORTS TOURNAMENTS
 </h1>
 
 <p>
-Join the biggest competitive esports tournaments in Morocco.
-Play against elite players, win massive prizes and become legendary.
-Limited slots available for every competition.
+Join elite competitive gaming tournaments and fight for glory,
+cash prizes and legendary rankings inside Champions Esports.
 </p>
 
 </section>
 
 <!-- TOURNAMENTS -->
 
-<section class="tournaments">
+<section class="grid">
 
-<div class="cards">
+<!-- EFOOTBALL ACTIVE -->
 
-<!-- EFOOTBALL -->
+<div class="card active">
 
-<div class="card">
+<img class="banner"
+src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+<div class="content">
 
-<div class="card-content">
+<div class="game-top">
+
+<img class="game-logo"
+src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 
 <h2>eFootball Mobile Cup</h2>
 
+</div>
+
 <p>
-The biggest competitive eFootball Mobile tournament in Morocco.
-100 players only with livestream finals and professional esports experience.
+Official active tournament with competitive players,
+cash prizes and livestream finals.
 </p>
 
 <div class="info">
@@ -303,13 +498,39 @@ The biggest competitive eFootball Mobile tournament in Morocco.
 </div>
 
 <div class="info-box">
-🏆 1500DH Prize
+🥇 1500DH Winner
+</div>
+
+<div class="info-box">
+🥈 500DH Runner-Up
 </div>
 
 </div>
 
-<a href="#" class="btn">
-REGISTER NOW
+<div class="join-box">
+
+<h3>
+HOW TO JOIN
+</h3>
+
+<p>
+
+1️⃣ Click JOIN NOW<br><br>
+
+2️⃣ Submit your information<br><br>
+
+3️⃣ Admin contacts you<br><br>
+
+4️⃣ Complete payment<br><br>
+
+5️⃣ Receive tournament access
+
+</p>
+
+</div>
+
+<a href="join.html" class="join-btn">
+JOIN NOW
 </a>
 
 </div>
@@ -318,38 +539,38 @@ REGISTER NOW
 
 <!-- FREE FIRE -->
 
-<div class="card">
+<div class="card locked">
 
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+<img class="banner"
+src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
 
-<div class="card-content">
+<div class="content">
+
+<div class="game-top">
+
+<img class="game-logo"
+src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
 
 <h2>Free Fire Arena</h2>
 
+</div>
+
 <p>
-Compete against top Free Fire players and dominate the arena
-in one of the biggest gaming competitions.
+Competitive Free Fire tournaments with esports rankings
+and livestream battles coming soon.
 </p>
 
 <div class="info">
 
 <div class="info-box">
-👥 80 Players
+🔒 Locked
 </div>
 
 <div class="info-box">
-💰 25DH Entry
-</div>
-
-<div class="info-box">
-🏆 1000DH Prize
+🚀 Coming Soon
 </div>
 
 </div>
-
-<a href="#" class="btn">
-REGISTER NOW
-</a>
 
 </div>
 
@@ -357,38 +578,75 @@ REGISTER NOW
 
 <!-- PUBG -->
 
-<div class="card">
+<div class="card locked">
 
-<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+<img class="banner"
+src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
 
-<div class="card-content">
+<div class="content">
 
-<h2>PUBG Global Battle</h2>
+<div class="game-top">
+
+<img class="game-logo"
+src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
+
+<h2>PUBG Mobile Battle</h2>
+
+</div>
 
 <p>
-Professional PUBG Mobile battles with livestreams,
-rankings and elite competition.
+Professional PUBG Mobile tournaments will be available soon
+inside Champions Esports.
 </p>
 
 <div class="info">
 
 <div class="info-box">
-👥 64 Players
+🔒 Locked
 </div>
 
 <div class="info-box">
-💰 40DH Entry
+🚀 Coming Soon
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- LEAGUE OF LEGENDS -->
+
+<div class="card locked">
+
+<img class="banner"
+src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1974&auto=format&fit=crop">
+
+<div class="content">
+
+<div class="game-top">
+
+<img class="game-logo"
+src="https://cdn-icons-png.flaticon.com/512/5968/5968703.png">
+
+<h2>League Of Legends</h2>
+
+</div>
+
+<p>
+High-level League Of Legends tournaments and rankings
+coming soon to the platform.
+</p>
+
+<div class="info">
+
+<div class="info-box">
+🔒 Locked
 </div>
 
 <div class="info-box">
-🏆 2000DH Prize
+🚀 Coming Soon
 </div>
-
-</div>
-
-<a href="#" class="btn">
-REGISTER NOW
-</a>
 
 </div>
 
@@ -399,7 +657,7 @@ REGISTER NOW
 </section>
 
 <footer>
-© 2026 Champions Esports — Tournaments Platform.
+© 2026 Champions Esports — Built For Legends.
 </footer>
 
 </body>
