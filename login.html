@@ -136,6 +136,7 @@ font-weight:700;
 cursor:pointer;
 transition:.35s;
 margin-top:10px;
+color:black;
 }
 
 .btn:hover{
@@ -155,6 +156,14 @@ color:rgba(255,255,255,.7);
 color:#00ffae;
 text-decoration:none;
 font-weight:600;
+}
+
+/* MESSAGE */
+
+.message{
+margin-top:20px;
+text-align:center;
+font-size:.95rem;
 }
 
 /* ANIMATION */
@@ -204,23 +213,25 @@ CHAMPIONS ESPORTS
 Login to your account and access tournaments, rankings and esports battles.
 </div>
 
-<form action="dashboard.html">
+<form id="loginForm">
 
 <div class="input-group">
 <label>Email</label>
-<input type="email" placeholder="Enter email" required>
+<input type="email" id="email" placeholder="Enter email" required>
 </div>
 
 <div class="input-group">
 <label>Password</label>
-<input type="password" placeholder="Enter password" required>
+<input type="password" id="password" placeholder="Enter password" required>
 </div>
 
-<button class="btn">
+<button class="btn" type="submit">
 LOGIN
 </button>
 
 </form>
+
+<div class="message" id="message"></div>
 
 <div class="register-link">
 Don't have an account?
@@ -230,6 +241,81 @@ Don't have an account?
 </div>
 
 </div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+
+authDomain: "champions-esports-league.firebaseapp.com",
+
+projectId: "champions-esports-league",
+
+storageBucket: "champions-esports-league.firebasestorage.app",
+
+messagingSenderId: "618814749744",
+
+appId: "1:618814749744:web:308bbc15b4862b02f381f5",
+
+measurementId: "G-KRSG32J9J9"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+const form = document.getElementById("loginForm");
+
+const message = document.getElementById("message");
+
+form.addEventListener("submit", async (e)=>{
+
+e.preventDefault();
+
+const email = document.getElementById("email").value;
+
+const password = document.getElementById("password").value;
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+message.style.color = "#00ffae";
+
+message.innerHTML = "Login Successful 🔥";
+
+setTimeout(()=>{
+
+window.location.href = "dashboard.html";
+
+},1500);
+
+}catch(error){
+
+message.style.color = "#ff4d4d";
+
+message.innerHTML = error.message;
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
