@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tournaments - Champions Esports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#050816;
+overflow-x:hidden;
+color:white;
+}
+
+/* BACKGROUND */
+
+.background{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
+url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+z-index:-5;
+}
+
+.background::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
+radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+}
+
+/* NAVBAR */
+
+nav{
+width:100%;
+padding:20px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:fixed;
+top:0;
+z-index:999;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-icon{
+width:55px;
+height:55px;
+border-radius:18px;
+background:linear-gradient(135deg,#00ffae,#00aaff);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:1.4rem;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+color:black;
+box-shadow:0 0 30px rgba(0,255,170,.5);
+}
+
+.logo-text{
+font-size:1.8rem;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+text-transform:uppercase;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+letter-spacing:2px;
+}
+
+/* HERO */
+
+.hero{
+padding:180px 7% 80px;
+text-align:center;
+}
+
+.hero h1{
+font-size:5rem;
+font-family:'Orbitron',sans-serif;
+font-weight:900;
+margin-bottom:20px;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+text-transform:uppercase;
+}
+
+.hero p{
+max-width:850px;
+margin:auto;
+line-height:1.9;
+color:rgba(255,255,255,.72);
+font-size:1.1rem;
+}
+
+/* TOURNAMENTS */
+
+.tournaments{
+padding:50px 7% 120px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+backdrop-filter:blur(12px);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+border-color:#00ffae;
+box-shadow:0 0 40px rgba(0,255,170,.18);
+}
+
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
+}
+
+.card-content{
+padding:30px;
+}
+
+.card-content h2{
+font-size:2rem;
+margin-bottom:15px;
+font-family:'Orbitron',sans-serif;
+}
+
+.card-content p{
+line-height:1.8;
+color:rgba(255,255,255,.75);
+margin-bottom:20px;
+}
+
+.info{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-bottom:25px;
+}
+
+.info-box{
+padding:12px 18px;
+background:rgba(255,255,255,.06);
+border-radius:14px;
+border:1px solid rgba(255,255,255,.08);
+font-size:.95rem;
+}
+
+.btn{
+padding:16px 34px;
+border-radius:18px;
+text-decoration:none;
+font-weight:700;
+transition:.35s;
+display:inline-block;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+color:black;
+box-shadow:0 0 35px rgba(0,255,170,.35);
+}
+
+.btn:hover{
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 0 45px rgba(0,255,170,.7);
+}
+
+/* FOOTER */
+
+footer{
+padding:50px 7%;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+color:rgba(255,255,255,.6);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:3rem;
+}
+
+.logo-text{
+font-size:1.2rem;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-icon">
+CE
+</div>
+
+<div class="logo-text">
+Champions Esports
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>
+LIVE TOURNAMENTS
+</h1>
+
+<p>
+Join the biggest competitive esports tournaments in Morocco.
+Play against elite players, win massive prizes and become legendary.
+Limited slots available for every competition.
+</p>
+
+</section>
+
+<!-- TOURNAMENTS -->
+
+<section class="tournaments">
+
+<div class="cards">
+
+<!-- EFOOTBALL -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h2>eFootball Mobile Cup</h2>
+
+<p>
+The biggest competitive eFootball Mobile tournament in Morocco.
+100 players only with livestream finals and professional esports experience.
+</p>
+
+<div class="info">
+
+<div class="info-box">
+👥 100 Players
+</div>
+
+<div class="info-box">
+💰 30DH Entry
+</div>
+
+<div class="info-box">
+🏆 1500DH Prize
+</div>
+
+</div>
+
+<a href="#" class="btn">
+REGISTER NOW
+</a>
+
+</div>
+
+</div>
+
+<!-- FREE FIRE -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h2>Free Fire Arena</h2>
+
+<p>
+Compete against top Free Fire players and dominate the arena
+in one of the biggest gaming competitions.
+</p>
+
+<div class="info">
+
+<div class="info-box">
+👥 80 Players
+</div>
+
+<div class="info-box">
+💰 25DH Entry
+</div>
+
+<div class="info-box">
+🏆 1000DH Prize
+</div>
+
+</div>
+
+<a href="#" class="btn">
+REGISTER NOW
+</a>
+
+</div>
+
+</div>
+
+<!-- PUBG -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h2>PUBG Global Battle</h2>
+
+<p>
+Professional PUBG Mobile battles with livestreams,
+rankings and elite competition.
+</p>
+
+<div class="info">
+
+<div class="info-box">
+👥 64 Players
+</div>
+
+<div class="info-box">
+💰 40DH Entry
+</div>
+
+<div class="info-box">
+🏆 2000DH Prize
+</div>
+
+</div>
+
+<a href="#" class="btn">
+REGISTER NOW
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Champions Esports — Tournaments Platform.
+</footer>
+
+</body>
+</html>
