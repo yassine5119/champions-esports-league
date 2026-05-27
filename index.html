@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -8,7 +7,7 @@
 
 <title>Champions Esports</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,73 +20,83 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#03040b;
+background:#03040a;
 overflow-x:hidden;
 color:white;
 }
 
 /* BACKGROUND */
 
-.background{
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 top:0;
 left:0;
-z-index:-2;
+z-index:-3;
+background:
+linear-gradient(rgba(0,0,0,0.82),rgba(0,0,0,0.88)),
+url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+}
+
+.bg::before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
 background:
 radial-gradient(circle at top left, rgba(0,255,170,0.18), transparent 30%),
-radial-gradient(circle at bottom right, rgba(0,140,255,0.18), transparent 30%),
-#03040b;
+radial-gradient(circle at bottom right, rgba(0,140,255,0.18), transparent 30%);
 }
 
-.glow{
+/* PARTICLES */
+
+.particle{
 position:absolute;
-width:500px;
-height:500px;
+width:4px;
+height:4px;
 background:#00ffae;
-filter:blur(180px);
-opacity:0.12;
 border-radius:50%;
-animation:moveGlow 10s infinite alternate;
+opacity:.5;
+animation:float 8s linear infinite;
 }
 
-.glow2{
-position:absolute;
-right:0;
-bottom:0;
-width:500px;
-height:500px;
-background:#0088ff;
-filter:blur(180px);
-opacity:0.12;
-border-radius:50%;
-animation:moveGlow2 10s infinite alternate;
-}
+.particle:nth-child(1){left:10%;top:90%;animation-delay:0s;}
+.particle:nth-child(2){left:25%;top:95%;animation-delay:2s;}
+.particle:nth-child(3){left:40%;top:90%;animation-delay:4s;}
+.particle:nth-child(4){left:60%;top:92%;animation-delay:1s;}
+.particle:nth-child(5){left:75%;top:95%;animation-delay:3s;}
+.particle:nth-child(6){left:90%;top:92%;animation-delay:5s;}
 
-@keyframes moveGlow{
-0%{transform:translate(-100px,-100px);}
-100%{transform:translate(100px,100px);}
+@keyframes float{
+0%{
+transform:translateY(0px);
+opacity:0;
 }
-
-@keyframes moveGlow2{
-0%{transform:translate(100px,100px);}
-100%{transform:translate(-100px,-100px);}
+50%{
+opacity:1;
+}
+100%{
+transform:translateY(-1000px);
+opacity:0;
+}
 }
 
 /* NAVBAR */
 
 nav{
+position:fixed;
+top:0;
 width:100%;
-padding:20px 8%;
+padding:20px 7%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:fixed;
-top:0;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(14px);
 z-index:999;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(15px);
 border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
@@ -95,38 +104,42 @@ border-bottom:1px solid rgba(255,255,255,0.08);
 display:flex;
 align-items:center;
 gap:15px;
+}
+
+.logo-icon{
+width:58px;
+height:58px;
+border-radius:18px;
+background:linear-gradient(135deg,#00ffae,#00aaff);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:1.5rem;
+font-weight:900;
+font-family:'Orbitron',sans-serif;
+color:black;
+box-shadow:0 0 35px rgba(0,255,170,0.5);
+animation:pulse 2s infinite alternate;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+}
+100%{
+transform:scale(1.08);
+}
+}
+
+.logo-text{
+font-size:2rem;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
-font-size:1.7rem;
-text-transform:uppercase;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 letter-spacing:2px;
-animation:logoGlow 3s infinite alternate;
-}
-
-.logo-icon{
-width:55px;
-height:55px;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1.4rem;
-font-weight:900;
-background:linear-gradient(135deg,#00ffae,#0088ff);
-color:black;
-box-shadow:0 0 30px rgba(0,255,170,0.5);
-}
-
-@keyframes logoGlow{
-0%{
-filter:drop-shadow(0 0 10px rgba(0,255,170,0.2));
-}
-100%{
-filter:drop-shadow(0 0 25px rgba(0,255,170,0.8));
-}
+text-transform:uppercase;
 }
 
 nav ul{
@@ -136,11 +149,15 @@ gap:35px;
 }
 
 nav ul li a{
-text-decoration:none;
 color:white;
-font-size:.95rem;
+text-decoration:none;
+font-size:1rem;
 transition:.3s;
 position:relative;
+}
+
+nav ul li a:hover{
+color:#00ffae;
 }
 
 nav ul li a::after{
@@ -158,74 +175,57 @@ nav ul li a:hover::after{
 width:100%;
 }
 
-nav ul li a:hover{
-color:#00ffae;
-}
-
 /* HERO */
 
 .hero{
 min-height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
-text-align:center;
-padding:0 8%;
-position:relative;
+justify-content:space-between;
+padding:140px 7% 80px;
+gap:50px;
+flex-wrap:wrap;
 }
 
-.hero-content{
-max-width:1100px;
-animation:fadeUp 1.2s ease;
-z-index:2;
+.hero-left{
+flex:1;
+min-width:320px;
+animation:fadeLeft 1s ease;
 }
 
-.hero h1{
-font-size:7rem;
+.hero-left h1{
+font-size:6.5rem;
 line-height:1;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
 margin-bottom:25px;
 text-transform:uppercase;
-background:linear-gradient(90deg,#00ffae,#00aaff,#00ffae);
+background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:titleGlow 3s infinite alternate;
+text-shadow:0 0 40px rgba(0,255,170,0.4);
 }
 
-@keyframes titleGlow{
-0%{
-filter:drop-shadow(0 0 10px rgba(0,255,170,0.3));
-}
-100%{
-filter:drop-shadow(0 0 35px rgba(0,255,170,0.9));
-}
-}
-
-.hero p{
-font-size:1.2rem;
+.hero-left p{
+font-size:1.15rem;
 line-height:1.9;
-color:rgba(255,255,255,0.72);
-max-width:780px;
-margin:auto;
+color:rgba(255,255,255,0.75);
+max-width:700px;
+margin-bottom:40px;
 }
 
 .hero-buttons{
-margin-top:45px;
 display:flex;
-justify-content:center;
 gap:20px;
 flex-wrap:wrap;
 }
 
 .btn{
 padding:18px 38px;
-border-radius:16px;
-font-weight:700;
+border-radius:18px;
 text-decoration:none;
+font-weight:700;
 transition:.35s;
-position:relative;
-overflow:hidden;
 }
 
 .btn-primary{
@@ -235,64 +235,80 @@ box-shadow:0 0 35px rgba(0,255,170,0.35);
 }
 
 .btn-primary:hover{
-transform:translateY(-6px) scale(1.03);
-box-shadow:0 0 45px rgba(0,255,170,0.8);
+transform:translateY(-5px) scale(1.03);
+box-shadow:0 0 45px rgba(0,255,170,0.7);
 }
 
 .btn-secondary{
 border:1px solid rgba(255,255,255,0.15);
-background:rgba(255,255,255,0.05);
+background:rgba(255,255,255,0.06);
 color:white;
 }
 
 .btn-secondary:hover{
 background:rgba(255,255,255,0.12);
-transform:translateY(-4px);
+transform:translateY(-5px);
+}
+
+/* HERO IMAGE */
+
+.hero-right{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+animation:fadeRight 1s ease;
+}
+
+.hero-right img{
+width:100%;
+max-width:650px;
+filter:drop-shadow(0 0 40px rgba(0,255,170,0.25));
+animation:floatPlayer 4s ease-in-out infinite;
+}
+
+@keyframes floatPlayer{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-20px);
+}
+100%{
+transform:translateY(0px);
+}
 }
 
 /* GAMES */
 
 .games{
-padding:50px 8%;
+padding:60px 7%;
 display:flex;
 justify-content:center;
-gap:20px;
+gap:22px;
 flex-wrap:wrap;
 }
 
 .game{
 padding:18px 28px;
-border-radius:18px;
-background:rgba(255,255,255,0.05);
+border-radius:20px;
+background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.08);
 backdrop-filter:blur(12px);
-transition:.35s;
 font-weight:600;
-position:relative;
-overflow:hidden;
-}
-
-.game::before{
-content:'';
-position:absolute;
-width:120px;
-height:120px;
-background:rgba(0,255,170,0.12);
-border-radius:50%;
-top:-60px;
-right:-60px;
+transition:.35s;
 }
 
 .game:hover{
-transform:translateY(-10px) scale(1.04);
+transform:translateY(-8px) scale(1.05);
 border-color:#00ffae;
 box-shadow:0 0 30px rgba(0,255,170,0.18);
 }
 
-/* FEATURES */
+/* TOURNAMENTS */
 
-.features{
-padding:120px 8%;
+.tournaments{
+padding:120px 7%;
 }
 
 .section-title{
@@ -301,7 +317,7 @@ margin-bottom:70px;
 }
 
 .section-title h2{
-font-size:3rem;
+font-size:3.2rem;
 font-family:'Orbitron',sans-serif;
 margin-bottom:15px;
 color:#00ffae;
@@ -311,108 +327,51 @@ color:#00ffae;
 color:rgba(255,255,255,0.7);
 }
 
-.feature-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.feature{
-padding:35px;
-border-radius:24px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.08);
-backdrop-filter:blur(10px);
-transition:.35s;
-position:relative;
-overflow:hidden;
-}
-
-.feature::before{
-content:'';
-position:absolute;
-width:200px;
-height:200px;
-background:rgba(0,255,170,0.08);
-border-radius:50%;
-top:-100px;
-right:-100px;
-}
-
-.feature:hover{
-transform:translateY(-10px);
-border-color:#00ffae;
-box-shadow:0 0 35px rgba(0,255,170,0.2);
-}
-
-.feature span{
-font-size:2.8rem;
-display:block;
-margin-bottom:18px;
-}
-
-.feature h3{
-margin-bottom:14px;
-font-size:1.4rem;
-}
-
-.feature p{
-line-height:1.8;
-color:rgba(255,255,255,0.7);
-}
-
-/* TOURNAMENTS */
-
-.tournaments{
-padding:100px 8%;
-}
-
 .tournament-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
 }
 
-.tournament{
-padding:40px;
-border-radius:28px;
-background:linear-gradient(145deg,rgba(0,255,170,0.12),rgba(0,140,255,0.08));
+.card{
+background:rgba(255,255,255,0.06);
 border:1px solid rgba(255,255,255,0.08);
-transition:.35s;
-position:relative;
+border-radius:28px;
 overflow:hidden;
+backdrop-filter:blur(12px);
+transition:.35s;
 }
 
-.tournament::before{
-content:'';
-position:absolute;
-width:250px;
-height:250px;
-background:rgba(0,255,170,0.08);
-border-radius:50%;
-top:-120px;
-right:-120px;
+.card:hover{
+transform:translateY(-12px);
+border-color:#00ffae;
+box-shadow:0 0 40px rgba(0,255,170,0.18);
 }
 
-.tournament:hover{
-transform:scale(1.04);
-box-shadow:0 0 35px rgba(0,255,170,0.25);
+.card img{
+width:100%;
+height:230px;
+object-fit:cover;
 }
 
-.tournament h3{
+.card-content{
+padding:30px;
+}
+
+.card-content h3{
 font-size:2rem;
 margin-bottom:15px;
 font-family:'Orbitron',sans-serif;
 }
 
-.tournament p{
+.card-content p{
 line-height:1.8;
 color:rgba(255,255,255,0.75);
 margin-bottom:20px;
 }
 
 .price{
-font-size:2.6rem;
+font-size:2rem;
 font-weight:800;
 color:#00ffae;
 margin-bottom:20px;
@@ -421,53 +380,85 @@ margin-bottom:20px;
 /* FOOTER */
 
 footer{
-padding:40px 8%;
+padding:45px 7%;
 text-align:center;
 border-top:1px solid rgba(255,255,255,0.08);
 color:rgba(255,255,255,0.6);
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 
-@keyframes fadeUp{
+@keyframes fadeLeft{
 from{
 opacity:0;
-transform:translateY(60px);
+transform:translateX(-60px);
 }
 to{
 opacity:1;
-transform:translateY(0);
+transform:translateX(0);
+}
+}
+
+@keyframes fadeRight{
+from{
+opacity:0;
+transform:translateX(60px);
+}
+to{
+opacity:1;
+transform:translateX(0);
 }
 }
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:950px){
+
+.hero{
+justify-content:center;
+text-align:center;
+}
+
+.hero-left h1{
+font-size:4rem;
+}
+
+.hero-left p{
+margin:auto auto 35px;
+}
+
+.hero-buttons{
+justify-content:center;
+}
 
 nav ul{
 display:none;
 }
 
-.hero h1{
-font-size:3.5rem;
+.logo-text{
+font-size:1.2rem;
 }
 
-.hero p{
-font-size:1rem;
+.hero-right img{
+max-width:420px;
+}
+
+}
+
+@media(max-width:600px){
+
+.hero-left h1{
+font-size:3rem;
 }
 
 .section-title h2{
 font-size:2.2rem;
 }
 
-.logo{
-font-size:1rem;
-}
-
 .logo-icon{
-width:45px;
-height:45px;
-font-size:1rem;
+width:48px;
+height:48px;
+font-size:1.1rem;
 }
 
 }
@@ -478,10 +469,14 @@ font-size:1rem;
 
 <body>
 
-<div class="background">
-<div class="glow"></div>
-<div class="glow2"></div>
-</div>
+<div class="bg"></div>
+
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
 
 <!-- NAVBAR -->
 
@@ -493,7 +488,9 @@ font-size:1rem;
 CE
 </div>
 
-CHAMPIONS ESPORTS
+<div class="logo-text">
+Champions Esports
+</div>
 
 </div>
 
@@ -511,17 +508,17 @@ CHAMPIONS ESPORTS
 
 <section class="hero">
 
-<div class="hero-content">
+<div class="hero-left">
 
 <h1>
-ENTER THE<br>
-ESPORTS ERA
+PLAY LIKE<br>
+LEGENDS
 </h1>
 
 <p>
-The ultimate competitive gaming platform in Morocco.
-Play eFootball, Free Fire, PUBG, League Of Legends and more.
-Compete in elite tournaments, dominate rankings and become legendary.
+The biggest esports platform in Morocco. Compete in elite tournaments,
+play against top players, dominate the rankings and become legendary
+in eFootball, PUBG, Free Fire and more.
 </p>
 
 <div class="hero-buttons">
@@ -535,6 +532,12 @@ WATCH LIVE
 </a>
 
 </div>
+
+</div>
+
+<div class="hero-right">
+
+<img src="https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=1974&auto=format&fit=crop" alt="gaming">
 
 </div>
 
@@ -553,74 +556,6 @@ WATCH LIVE
 
 </section>
 
-<!-- FEATURES -->
-
-<section class="features">
-
-<div class="section-title">
-
-<h2>WHY CHOOSE US</h2>
-
-<p>
-The next generation of esports competition.
-</p>
-
-</div>
-
-<div class="feature-grid">
-
-<div class="feature">
-
-<span>🏆</span>
-
-<h3>Elite Tournaments</h3>
-
-<p>
-Compete against the best players and dominate the rankings.
-</p>
-
-</div>
-
-<div class="feature">
-
-<span>⚡</span>
-
-<h3>Fast Match System</h3>
-
-<p>
-Automated brackets and smooth tournament progression.
-</p>
-
-</div>
-
-<div class="feature">
-
-<span>🎮</span>
-
-<h3>Gaming Squads</h3>
-
-<p>
-Create your team and become legendary.
-</p>
-
-</div>
-
-<div class="feature">
-
-<span>📈</span>
-
-<h3>Live Rankings</h3>
-
-<p>
-Track wins, MVP awards and player performance.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
 <!-- TOURNAMENTS -->
 
 <section class="tournaments">
@@ -630,19 +565,23 @@ Track wins, MVP awards and player performance.
 <h2>LIVE TOURNAMENTS</h2>
 
 <p>
-Massive prizes and competitive esports battles.
+Massive prizes and elite esports battles.
 </p>
 
 </div>
 
 <div class="tournament-grid">
 
-<div class="tournament">
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+
+<div class="card-content">
 
 <h3>WEEKLY CUP</h3>
 
 <p>
-Fast-paced tournaments with livestreams and rewards.
+Compete every week against elite players and win huge rewards.
 </p>
 
 <div class="price">
@@ -655,12 +594,18 @@ REGISTER NOW
 
 </div>
 
-<div class="tournament">
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+
+<div class="card-content">
 
 <h3>CHAMPIONS LEAGUE</h3>
 
 <p>
-The biggest esports competition featuring elite players.
+The biggest esports tournament featuring Morocco’s best players.
 </p>
 
 <div class="price">
@@ -673,12 +618,18 @@ JOIN NOW
 
 </div>
 
-<div class="tournament">
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+
+<div class="card-content">
 
 <h3>GLOBAL ARENA</h3>
 
 <p>
-Multi-game esports events with competitive action.
+Multi-game esports events with livestreams and rankings.
 </p>
 
 <div class="price">
@@ -693,6 +644,8 @@ WATCH NOW
 
 </div>
 
+</div>
+
 </section>
 
 <footer>
@@ -700,5 +653,4 @@ WATCH NOW
 </footer>
 
 </body>
-
 </html>
