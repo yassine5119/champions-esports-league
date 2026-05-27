@@ -21,7 +21,8 @@ body{
 font-family:'Poppins',sans-serif;
 background:#050816;
 color:white;
-overflow:hidden;
+overflow-y:auto;
+min-height:100vh;
 }
 
 /* BACKGROUND */
@@ -58,7 +59,7 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
+padding:120px 20px 60px;
 }
 
 /* CARD */
@@ -176,8 +177,13 @@ transform:translateY(0);
 
 @media(max-width:600px){
 
+.container{
+padding:140px 15px 60px;
+align-items:flex-start;
+}
+
 .card{
-padding:35px 25px;
+padding:35px 22px;
 }
 
 .logo{
