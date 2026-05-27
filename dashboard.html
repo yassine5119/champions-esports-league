@@ -49,7 +49,7 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.87),rgba(0,0,0,.94)),
+linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.94)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
@@ -176,7 +176,7 @@ top:90px;
 right:-100%;
 width:260px;
 height:100vh;
-background:rgba(0,0,0,.96);
+background:rgba(0,0,0,.97);
 backdrop-filter:blur(16px);
 display:flex;
 flex-direction:column;
@@ -218,22 +218,8 @@ padding:50px;
 backdrop-filter:blur(14px);
 margin-bottom:55px;
 box-shadow:0 0 40px rgba(0,255,170,.08);
-animation:fadeUp 1s ease;
 position:relative;
 overflow:hidden;
-}
-
-.hero-box::before{
-content:'';
-position:absolute;
-width:300px;
-height:300px;
-background:#00ffae;
-filter:blur(120px);
-opacity:.08;
-top:-120px;
-right:-120px;
-border-radius:50%;
 }
 
 .hero-box h1{
@@ -371,6 +357,64 @@ border:1px solid rgba(255,255,255,.08);
 font-size:.9rem;
 }
 
+.join-steps{
+background:rgba(255,255,255,.05);
+padding:20px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+margin-bottom:22px;
+}
+
+.join-steps h3{
+margin-bottom:14px;
+color:#00ffae;
+font-family:'Orbitron',sans-serif;
+font-size:1rem;
+}
+
+.join-steps p{
+line-height:1.9;
+font-size:.93rem;
+color:rgba(255,255,255,.72);
+}
+
+.whatsapp-box{
+background:rgba(0,255,170,.05);
+padding:20px;
+border-radius:20px;
+border:1px solid rgba(0,255,170,.12);
+margin-bottom:22px;
+}
+
+.whatsapp-box h3{
+margin-bottom:12px;
+color:#00ffae;
+font-family:'Orbitron',sans-serif;
+}
+
+.whatsapp-box p{
+line-height:1.8;
+font-size:.92rem;
+margin-bottom:18px;
+color:rgba(255,255,255,.72);
+}
+
+.whatsapp-btn{
+display:inline-block;
+padding:14px 22px;
+border-radius:16px;
+background:#25D366;
+color:white;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.whatsapp-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 25px rgba(37,211,102,.5);
+}
+
 .btn{
 padding:17px 32px;
 border-radius:18px;
@@ -456,87 +500,6 @@ line-height:1.8;
 color:rgba(255,255,255,.72);
 }
 
-/* RULES */
-
-.rules{
-margin-top:70px;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.rule{
-background:rgba(255,255,255,.05);
-padding:30px;
-border-radius:24px;
-border:1px solid rgba(255,255,255,.08);
-transition:.35s;
-}
-
-.rule:hover{
-transform:translateY(-8px);
-border-color:#00ffae;
-}
-
-.rule h3{
-margin-bottom:15px;
-font-size:1.3rem;
-color:#00ffae;
-}
-
-.rule p{
-line-height:1.8;
-color:rgba(255,255,255,.72);
-}
-
-/* RANKING */
-
-.ranking{
-margin-top:70px;
-background:rgba(255,255,255,.05);
-border-radius:30px;
-overflow:hidden;
-border:1px solid rgba(255,255,255,.08);
-}
-
-.rank-row{
-display:flex;
-justify-content:space-between;
-padding:22px 30px;
-border-bottom:1px solid rgba(255,255,255,.08);
-transition:.3s;
-}
-
-.rank-row:hover{
-background:rgba(255,255,255,.04);
-}
-
-.rank{
-color:#00ffae;
-font-weight:700;
-}
-
-/* FOOTER */
-
-footer{
-padding:50px 7%;
-text-align:center;
-color:rgba(255,255,255,.6);
-}
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
@@ -567,10 +530,6 @@ font-size:1.1rem;
 
 .hero-box h1{
 font-size:2.4rem;
-}
-
-.section-title h2{
-font-size:2rem;
 }
 
 }
@@ -618,17 +577,8 @@ width:100%;
 text-align:center;
 }
 
-.rank-row{
-padding:18px 20px;
-font-size:.9rem;
-}
-
 .live{
 padding:25px;
-}
-
-.rules{
-grid-template-columns:1fr;
 }
 
 }
@@ -643,8 +593,6 @@ grid-template-columns:1fr;
 <div class="glow"></div>
 <div class="glow2"></div>
 </div>
-
-<!-- NAVBAR -->
 
 <nav>
 
@@ -673,8 +621,6 @@ Champions Esports
 
 </nav>
 
-<!-- MOBILE MENU -->
-
 <div class="mobile-menu" id="mobileMenu">
 
 <a href="#">Dashboard</a>
@@ -683,8 +629,6 @@ Champions Esports
 <a href="#">Live</a>
 
 </div>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -701,8 +645,6 @@ Build your legacy inside Champions Esports.
 
 </div>
 
-<!-- STATS -->
-
 <div class="stats">
 
 <div class="stat">
@@ -712,7 +654,7 @@ Build your legacy inside Champions Esports.
 
 <div class="stat">
 <h2>1500DH</h2>
-<p>Prize Pool</p>
+<p>Main Prize</p>
 </div>
 
 <div class="stat">
@@ -726,8 +668,6 @@ Build your legacy inside Champions Esports.
 </div>
 
 </div>
-
-<!-- TOURNAMENTS -->
 
 <div class="section-title">
 <h2>ACTIVE TOURNAMENTS</h2>
@@ -765,12 +705,55 @@ competitive rankings and cash prizes.
 </div>
 
 <div class="info-box">
-🏆 1500DH Prize
+🥇 1500DH
 </div>
 
 <div class="info-box">
-📅 This Month
+🥈 500DH
 </div>
+
+</div>
+
+<div class="join-steps">
+
+<h3>
+HOW TO JOIN
+</h3>
+
+<p>
+
+1️⃣ Complete the payment<br><br>
+
+2️⃣ Submit registration form<br><br>
+
+3️⃣ Wait for admin verification<br><br>
+
+4️⃣ Join official WhatsApp group<br><br>
+
+5️⃣ Receive tournament access
+
+</p>
+
+</div>
+
+<div class="whatsapp-box">
+
+<h3>
+WHATSAPP COMMUNITY
+</h3>
+
+<p>
+Verified players will receive access to the official tournament WhatsApp group
+for matches, livestreams and announcements.
+</p>
+
+<a href="https://chat.whatsapp.com/"
+target="_blank"
+class="whatsapp-btn">
+
+JOIN WHATSAPP
+
+</a>
 
 </div>
 
@@ -816,43 +799,7 @@ Competitive Free Fire tournaments with livestream finals and rankings.
 
 </div>
 
-<!-- PUBG -->
-
-<div class="card locked">
-
-<img class="card-banner"
-src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
-
-<div class="card-content">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
-
-<h2>PUBG Global Battle</h2>
-
-<p>
-Professional PUBG Mobile tournaments coming soon.
-</p>
-
-<div class="info">
-
-<div class="info-box">
-🔒 Locked
 </div>
-
-<div class="info-box">
-🚀 Coming Soon
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- LIVE -->
 
 <div class="live">
 
@@ -875,92 +822,7 @@ will appear here during active competitions.
 
 </div>
 
-<!-- RULES -->
-
-<div class="rules">
-
-<div class="rule">
-
-<h3>⚽ Fair Gameplay</h3>
-
-<p>
-Cheating or unfair gameplay will result in permanent bans.
-</p>
-
-</div>
-
-<div class="rule">
-
-<h3>📸 Match Proof</h3>
-
-<p>
-Players must submit screenshots after every match.
-</p>
-
-</div>
-
-<div class="rule">
-
-<h3>🏆 Ranking System</h3>
-
-<p>
-Players gain ranking points depending on tournament performance.
-</p>
-
-</div>
-
-<div class="rule">
-
-<h3>🔥 Livestream Finals</h3>
-
-<p>
-Semi-finals and finals are livestreamed for the community.
-</p>
-
-</div>
-
-</div>
-
-<!-- RANKING -->
-
-<div class="section-title" style="margin-top:70px;">
-<h2>TOP PLAYERS</h2>
-</div>
-
-<div class="ranking">
-
-<div class="rank-row">
-<div class="rank">#1 YASSINE_PRO</div>
-<div>2500 PTS</div>
-</div>
-
-<div class="rank-row">
-<div class="rank">#2 KING_FC</div>
-<div>2320 PTS</div>
-</div>
-
-<div class="rank-row">
-<div class="rank">#3 LEGEND_X</div>
-<div>2100 PTS</div>
-</div>
-
-<div class="rank-row">
-<div class="rank">#4 FIRE_PLAYER</div>
-<div>1980 PTS</div>
-</div>
-
-<div class="rank-row">
-<div class="rank">#5 SHADOW_X</div>
-<div>1800 PTS</div>
-</div>
-
-</div>
-
 </section>
-
-<footer>
-© 2026 Champions Esports — Built For Legends.
-</footer>
 
 <script>
 
