@@ -192,10 +192,6 @@ border-color:#00ffae;
 box-shadow:0 0 20px rgba(0,255,170,.2);
 }
 
-.input-group input::placeholder{
-color:rgba(255,255,255,.45);
-}
-
 /* BUTTON */
 
 .btn{
@@ -244,8 +240,6 @@ transform:translateY(0);
 }
 }
 
-/* MOBILE */
-
 @media(max-width:600px){
 
 .container{
@@ -259,32 +253,6 @@ border-radius:24px;
 
 .logo{
 font-size:1.8rem;
-}
-
-.subtitle{
-font-size:.92rem;
-}
-
-.tournament-box h2{
-font-size:1.3rem;
-}
-
-.info{
-gap:8px;
-}
-
-.info-box{
-font-size:.8rem;
-padding:10px 12px;
-}
-
-.input-group input{
-padding:16px;
-font-size:.94rem;
-}
-
-.btn{
-padding:17px;
 }
 
 }
@@ -309,8 +277,7 @@ JOIN TOURNAMENT
 </div>
 
 <div class="subtitle">
-Submit your information and our admin team will contact you
-to complete your tournament registration.
+Submit your information and secure your tournament spot now.
 </div>
 
 <!-- TOURNAMENT -->
@@ -324,7 +291,7 @@ to complete your tournament registration.
 <div class="info">
 
 <div class="info-box">
-👥 100 Players
+👥 128 Players
 </div>
 
 <div class="info-box">
@@ -355,11 +322,11 @@ HOW IT WORKS
 
 1️⃣ Submit your information below<br><br>
 
-2️⃣ Our admin team will contact you directly<br><br>
+2️⃣ Your registration will be saved instantly<br><br>
 
-3️⃣ Complete the tournament payment<br><br>
+3️⃣ Admin team will contact you<br><br>
 
-4️⃣ Receive tournament access and match schedule
+4️⃣ Complete payment and receive access
 
 </p>
 
@@ -367,11 +334,12 @@ HOW IT WORKS
 
 <!-- FORM -->
 
-<form onsubmit="showSuccess(event)">
+<form id="joinForm">
 
 <div class="input-group">
 <label>Full Name</label>
 <input type="text"
+id="fullname"
 placeholder="Enter your full name"
 required>
 </div>
@@ -379,6 +347,7 @@ required>
 <div class="input-group">
 <label>Phone Number</label>
 <input type="text"
+id="phone"
 placeholder="+212XXXXXXXXX"
 required>
 </div>
@@ -386,6 +355,7 @@ required>
 <div class="input-group">
 <label>Instagram Username</label>
 <input type="text"
+id="instagram"
 placeholder="@yourinstagram"
 required>
 </div>
@@ -393,6 +363,7 @@ required>
 <div class="input-group">
 <label>Gmail Address</label>
 <input type="email"
+id="email"
 placeholder="yourgmail@gmail.com"
 required>
 </div>
@@ -400,11 +371,12 @@ required>
 <div class="input-group">
 <label>Game ID</label>
 <input type="text"
+id="gameid"
 placeholder="Enter your Game ID"
 required>
 </div>
 
-<button class="btn">
+<button class="btn" type="submit">
 SUBMIT REGISTRATION
 </button>
 
@@ -412,8 +384,8 @@ SUBMIT REGISTRATION
 
 ✅ Registration Submitted Successfully<br><br>
 
-Our admin team will contact you soon to complete
-the tournament payment and verification process.
+Your tournament registration has been saved.
+Admin team will contact you soon.
 
 </div>
 
@@ -423,15 +395,96 @@ the tournament payment and verification process.
 
 </div>
 
-<script>
+<!-- FIREBASE -->
 
-function showSuccess(event){
+<script type="module">
 
-event.preventDefault();
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getFirestore,
+collection,
+addDoc
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+
+authDomain: "champions-esports-league.firebaseapp.com",
+
+projectId: "champions-esports-league",
+
+storageBucket: "champions-esports-league.firebasestorage.app",
+
+messagingSenderId: "618814749744",
+
+appId: "1:618814749744:web:308bbc15b4862b02f381f5",
+
+measurementId: "G-KRSG32J9J9"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const form = document.getElementById("joinForm");
+
+form.addEventListener("submit", async(e)=>{
+
+e.preventDefault();
+
+const fullname =
+document.getElementById("fullname").value;
+
+const phone =
+document.getElementById("phone").value;
+
+const instagram =
+document.getElementById("instagram").value;
+
+const email =
+document.getElementById("email").value;
+
+const gameid =
+document.getElementById("gameid").value;
+
+try{
+
+await addDoc(collection(db,"registrations"),{
+
+fullname: fullname,
+
+phone: phone,
+
+instagram: instagram,
+
+email: email,
+
+gameid: gameid,
+
+tournament: "eFootball Mobile Cup",
+
+entry: "30DH",
+
+createdAt: new Date()
+
+});
 
 document.getElementById("successBox").style.display="block";
 
+form.reset();
+
+}catch(error){
+
+alert(error.message);
+
 }
+
+});
 
 </script>
 
