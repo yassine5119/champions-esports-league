@@ -49,45 +49,21 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.9)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
 z-index:-5;
 }
 
-.glow{
+.background::before{
+content:'';
 position:absolute;
-width:500px;
-height:500px;
-background:#00ffae;
-filter:blur(180px);
-opacity:.12;
-border-radius:50%;
-animation:moveGlow 8s infinite alternate;
-}
-
-.glow2{
-position:absolute;
-right:0;
-bottom:0;
-width:500px;
-height:500px;
-background:#0088ff;
-filter:blur(180px);
-opacity:.12;
-border-radius:50%;
-animation:moveGlow2 8s infinite alternate;
-}
-
-@keyframes moveGlow{
-0%{transform:translate(-100px,-100px);}
-100%{transform:translate(100px,100px);}
-}
-
-@keyframes moveGlow2{
-0%{transform:translate(100px,100px);}
-100%{transform:translate(-100px,-100px);}
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
+radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
 }
 
 /* PARTICLES */
@@ -582,10 +558,7 @@ font-size:1.1rem;
 
 <body>
 
-<div class="background">
-<div class="glow"></div>
-<div class="glow2"></div>
-</div>
+<div class="background"></div>
 
 <div class="particle"></div>
 <div class="particle"></div>
@@ -610,11 +583,10 @@ Champions Esports
 </div>
 
 <ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">Tournaments</a></li>
-<li><a href="#">Leaderboard</a></li>
-<li><a href="#">Games</a></li>
-<li><a href="#">Live</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="tournaments.html">Tournaments</a></li>
+<li><a href="register.html">Register</a></li>
+<li><a href="login.html">Login</a></li>
 </ul>
 
 </nav>
@@ -638,11 +610,11 @@ Free Fire and League Of Legends.
 
 <div class="hero-buttons">
 
-<a href="#" class="btn btn-primary">
+<a href="register.html" class="btn btn-primary">
 JOIN TOURNAMENT
 </a>
 
-<a href="#" class="btn btn-secondary">
+<a href="register.html" class="btn btn-secondary">
 WATCH LIVE
 </a>
 
@@ -747,7 +719,7 @@ Weekly esports tournaments with rankings and rewards.
 30DH ENTRY
 </div>
 
-<a href="#" class="btn btn-primary">
+<a href="register.html" class="btn btn-primary">
 REGISTER NOW
 </a>
 
@@ -771,7 +743,7 @@ The biggest competition featuring elite players in Morocco.
 1000DH PRIZE
 </div>
 
-<a href="#" class="btn btn-primary">
+<a href="register.html" class="btn btn-primary">
 JOIN NOW
 </a>
 
@@ -795,8 +767,8 @@ Multi-game esports events with livestreams and rankings.
 LIVE EVENTS
 </div>
 
-<a href="#" class="btn btn-primary">
-WATCH NOW
+<a href="register.html" class="btn btn-primary">
+ENTER EVENT
 </a>
 
 </div>
