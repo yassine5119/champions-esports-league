@@ -7,7 +7,7 @@
 
 <title>Champions Esports Dashboard</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,92 +19,89 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-overflow-x:hidden;
+font-family:'Rajdhani',sans-serif;
+background:#02030d;
 color:white;
-}
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:10px;
-}
-
-::-webkit-scrollbar-track{
-background:#050816;
-}
-
-::-webkit-scrollbar-thumb{
-background:linear-gradient(#00ffae,#0088ff);
-border-radius:20px;
+overflow-x:hidden;
 }
 
 /* BACKGROUND */
 
-.background{
+.bg{
 position:fixed;
 width:100%;
 height:100%;
 top:0;
 left:0;
+z-index:-5;
 background:
-linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.95)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.95)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 
 background-size:cover;
 background-position:center;
-z-index:-5;
 }
 
-.glow{
+.bg::before{
+content:'';
 position:absolute;
-width:500px;
-height:500px;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left, rgba(0,255,170,.18), transparent 30%),
+radial-gradient(circle at bottom right, rgba(0,120,255,.16), transparent 30%);
+}
+
+/* FLOATING LIGHTS */
+
+.light{
+position:absolute;
+border-radius:50%;
+filter:blur(120px);
+opacity:.15;
+animation:float 8s infinite alternate;
+}
+
+.light1{
+width:350px;
+height:350px;
 background:#00ffae;
-filter:blur(180px);
-opacity:.12;
-border-radius:50%;
-animation:moveGlow 8s infinite alternate;
+top:-100px;
+left:-100px;
 }
 
-.glow2{
-position:absolute;
-right:0;
-bottom:0;
-width:500px;
-height:500px;
+.light2{
+width:400px;
+height:400px;
 background:#0088ff;
-filter:blur(180px);
-opacity:.12;
-border-radius:50%;
-animation:moveGlow2 8s infinite alternate;
+bottom:-120px;
+right:-120px;
+animation-delay:2s;
 }
 
-@keyframes moveGlow{
-0%{transform:translate(-100px,-100px);}
-100%{transform:translate(100px,100px);}
+@keyframes float{
+0%{
+transform:translate(0,0);
 }
-
-@keyframes moveGlow2{
-0%{transform:translate(100px,100px);}
-100%{transform:translate(-100px,-100px);}
+100%{
+transform:translate(60px,60px);
+}
 }
 
 /* NAVBAR */
 
 nav{
 width:100%;
-padding:18px 7%;
+padding:18px 6%;
 display:flex;
 justify-content:space-between;
 align-items:center;
 position:fixed;
 top:0;
 z-index:9999;
-background:rgba(0,0,0,.45);
+background:rgba(0,0,0,.35);
 backdrop-filter:blur(14px);
-border-bottom:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .logo{
@@ -113,7 +110,7 @@ align-items:center;
 gap:15px;
 }
 
-.logo-icon{
+.logo-box{
 width:58px;
 height:58px;
 border-radius:18px;
@@ -121,28 +118,27 @@ background:linear-gradient(135deg,#00ffae,#00aaff);
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:1.4rem;
 font-family:'Orbitron',sans-serif;
+font-size:1.2rem;
 font-weight:900;
 color:black;
-box-shadow:0 0 35px rgba(0,255,170,.5);
+box-shadow:0 0 35px rgba(0,255,170,.4);
 animation:pulse 2s infinite alternate;
-}
-
-.logo-text{
-font-size:1.8rem;
-font-family:'Orbitron',sans-serif;
-font-weight:900;
-background:linear-gradient(90deg,#00ffae,#00aaff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-letter-spacing:2px;
-text-transform:uppercase;
 }
 
 @keyframes pulse{
 0%{transform:scale(1);}
 100%{transform:scale(1.08);}
+}
+
+.logo-text{
+font-family:'Orbitron',sans-serif;
+font-size:1.8rem;
+font-weight:900;
+background:linear-gradient(90deg,#00ffae,#00aaff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+letter-spacing:2px;
 }
 
 nav ul{
@@ -152,113 +148,139 @@ list-style:none;
 }
 
 nav ul li a{
-color:white;
 text-decoration:none;
+color:white;
+font-size:1.1rem;
+font-weight:600;
 transition:.3s;
-font-weight:500;
+position:relative;
 }
 
 nav ul li a:hover{
 color:#00ffae;
 }
 
-/* MOBILE MENU */
-
-.menu-toggle{
-display:none;
-font-size:2rem;
-cursor:pointer;
-color:#00ffae;
-}
-
-.mobile-menu{
-position:fixed;
-top:90px;
-right:-100%;
-width:260px;
-height:100vh;
-background:rgba(0,0,0,.97);
-backdrop-filter:blur(16px);
-display:flex;
-flex-direction:column;
-padding:40px 30px;
-gap:25px;
-transition:.4s;
-z-index:99999;
-border-left:1px solid rgba(255,255,255,.08);
-}
-
-.mobile-menu a{
-color:white;
-text-decoration:none;
-font-size:1.1rem;
-font-weight:600;
+nav ul li a::after{
+content:'';
+position:absolute;
+width:0;
+height:2px;
+background:#00ffae;
+left:0;
+bottom:-8px;
 transition:.3s;
 }
 
-.mobile-menu a:hover{
-color:#00ffae;
-transform:translateX(8px);
-}
-
-.mobile-menu.active{
-right:0;
+nav ul li a:hover::after{
+width:100%;
 }
 
 /* HERO */
 
 .hero{
-padding:150px 7% 80px;
+padding:160px 6% 80px;
 }
 
 .hero-box{
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
 border-radius:35px;
-padding:50px;
-backdrop-filter:blur(14px);
-margin-bottom:55px;
-box-shadow:0 0 40px rgba(0,255,170,.08);
+padding:55px;
+backdrop-filter:blur(16px);
+position:relative;
+overflow:hidden;
+box-shadow:0 0 45px rgba(0,255,170,.08);
+margin-bottom:60px;
 }
 
-.hero-box h1{
-font-size:4rem;
+.hero-box::before{
+content:'';
+position:absolute;
+width:350px;
+height:350px;
+background:#00ffae;
+filter:blur(140px);
+opacity:.08;
+top:-120px;
+right:-120px;
+border-radius:50%;
+}
+
+.hero h1{
 font-family:'Orbitron',sans-serif;
-margin-bottom:18px;
+font-size:5rem;
+line-height:1.1;
+margin-bottom:22px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
-.hero-box p{
+.hero p{
+font-size:1.2rem;
 line-height:1.9;
+max-width:780px;
 color:rgba(255,255,255,.72);
-max-width:700px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.hero-btn{
+padding:18px 34px;
+border-radius:18px;
+font-weight:700;
+text-decoration:none;
+transition:.35s;
+}
+
+.btn-main{
+background:linear-gradient(90deg,#00ffae,#00aaff);
+color:black;
+box-shadow:0 0 35px rgba(0,255,170,.35);
+}
+
+.btn-main:hover{
+transform:translateY(-5px);
+box-shadow:0 0 45px rgba(0,255,170,.65);
+}
+
+.btn-second{
+border:1px solid rgba(255,255,255,.12);
+color:white;
+background:rgba(255,255,255,.04);
+}
+
+.btn-second:hover{
+background:rgba(255,255,255,.08);
 }
 
 /* STATS */
 
 .stats{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 gap:25px;
-margin-bottom:65px;
+margin-bottom:70px;
 }
 
 .stat{
-background:rgba(255,255,255,.05);
-padding:35px;
-border-radius:25px;
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:28px;
 backdrop-filter:blur(12px);
-text-align:center;
 transition:.35s;
 }
 
 .stat:hover{
 transform:translateY(-10px);
 border-color:#00ffae;
-box-shadow:0 0 35px rgba(0,255,170,.18);
+box-shadow:0 0 40px rgba(0,255,170,.18);
 }
 
 .stat h2{
@@ -268,33 +290,39 @@ color:#00ffae;
 margin-bottom:10px;
 }
 
-/* TITLE */
+.stat p{
+color:rgba(255,255,255,.7);
+font-size:1.05rem;
+}
+
+/* SECTION */
 
 .section-title{
 margin-bottom:35px;
 }
 
 .section-title h2{
-font-size:2.5rem;
+font-size:2.8rem;
 font-family:'Orbitron',sans-serif;
 color:#00ffae;
 }
 
-/* TOURNAMENT */
+/* TOURNAMENTS */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
-gap:30px;
+grid-template-columns:repeat(auto-fit,minmax(370px,1fr));
+gap:35px;
 }
 
 .card{
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
-border-radius:30px;
+border-radius:35px;
 overflow:hidden;
-backdrop-filter:blur(14px);
 transition:.35s;
+backdrop-filter:blur(12px);
+position:relative;
 }
 
 .card:hover{
@@ -303,17 +331,17 @@ border-color:#00ffae;
 box-shadow:0 0 45px rgba(0,255,170,.18);
 }
 
-.card-banner{
+.banner{
 width:100%;
-height:230px;
+height:240px;
 object-fit:cover;
 }
 
-.card-content{
-padding:30px;
+.content{
+padding:32px;
 }
 
-.game-header{
+.game-top{
 display:flex;
 align-items:center;
 gap:18px;
@@ -324,25 +352,25 @@ margin-bottom:20px;
 width:90px;
 height:90px;
 object-fit:contain;
-filter:drop-shadow(0 0 25px rgba(0,255,170,.5));
-animation:floatLogo 3s ease-in-out infinite;
+filter:drop-shadow(0 0 25px rgba(0,255,170,.4));
+animation:floatLogo 3s infinite ease-in-out;
 }
 
 @keyframes floatLogo{
-0%{transform:translateY(0px);}
+0%{transform:translateY(0);}
 50%{transform:translateY(-8px);}
-100%{transform:translateY(0px);}
+100%{transform:translateY(0);}
 }
 
-.card-content h2{
-font-size:2rem;
+.content h2{
 font-family:'Orbitron',sans-serif;
+font-size:2rem;
 }
 
-.card-content p{
-line-height:1.8;
+.content p{
+line-height:1.9;
 color:rgba(255,255,255,.72);
-margin-bottom:22px;
+margin-bottom:25px;
 }
 
 .info{
@@ -353,52 +381,48 @@ margin-bottom:25px;
 }
 
 .info-box{
-padding:11px 15px;
-background:rgba(255,255,255,.06);
+padding:12px 16px;
 border-radius:14px;
-border:1px solid rgba(255,255,255,.08);
-font-size:.9rem;
-}
-
-/* HOW TO JOIN */
-
-.join-steps{
 background:rgba(255,255,255,.05);
-padding:20px;
-border-radius:20px;
 border:1px solid rgba(255,255,255,.08);
-margin-bottom:22px;
+font-size:.95rem;
 }
 
-.join-steps h3{
-margin-bottom:14px;
-color:#00ffae;
+.join-box{
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+padding:22px;
+border-radius:22px;
+margin-bottom:24px;
+}
+
+.join-box h3{
 font-family:'Orbitron',sans-serif;
+margin-bottom:15px;
+color:#00ffae;
 font-size:1rem;
 }
 
-.join-steps p{
+.join-box p{
+margin:0;
+font-size:.95rem;
 line-height:1.9;
-font-size:.93rem;
-color:rgba(255,255,255,.72);
 }
 
-/* BUTTON */
-
-.btn{
-padding:17px 32px;
-border-radius:18px;
+.join-btn{
 display:inline-block;
-text-decoration:none;
-font-weight:700;
-transition:.35s;
+padding:18px 32px;
+border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 color:black;
+font-weight:700;
+text-decoration:none;
+transition:.35s;
 box-shadow:0 0 30px rgba(0,255,170,.35);
 }
 
-.btn:hover{
-transform:translateY(-5px) scale(1.03);
+.join-btn:hover{
+transform:translateY(-5px);
 box-shadow:0 0 45px rgba(0,255,170,.7);
 }
 
@@ -406,7 +430,6 @@ box-shadow:0 0 45px rgba(0,255,170,.7);
 
 .locked{
 opacity:.65;
-position:relative;
 }
 
 .locked::before{
@@ -425,25 +448,26 @@ z-index:10;
 /* LIVE */
 
 .live{
-margin-top:70px;
-background:rgba(255,255,255,.05);
+margin-top:80px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
 padding:35px;
 border-radius:30px;
-border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
 }
 
-.live-header{
+.live-top{
 display:flex;
 align-items:center;
 gap:14px;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .live-dot{
 width:14px;
 height:14px;
-background:red;
 border-radius:50%;
+background:red;
 animation:livePulse 1s infinite;
 }
 
@@ -453,92 +477,77 @@ animation:livePulse 1s infinite;
 100%{opacity:1;}
 }
 
-.live-header h2{
+.live h2{
 font-family:'Orbitron',sans-serif;
 font-size:2rem;
 }
 
 .live-box{
-background:rgba(255,255,255,.04);
 padding:25px;
 border-radius:20px;
+background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
 }
 
 .live-box p{
-line-height:1.8;
+line-height:1.9;
 color:rgba(255,255,255,.72);
 }
 
 /* FOOTER */
 
 footer{
-padding:50px 7%;
+padding:50px 6%;
 text-align:center;
 color:rgba(255,255,255,.6);
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:950px){
 
 nav ul{
 display:none;
 }
 
-.menu-toggle{
-display:block;
-}
-
-.hero{
-padding:130px 5% 70px;
+.hero h1{
+font-size:3rem;
 }
 
 .grid{
 grid-template-columns:1fr;
 }
 
-.stats{
-grid-template-columns:1fr 1fr;
+}
+
+@media(max-width:600px){
+
+.hero{
+padding:130px 5% 70px;
+}
+
+.hero-box{
+padding:35px 24px;
+}
+
+.hero h1{
+font-size:2rem;
+}
+
+.hero p{
+font-size:1rem;
 }
 
 .logo-text{
 font-size:1.1rem;
 }
 
-.hero-box h1{
-font-size:2.4rem;
-}
-
-}
-
-@media(max-width:600px){
-
 .stats{
 grid-template-columns:1fr;
 }
 
-.logo-icon{
-width:46px;
-height:46px;
-font-size:1rem;
-}
-
-.hero-box{
-padding:30px 22px;
-}
-
-.hero-box h1{
-font-size:1.9rem;
-line-height:1.3;
-}
-
-.card-content{
-padding:22px;
-}
-
-.card-content h2{
-font-size:1.4rem;
+.game-top{
+align-items:flex-start;
 }
 
 .game-logo{
@@ -546,26 +555,22 @@ width:70px;
 height:70px;
 }
 
-.game-header{
-gap:12px;
+.content h2{
+font-size:1.4rem;
 }
 
-.info{
-gap:8px;
-}
-
-.info-box{
-font-size:.8rem;
-padding:10px 12px;
-}
-
-.btn{
+.join-btn{
 width:100%;
 text-align:center;
 }
 
-.live{
-padding:25px;
+.hero-buttons{
+flex-direction:column;
+}
+
+.hero-btn{
+width:100%;
+text-align:center;
 }
 
 }
@@ -576,9 +581,11 @@ padding:25px;
 
 <body>
 
-<div class="background">
-<div class="glow"></div>
-<div class="glow2"></div>
+<div class="bg">
+
+<div class="light light1"></div>
+<div class="light light2"></div>
+
 </div>
 
 <!-- NAVBAR -->
@@ -587,39 +594,29 @@ padding:25px;
 
 <div class="logo">
 
-<div class="logo-icon">
+<div class="logo-box">
 CE
 </div>
 
 <div class="logo-text">
-Champions Esports
+CHAMPIONS ESPORTS
 </div>
 
 </div>
 
 <ul>
-<li><a href="#">Dashboard</a></li>
-<li><a href="#">Tournaments</a></li>
-<li><a href="#">Ranking</a></li>
-<li><a href="#">Live</a></li>
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="tournaments.html">Tournaments</a></li>
+
+<li><a href="ranking.html">Ranking</a></li>
+
+<li><a href="live.html">Live</a></li>
+
 </ul>
 
-<div class="menu-toggle" onclick="toggleMenu()">
-☰
-</div>
-
 </nav>
-
-<!-- MOBILE MENU -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-<a href="#">Dashboard</a>
-<a href="#">Tournaments</a>
-<a href="#">Ranking</a>
-<a href="#">Live</a>
-
-</div>
 
 <!-- HERO -->
 
@@ -628,13 +625,25 @@ Champions Esports
 <div class="hero-box">
 
 <h1>
-ENTER THE NEXT LEVEL OF ESPORTS
+ENTER THE FUTURE OF ESPORTS
 </h1>
 
 <p>
-Join competitive esports tournaments and become one of the top players
-inside Champions Esports.
+Compete in elite tournaments, dominate the rankings and become part
+of the biggest esports competition platform in Morocco.
 </p>
+
+<div class="hero-buttons">
+
+<a href="join.html" class="hero-btn btn-main">
+JOIN TOURNAMENT
+</a>
+
+<a href="live.html" class="hero-btn btn-second">
+WATCH LIVE
+</a>
+
+</div>
 
 </div>
 
@@ -644,22 +653,22 @@ inside Champions Esports.
 
 <div class="stat">
 <h2>100+</h2>
-<p>Players Online</p>
+<p>Competitive Players</p>
 </div>
 
 <div class="stat">
-<h2>1500DH</h2>
-<p>Main Prize</p>
+<h2>2000DH</h2>
+<p>Total Prize Pool</p>
 </div>
 
 <div class="stat">
 <h2>4</h2>
-<p>Competitive Games</p>
+<p>Esports Games</p>
 </div>
 
 <div class="stat">
 <h2>LIVE</h2>
-<p>Esports Events</p>
+<p>Streaming Events</p>
 </div>
 
 </div>
@@ -670,7 +679,7 @@ inside Champions Esports.
 <h2>ACTIVE TOURNAMENTS</h2>
 </div>
 
-<!-- GRID -->
+<!-- TOURNAMENTS -->
 
 <div class="grid">
 
@@ -678,12 +687,12 @@ inside Champions Esports.
 
 <div class="card">
 
-<img class="card-banner"
+<img class="banner"
 src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
 
-<div class="card-content">
+<div class="content">
 
-<div class="game-header">
+<div class="game-top">
 
 <img class="game-logo"
 src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
@@ -693,8 +702,8 @@ src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 </div>
 
 <p>
-Official tournament of this month with livestream finals,
-cash prizes and competitive gameplay.
+Official tournament featuring competitive players,
+cash prizes and livestream finals.
 </p>
 
 <div class="info">
@@ -717,7 +726,7 @@ cash prizes and competitive gameplay.
 
 </div>
 
-<div class="join-steps">
+<div class="join-box">
 
 <h3>
 HOW TO JOIN
@@ -739,7 +748,7 @@ HOW TO JOIN
 
 </div>
 
-<a href="join.html" class="btn">
+<a href="join.html" class="join-btn">
 JOIN NOW
 </a>
 
@@ -751,12 +760,12 @@ JOIN NOW
 
 <div class="card locked">
 
-<img class="card-banner"
+<img class="banner"
 src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
 
-<div class="card-content">
+<div class="content">
 
-<div class="game-header">
+<div class="game-top">
 
 <img class="game-logo"
 src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
@@ -789,12 +798,12 @@ Competitive Free Fire tournaments coming soon.
 
 <div class="card locked">
 
-<img class="card-banner"
+<img class="banner"
 src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
 
-<div class="card-content">
+<div class="content">
 
-<div class="game-header">
+<div class="game-top">
 
 <img class="game-logo"
 src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
@@ -804,7 +813,7 @@ src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
 </div>
 
 <p>
-Professional PUBG tournaments will be available soon.
+Professional PUBG Mobile tournaments will be available soon.
 </p>
 
 <div class="info">
@@ -829,7 +838,7 @@ Professional PUBG tournaments will be available soon.
 
 <div class="live">
 
-<div class="live-header">
+<div class="live-top">
 
 <div class="live-dot"></div>
 
@@ -840,8 +849,8 @@ Professional PUBG tournaments will be available soon.
 <div class="live-box">
 
 <p>
-No live tournaments right now. Livestream battles and finals
-will appear here during competitions.
+No live tournaments right now. Livestream finals and competitive battles
+will appear here during active events.
 </p>
 
 </div>
@@ -853,14 +862,6 @@ will appear here during competitions.
 <footer>
 © 2026 Champions Esports — Built For Legends.
 </footer>
-
-<script>
-
-function toggleMenu(){
-document.getElementById("mobileMenu").classList.toggle("active");
-}
-
-</script>
 
 </body>
 </html>
