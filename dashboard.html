@@ -25,6 +25,21 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#02030d;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
+}
+
 /* BACKGROUND */
 
 .bg{
@@ -99,8 +114,8 @@ align-items:center;
 position:fixed;
 top:0;
 z-index:9999;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(14px);
+background:rgba(2,3,13,.7);
+backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,.06);
 }
 
@@ -149,8 +164,8 @@ list-style:none;
 
 nav ul li a{
 text-decoration:none;
-color:white;
-font-size:1.1rem;
+color:rgba(255,255,255,.8);
+font-size:1.15rem;
 font-weight:600;
 transition:.3s;
 position:relative;
@@ -158,6 +173,21 @@ position:relative;
 
 nav ul li a:hover{
 color:#00ffae;
+}
+
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#00ffae;
+transition:.3s;
+}
+
+nav ul li a:hover::after{
+width:100%;
 }
 
 /* HERO */
@@ -176,6 +206,12 @@ position:relative;
 overflow:hidden;
 box-shadow:0 0 45px rgba(0,255,170,.08);
 margin-bottom:60px;
+transition:.35s;
+}
+
+.hero-box:hover{
+border-color:rgba(0,255,170,.3);
+box-shadow:0 0 55px rgba(0,255,170,.15);
 }
 
 .hero h1{
@@ -186,13 +222,14 @@ margin-bottom:22px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 20px rgba(0,255,170,.2));
 }
 
 .hero p{
-font-size:1.2rem;
+font-size:1.25rem;
 line-height:1.9;
 max-width:780px;
-color:rgba(255,255,255,.72);
+color:rgba(255,255,255,.75);
 margin-bottom:35px;
 }
 
@@ -206,8 +243,10 @@ flex-wrap:wrap;
 padding:18px 34px;
 border-radius:18px;
 font-weight:700;
+font-size:1.1rem;
 text-decoration:none;
 transition:.35s;
+display:inline-block;
 }
 
 .btn-main{
@@ -216,10 +255,22 @@ color:black;
 box-shadow:0 0 35px rgba(0,255,170,.35);
 }
 
+.btn-main:hover{
+transform:translateY(-5px);
+box-shadow:0 0 45px rgba(0,255,170,.6);
+}
+
 .btn-second{
 border:1px solid rgba(255,255,255,.12);
 color:white;
 background:rgba(255,255,255,.04);
+backdrop-filter:blur(10px);
+}
+
+.btn-second:hover{
+background:rgba(255,255,255,.1);
+border-color:#00ffae;
+transform:translateY(-5px);
 }
 
 /* STATS */
@@ -240,8 +291,14 @@ backdrop-filter:blur(12px);
 transition:.35s;
 }
 
+.stat:hover{
+transform:translateY(-8px);
+border-color:#00ffae;
+box-shadow:0 0 30px rgba(0,255,170,.15);
+}
+
 .stat h2{
-font-size:3rem;
+font-size:3.2rem;
 font-family:'Orbitron',sans-serif;
 color:#00ffae;
 margin-bottom:10px;
@@ -249,7 +306,8 @@ margin-bottom:10px;
 
 .stat p{
 color:rgba(255,255,255,.7);
-font-size:1.05rem;
+font-size:1.1rem;
+font-weight:600;
 }
 
 /* SECTION */
@@ -262,6 +320,7 @@ margin-bottom:35px;
 font-size:2.8rem;
 font-family:'Orbitron',sans-serif;
 color:#00ffae;
+letter-spacing:1px;
 }
 
 /* TOURNAMENTS */
@@ -282,10 +341,17 @@ backdrop-filter:blur(12px);
 position:relative;
 }
 
+.card:hover{
+transform:translateY(-10px);
+border-color:#00ffae;
+box-shadow:0 0 45px rgba(0,255,170,.15);
+}
+
 .banner{
 width:100%;
 height:240px;
 object-fit:cover;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .content{
@@ -303,6 +369,7 @@ margin-bottom:20px;
 width:90px;
 height:90px;
 object-fit:contain;
+filter:drop-shadow(0 0 10px rgba(255,255,255,.2));
 }
 
 .content h2{
@@ -312,6 +379,7 @@ font-size:2rem;
 
 .content p{
 line-height:1.9;
+font-size:1.1rem;
 color:rgba(255,255,255,.72);
 margin-bottom:25px;
 }
@@ -328,7 +396,15 @@ padding:12px 16px;
 border-radius:14px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-font-size:.95rem;
+font-size:1rem;
+font-weight:600;
+color:rgba(255,255,255,.9);
+transition:.3s;
+}
+
+.info-box:hover{
+border-color:#00ffae;
+color:#00ffae;
 }
 
 .join-box{
@@ -343,23 +419,42 @@ margin-bottom:24px;
 font-family:'Orbitron',sans-serif;
 margin-bottom:15px;
 color:#00ffae;
-font-size:1rem;
+font-size:1.05rem;
+letter-spacing:1px;
+}
+
+.join-box p{
+margin-bottom:0;
+font-size:1.05rem;
 }
 
 .join-btn{
 display:inline-block;
+width:100%;
+text-align:center;
 padding:18px 32px;
 border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 color:black;
+font-size:1.15rem;
 font-weight:700;
 text-decoration:none;
+box-shadow:0 0 30px rgba(0,255,170,.3);
+transition:.35s;
+}
+
+.join-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 45px rgba(0,255,170,.6);
 }
 
 footer{
 padding:50px 6%;
 text-align:center;
 color:rgba(255,255,255,.6);
+font-size:1.1rem;
+border-top:1px solid rgba(255,255,255,.05);
+background:rgba(2,3,13,.8);
 }
 
 @media(max-width:950px){
@@ -369,11 +464,15 @@ display:none;
 }
 
 .hero h1{
-font-size:3rem;
+font-size:3.2rem;
 }
 
 .grid{
 grid-template-columns:1fr;
+}
+
+.logo-text{
+font-size:1.3rem;
 }
 
 }
@@ -451,13 +550,13 @@ WATCH LIVE
 <div class="stats">
 
 <div class="stat">
-<h2>128</h2>
+<h2>32</h2>
 <p>Competitive Players</p>
 </div>
 
 <div class="stat">
-<h2>1500DH</h2>
-<p>1st Place Prize</p>
+<h2>📜</h2>
+<p>Official Certificate</p>
 </div>
 
 <div class="stat">
@@ -496,25 +595,25 @@ src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 
 <p>
 Official tournament featuring competitive players,
-cash prizes and livestream finals.
+official certificates and livestream finals.
 </p>
 
 <div class="info">
 
 <div class="info-box">
-👥 128 Players
+👥 32 Players
 </div>
 
 <div class="info-box">
-💰 30DH Entry
+💰 Free Entry
 </div>
 
 <div class="info-box">
-🥇 1500DH
+🥇 Certificate Winner
 </div>
 
 <div class="info-box">
-🥈 500DH
+🥈 Certificate Runner-Up
 </div>
 
 </div>
@@ -533,9 +632,7 @@ HOW TO JOIN
 
 3️⃣ Admin team contacts you<br><br>
 
-4️⃣ Complete payment<br><br>
-
-5️⃣ Receive tournament access
+4️⃣ Receive tournament access
 
 </p>
 
