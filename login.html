@@ -15,13 +15,29 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
 font-family:'Poppins',sans-serif;
 background:#050816;
+overflow-x:hidden;
 color:white;
-overflow:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#050816;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
 }
 
 /* BACKGROUND */
@@ -33,21 +49,42 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
+linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.94)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
 z-index:-5;
 }
 
-.background::before{
-content:'';
+.glow{
 position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
-radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+width:400px;
+height:400px;
+background:#00ffae;
+filter:blur(160px);
+opacity:.12;
+border-radius:50%;
+top:-100px;
+left:-100px;
+animation:float 8s infinite alternate;
+}
+
+.glow2{
+position:absolute;
+width:400px;
+height:400px;
+background:#0088ff;
+filter:blur(160px);
+opacity:.12;
+border-radius:50%;
+bottom:-100px;
+right:-100px;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{transform:translate(0,0);}
+100%{transform:translate(60px,60px);}
 }
 
 /* CONTAINER */
@@ -58,22 +95,30 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
+padding:40px 18px;
 }
 
 /* CARD */
 
 .card{
 width:100%;
-max-width:500px;
+max-width:480px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(14px);
+backdrop-filter:blur(16px);
 padding:45px;
-border-radius:30px;
-box-shadow:0 0 40px rgba(0,255,170,.08);
+border-radius:32px;
+box-shadow:0 0 45px rgba(0,255,170,.08);
 animation:fadeUp 1s ease;
+transition:.35s;
 }
+
+.card:hover{
+border-color:rgba(0,255,170,.3);
+box-shadow:0 0 55px rgba(0,255,170,.15);
+}
+
+/* TITLE */
 
 .logo{
 text-align:center;
@@ -84,32 +129,35 @@ margin-bottom:10px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 15px rgba(0,255,170,.2));
 }
 
 .subtitle{
 text-align:center;
-color:rgba(255,255,255,.7);
+color:rgba(255,255,255,.75);
 margin-bottom:35px;
-line-height:1.7;
+line-height:1.6;
+font-size:1rem;
 }
 
 /* INPUTS */
 
 .input-group{
-margin-bottom:22px;
+margin-bottom:24px;
 }
 
 .input-group label{
 display:block;
 margin-bottom:10px;
 font-size:.95rem;
-color:rgba(255,255,255,.85);
+font-weight:500;
+color:rgba(255,255,255,.88);
 }
 
 .input-group input{
 width:100%;
-padding:17px 18px;
-border-radius:16px;
+padding:18px;
+border-radius:18px;
 border:1px solid rgba(255,255,255,.08);
 background:rgba(255,255,255,.05);
 color:white;
@@ -120,50 +168,44 @@ transition:.3s;
 
 .input-group input:focus{
 border-color:#00ffae;
-box-shadow:0 0 20px rgba(0,255,170,.2);
+background:rgba(255,255,255,.08);
+box-shadow:0 0 25px rgba(0,255,170,.25);
 }
 
 /* BUTTON */
 
 .btn{
 width:100%;
-padding:18px;
+padding:19px;
 border:none;
 border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
-font-size:1rem;
+font-size:1.05rem;
 font-weight:700;
 cursor:pointer;
 transition:.35s;
-margin-top:10px;
 color:black;
+margin-top:10px;
+box-shadow:0 0 30px rgba(0,255,170,.3);
 }
 
 .btn:hover{
 transform:translateY(-4px);
-box-shadow:0 0 35px rgba(0,255,170,.45);
+box-shadow:0 0 45px rgba(0,255,170,.6);
 }
 
-/* REGISTER */
+/* ERROR MESSAGE */
 
-.register-link{
-text-align:center;
-margin-top:25px;
-color:rgba(255,255,255,.7);
-}
-
-.register-link a{
-color:#00ffae;
-text-decoration:none;
-font-weight:600;
-}
-
-/* MESSAGE */
-
-.message{
+.error-msg{
 margin-top:20px;
+padding:14px;
+border-radius:14px;
+background:rgba(255,0,85,.1);
+border:1px solid rgba(255,0,85,.3);
+color:#ff0055;
 text-align:center;
 font-size:.95rem;
+display:none;
 }
 
 /* ANIMATION */
@@ -179,16 +221,15 @@ transform:translateY(0);
 }
 }
 
-/* MOBILE */
-
 @media(max-width:600px){
 
 .card{
-padding:35px 25px;
+padding:34px 22px;
+border-radius:24px;
 }
 
 .logo{
-font-size:1.7rem;
+font-size:1.8rem;
 }
 
 }
@@ -199,48 +240,54 @@ font-size:1.7rem;
 
 <body>
 
-<div class="background"></div>
+<div class="background">
+<div class="glow"></div>
+<div class="glow2"></div>
+</div>
 
 <div class="container">
 
 <div class="card">
 
 <div class="logo">
-CHAMPIONS ESPORTS
+LOGIN
 </div>
 
 <div class="subtitle">
-Login to your account and access tournaments, rankings and esports battles.
+Enter your credentials to access Champions Esports Dashboard.
 </div>
 
 <form id="loginForm">
 
 <div class="input-group">
-<label>Email</label>
-<input type="email" id="email" placeholder="Enter email" required>
+<label>Email Address</label>
+<input type="email"
+id="email"
+placeholder="yourgmail@gmail.com"
+required>
 </div>
 
 <div class="input-group">
 <label>Password</label>
-<input type="password" id="password" placeholder="Enter password" required>
+<input type="password"
+id="password"
+placeholder="••••••••"
+required>
 </div>
 
 <button class="btn" type="submit">
-LOGIN
+LOG IN
 </button>
+
+<div class="error-msg" id="errorBox"></div>
 
 </form>
 
-<div class="message" id="message"></div>
-
-<div class="register-link">
-Don't have an account?
-<a href="register.html">Create Account</a>
 </div>
 
 </div>
 
-</div>
+<!-- FIREBASE AUTH -->
 
 <script type="module">
 
@@ -277,9 +324,9 @@ const auth = getAuth(app);
 
 const form = document.getElementById("loginForm");
 
-const message = document.getElementById("message");
+const errorBox = document.getElementById("errorBox");
 
-form.addEventListener("submit", async (e)=>{
+form.addEventListener("submit", async(e)=>{
 
 e.preventDefault();
 
@@ -289,27 +336,15 @@ const password = document.getElementById("password").value;
 
 try{
 
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-message.style.color = "#00ffae";
-
-message.innerHTML = "Login Successful 🔥";
-
-setTimeout(()=>{
+await signInWithEmailAndPassword(auth, email, password);
 
 window.location.href = "dashboard.html";
 
-},1500);
-
 }catch(error){
 
-message.style.color = "#ff4d4d";
+errorBox.style.display = "block";
 
-message.innerHTML = error.message;
+errorBox.innerText = error.message;
 
 }
 
