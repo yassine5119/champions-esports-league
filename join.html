@@ -15,6 +15,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
@@ -22,6 +23,21 @@ font-family:'Poppins',sans-serif;
 background:#050816;
 overflow-x:hidden;
 color:white;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#050816;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
 }
 
 /* BACKGROUND */
@@ -50,6 +66,7 @@ opacity:.12;
 border-radius:50%;
 top:-100px;
 left:-100px;
+animation:float 8s infinite alternate;
 }
 
 .glow2{
@@ -62,6 +79,13 @@ opacity:.12;
 border-radius:50%;
 bottom:-100px;
 right:-100px;
+animation:float 8s infinite alternate;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{transform:translate(0,0);}
+100%{transform:translate(60px,60px);}
 }
 
 /* CONTAINER */
@@ -87,6 +111,12 @@ padding:45px;
 border-radius:32px;
 box-shadow:0 0 45px rgba(0,255,170,.08);
 animation:fadeUp 1s ease;
+transition:.35s;
+}
+
+.card:hover{
+border-color:rgba(0,255,170,.3);
+box-shadow:0 0 55px rgba(0,255,170,.15);
 }
 
 /* TITLE */
@@ -100,13 +130,15 @@ margin-bottom:14px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 15px rgba(0,255,170,.2));
 }
 
 .subtitle{
 text-align:center;
-color:rgba(255,255,255,.72);
+color:rgba(255,255,255,.75);
 margin-bottom:35px;
 line-height:1.8;
+font-size:1.05rem;
 }
 
 /* TOURNAMENT */
@@ -117,6 +149,11 @@ border:1px solid rgba(255,255,255,.08);
 border-radius:24px;
 padding:28px;
 margin-bottom:35px;
+transition:.3s;
+}
+
+.tournament-box:hover{
+border-color:rgba(0,255,170,.3);
 }
 
 .tournament-box h2{
@@ -137,7 +174,14 @@ padding:12px 16px;
 background:rgba(255,255,255,.06);
 border-radius:14px;
 border:1px solid rgba(255,255,255,.08);
-font-size:.9rem;
+font-size:.95rem;
+font-weight:500;
+transition:.3s;
+}
+
+.info-box:hover{
+border-color:#00ffae;
+color:#00ffae;
 }
 
 /* ALERT */
@@ -148,17 +192,25 @@ border:1px solid rgba(0,255,170,.15);
 padding:24px;
 border-radius:22px;
 margin-bottom:35px;
+transition:.3s;
+}
+
+.alert:hover{
+background:rgba(0,255,170,.08);
+border-color:rgba(0,255,170,.3);
 }
 
 .alert h3{
 color:#00ffae;
 margin-bottom:12px;
 font-family:'Orbitron',sans-serif;
+letter-spacing:1px;
 }
 
 .alert p{
 line-height:1.9;
-color:rgba(255,255,255,.75);
+color:rgba(255,255,255,.8);
+font-size:1.02rem;
 }
 
 /* INPUTS */
@@ -189,7 +241,8 @@ transition:.3s;
 
 .input-group input:focus{
 border-color:#00ffae;
-box-shadow:0 0 20px rgba(0,255,170,.2);
+background:rgba(255,255,255,.08);
+box-shadow:0 0 25px rgba(0,255,170,.25);
 }
 
 /* BUTTON */
@@ -200,17 +253,18 @@ padding:19px;
 border:none;
 border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
-font-size:1rem;
+font-size:1.05rem;
 font-weight:700;
 cursor:pointer;
 transition:.35s;
 color:black;
 margin-top:10px;
+box-shadow:0 0 30px rgba(0,255,170,.3);
 }
 
 .btn:hover{
 transform:translateY(-4px);
-box-shadow:0 0 35px rgba(0,255,170,.45);
+box-shadow:0 0 45px rgba(0,255,170,.6);
 }
 
 /* SUCCESS */
@@ -220,11 +274,13 @@ margin-top:22px;
 padding:18px;
 border-radius:18px;
 background:rgba(0,255,170,.08);
-border:1px solid rgba(0,255,170,.18);
+border:1px solid rgba(0,255,170,.25);
 text-align:center;
 color:#00ffae;
 display:none;
 line-height:1.8;
+box-shadow:0 0 25px rgba(0,255,170,.15);
+font-weight:500;
 }
 
 /* ANIMATION */
@@ -291,19 +347,19 @@ Submit your information and secure your tournament spot now.
 <div class="info">
 
 <div class="info-box">
-👥 128 Players
+👥 32 Players
 </div>
 
 <div class="info-box">
-💰 30DH Entry
+💰 Free Entry
 </div>
 
 <div class="info-box">
-🥇 1500DH Winner
+🥇 Certificate Winner
 </div>
 
 <div class="info-box">
-🥈 500DH Runner-Up
+🥈 Certificate Runner-Up
 </div>
 
 </div>
@@ -326,7 +382,7 @@ HOW IT WORKS
 
 3️⃣ Admin team will contact you<br><br>
 
-4️⃣ Complete payment and receive access
+4️⃣ Receive tournament access
 
 </p>
 
@@ -468,7 +524,7 @@ gameid: gameid,
 
 tournament: "eFootball Mobile Cup",
 
-entry: "30DH",
+entry: "Free Entry",
 
 createdAt: new Date()
 
