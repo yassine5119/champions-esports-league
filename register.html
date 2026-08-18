@@ -15,14 +15,29 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+scroll-behavior:smooth;
 }
 
 body{
 font-family:'Poppins',sans-serif;
 background:#050816;
+overflow-x:hidden;
 color:white;
-overflow-y:auto;
-min-height:100vh;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#050816;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
 }
 
 /* BACKGROUND */
@@ -34,21 +49,42 @@ height:100%;
 top:0;
 left:0;
 background:
-linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.92)),
+linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.94)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
 background-size:cover;
 background-position:center;
 z-index:-5;
 }
 
-.background::before{
-content:'';
+.glow{
 position:absolute;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
-radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+width:400px;
+height:400px;
+background:#00ffae;
+filter:blur(160px);
+opacity:.12;
+border-radius:50%;
+top:-100px;
+left:-100px;
+animation:float 8s infinite alternate;
+}
+
+.glow2{
+position:absolute;
+width:400px;
+height:400px;
+background:#0088ff;
+filter:blur(160px);
+opacity:.12;
+border-radius:50%;
+bottom:-100px;
+right:-100px;
+animation-delay:2s;
+}
+
+@keyframes float{
+0%{transform:translate(0,0);}
+100%{transform:translate(60px,60px);}
 }
 
 /* CONTAINER */
@@ -59,40 +95,49 @@ min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:flex-start;
-padding:120px 18px 70px;
+padding:100px 18px 70px;
 }
 
 /* CARD */
 
 .card{
 width:100%;
-max-width:540px;
+max-width:560px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
 backdrop-filter:blur(16px);
 padding:45px;
-border-radius:30px;
-box-shadow:0 0 40px rgba(0,255,170,.08);
+border-radius:32px;
+box-shadow:0 0 45px rgba(0,255,170,.08);
 animation:fadeUp 1s ease;
+transition:.35s;
 }
+
+.card:hover{
+border-color:rgba(0,255,170,.3);
+box-shadow:0 0 55px rgba(0,255,170,.15);
+}
+
+/* TITLE */
 
 .logo{
 text-align:center;
-font-size:2.3rem;
+font-size:2.2rem;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
-margin-bottom:12px;
+margin-bottom:10px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+filter:drop-shadow(0 0 15px rgba(0,255,170,.2));
 }
 
 .subtitle{
 text-align:center;
-color:rgba(255,255,255,.7);
-margin-bottom:38px;
-line-height:1.8;
-font-size:.98rem;
+color:rgba(255,255,255,.75);
+margin-bottom:35px;
+line-height:1.7;
+font-size:1rem;
 }
 
 /* INPUTS */
@@ -105,15 +150,15 @@ margin-bottom:22px;
 display:block;
 margin-bottom:10px;
 font-size:.95rem;
-color:rgba(255,255,255,.88);
 font-weight:500;
+color:rgba(255,255,255,.88);
 }
 
 .input-group input,
 .input-group select{
 width:100%;
-padding:17px 18px;
-border-radius:16px;
+padding:18px;
+border-radius:18px;
 border:1px solid rgba(255,255,255,.08);
 background:rgba(255,255,255,.05);
 color:white;
@@ -122,10 +167,16 @@ outline:none;
 transition:.3s;
 }
 
+.input-group select option{
+background:#050816;
+color:white;
+}
+
 .input-group input:focus,
 .input-group select:focus{
 border-color:#00ffae;
-box-shadow:0 0 20px rgba(0,255,170,.2);
+background:rgba(255,255,255,.08);
+box-shadow:0 0 25px rgba(0,255,170,.25);
 }
 
 .input-group input::placeholder{
@@ -136,36 +187,43 @@ color:rgba(255,255,255,.45);
 
 .btn{
 width:100%;
-padding:18px;
+padding:19px;
 border:none;
 border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
-font-size:1rem;
+font-size:1.05rem;
 font-weight:700;
 cursor:pointer;
 transition:.35s;
-margin-top:15px;
 color:black;
+margin-top:10px;
+box-shadow:0 0 30px rgba(0,255,170,.3);
 }
 
 .btn:hover{
 transform:translateY(-4px);
-box-shadow:0 0 35px rgba(0,255,170,.45);
+box-shadow:0 0 45px rgba(0,255,170,.6);
 }
 
-/* LOGIN */
+/* LOGIN LINK */
 
 .login-link{
 text-align:center;
 margin-top:28px;
 color:rgba(255,255,255,.7);
 line-height:1.7;
+font-size:.95rem;
 }
 
 .login-link a{
 color:#00ffae;
 text-decoration:none;
 font-weight:700;
+transition:.3s;
+}
+
+.login-link a:hover{
+text-shadow:0 0 10px rgba(0,255,170,.5);
 }
 
 /* MESSAGE */
@@ -173,7 +231,8 @@ font-weight:700;
 .message{
 margin-top:20px;
 text-align:center;
-font-size:.95rem;
+font-size:1rem;
+font-weight:600;
 }
 
 /* ANIMATION */
@@ -192,7 +251,7 @@ transform:translateY(0);
 @media(max-width:600px){
 
 .container{
-padding:140px 14px 80px;
+padding:110px 14px 80px;
 }
 
 .card{
@@ -212,7 +271,10 @@ font-size:1.7rem;
 
 <body>
 
-<div class="background"></div>
+<div class="background">
+<div class="glow"></div>
+<div class="glow2"></div>
+</div>
 
 <div class="container">
 
@@ -284,6 +346,8 @@ Already have an account?<br>
 </div>
 
 </div>
+
+<!-- FIREBASE AUTH & FIRESTORE -->
 
 <script type="module">
 
