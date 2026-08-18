@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Champions Esports Live</title>
+<title>Live Stream - Champions Esports</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -25,6 +25,21 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#02030d;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
+}
+
 /* BACKGROUND */
 
 .bg{
@@ -35,9 +50,8 @@ top:0;
 left:0;
 z-index:-5;
 background:
-linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.95)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.95)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
-
 background-size:cover;
 background-position:center;
 }
@@ -48,17 +62,17 @@ position:absolute;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at top left, rgba(0,255,170,.16), transparent 30%),
+radial-gradient(circle at top left, rgba(0,255,170,.18), transparent 30%),
 radial-gradient(circle at bottom right, rgba(0,120,255,.16), transparent 30%);
 }
 
-/* LIGHTS */
+/* FLOATING LIGHTS */
 
 .light{
 position:absolute;
 border-radius:50%;
 filter:blur(120px);
-opacity:.14;
+opacity:.15;
 animation:float 8s infinite alternate;
 }
 
@@ -80,8 +94,12 @@ animation-delay:2s;
 }
 
 @keyframes float{
-0%{transform:translate(0,0);}
-100%{transform:translate(60px,60px);}
+0%{
+transform:translate(0,0);
+}
+100%{
+transform:translate(60px,60px);
+}
 }
 
 /* NAVBAR */
@@ -95,8 +113,8 @@ align-items:center;
 position:fixed;
 top:0;
 z-index:9999;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(14px);
+background:rgba(2,3,13,.7);
+backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,.06);
 }
 
@@ -145,286 +163,150 @@ list-style:none;
 
 nav ul li a{
 text-decoration:none;
-color:white;
-font-size:1.1rem;
+color:rgba(255,255,255,.8);
+font-size:1.15rem;
 font-weight:600;
 transition:.3s;
+position:relative;
 }
 
 nav ul li a:hover{
 color:#00ffae;
 }
 
-/* HERO */
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#00ffae;
+transition:.3s;
+}
 
-.hero{
-padding:160px 6% 70px;
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+padding:160px 6% 80px;
+}
+
+.section-title{
+margin-bottom:30px;
 text-align:center;
 }
 
-.live-badge{
-display:inline-flex;
-align-items:center;
-gap:10px;
-padding:12px 20px;
-border-radius:20px;
-background:rgba(255,0,0,.12);
-border:1px solid rgba(255,0,0,.3);
-margin-bottom:25px;
-font-weight:700;
-}
-
-.dot{
-width:12px;
-height:12px;
-background:red;
-border-radius:50%;
-animation:livePulse 1s infinite;
-}
-
-@keyframes livePulse{
-0%{opacity:1;}
-50%{opacity:.3;}
-100%{opacity:1;}
-}
-
-.hero h1{
+.section-title h1{
+font-size:3.5rem;
 font-family:'Orbitron',sans-serif;
-font-size:5rem;
-line-height:1.1;
-margin-bottom:20px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+letter-spacing:2px;
+margin-bottom:10px;
+filter:drop-shadow(0 0 20px rgba(0,255,170,.2));
 }
 
-.hero p{
-font-size:1.2rem;
-line-height:1.9;
-max-width:850px;
-margin:auto;
-color:rgba(255,255,255,.72);
+.live-badge{
+display:inline-block;
+background:red;
+color:white;
+padding:6px 16px;
+border-radius:20px;
+font-weight:700;
+font-size:.9rem;
+margin-bottom:15px;
+animation:blink 1.5s infinite;
 }
 
-/* LIVE SECTION */
-
-.live-container{
-padding:0 6% 90px;
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:35px;
+@keyframes blink{
+0%, 100%{ opacity: 1; }
+50%{ opacity: 0.4; }
 }
 
-/* MAIN STREAM */
+/* STREAM CONTAINER */
 
-.main-live{
+.stream-card{
 background:rgba(255,255,255,.04);
 border:1px solid rgba(255,255,255,.08);
 border-radius:35px;
-overflow:hidden;
-backdrop-filter:blur(12px);
-}
-
-.live-video{
-width:100%;
-height:500px;
-background:url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-position:relative;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-.play-btn{
-width:120px;
-height:120px;
-border-radius:50%;
-background:rgba(0,255,170,.18);
-backdrop-filter:blur(10px);
-border:2px solid rgba(0,255,170,.5);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:3rem;
-color:white;
-cursor:pointer;
+padding:25px;
+backdrop-filter:blur(16px);
+box-shadow:0 0 45px rgba(0,255,170,.08);
+max-width:1000px;
+margin:0 auto;
 transition:.35s;
-box-shadow:0 0 45px rgba(0,255,170,.35);
 }
 
-.play-btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 60px rgba(0,255,170,.7);
+.stream-card:hover{
+border-color:rgba(0,255,170,.3);
+box-shadow:0 0 55px rgba(0,255,170,.15);
 }
 
-.live-content{
-padding:35px;
+.video-container{
+position:relative;
+padding-bottom:56.25%;
+height:0;
+overflow:hidden;
+border-radius:22px;
+background:black;
 }
 
-.live-content h2{
-font-size:2.2rem;
-font-family:'Orbitron',sans-serif;
-margin-bottom:18px;
+.video-container iframe{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+border:none;
 }
 
-.live-content p{
-line-height:1.9;
-color:rgba(255,255,255,.72);
-margin-bottom:25px;
-}
-
-.live-info{
-display:flex;
-flex-wrap:wrap;
-gap:12px;
-}
-
-.live-box{
-padding:12px 16px;
-border-radius:14px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-}
-
-/* SIDE PANEL */
-
-.side-panel{
-display:flex;
-flex-direction:column;
-gap:25px;
-}
-
-.panel-box{
-background:rgba(255,255,255,.04);
-border:1px solid rgba(255,255,255,.08);
-border-radius:30px;
-padding:30px;
-backdrop-filter:blur(12px);
-}
-
-.panel-box h3{
-font-family:'Orbitron',sans-serif;
-margin-bottom:20px;
-font-size:1.4rem;
-color:#00ffae;
-}
-
-/* UPCOMING */
-
-.match{
+.stream-info{
+margin-top:25px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 0;
-border-bottom:1px solid rgba(255,255,255,.06);
+flex-wrap:wrap;
+gap:15px;
 }
 
-.match:last-child{
-border-bottom:none;
-}
-
-.match h4{
-margin-bottom:5px;
-}
-
-.match span{
-color:rgba(255,255,255,.65);
-font-size:.95rem;
-}
-
-.status{
-padding:8px 14px;
-border-radius:12px;
-background:rgba(0,255,170,.15);
-color:#00ffae;
-font-weight:700;
-font-size:.85rem;
-}
-
-/* CHAT */
-
-.chat-message{
-padding:15px;
-border-radius:18px;
-background:rgba(255,255,255,.05);
-margin-bottom:15px;
-border:1px solid rgba(255,255,255,.06);
-}
-
-.chat-message strong{
+.stream-info h2{
+font-family:'Orbitron',sans-serif;
+font-size:1.8rem;
 color:#00ffae;
 }
 
-/* FOOTER */
+.stream-info p{
+color:rgba(255,255,255,.7);
+font-size:1.1rem;
+}
 
 footer{
 padding:50px 6%;
 text-align:center;
 color:rgba(255,255,255,.6);
+font-size:1.1rem;
+border-top:1px solid rgba(255,255,255,.05);
+background:rgba(2,3,13,.8);
+margin-top:60px;
 }
 
-/* MOBILE */
-
-@media(max-width:1000px){
+@media(max-width:950px){
 
 nav ul{
 display:none;
 }
 
-.live-container{
-grid-template-columns:1fr;
-}
-
-.hero h1{
-font-size:3rem;
-}
-
-}
-
-@media(max-width:600px){
-
-.hero{
-padding:130px 5% 60px;
-}
-
-.hero h1{
-font-size:2rem;
-}
-
-.hero p{
-font-size:1rem;
+.section-title h1{
+font-size:2.5rem;
 }
 
 .logo-text{
-font-size:1.1rem;
-}
-
-.live-video{
-height:280px;
-}
-
-.play-btn{
-width:85px;
-height:85px;
-font-size:2rem;
-}
-
-.live-content{
-padding:24px;
-}
-
-.live-content h2{
-font-size:1.5rem;
-}
-
-.panel-box{
-padding:22px;
-}
-
-.live-container{
-padding:0 5% 70px;
+font-size:1.3rem;
 }
 
 }
@@ -441,8 +323,6 @@ padding:0 5% 70px;
 <div class="light light2"></div>
 
 </div>
-
-<!-- NAVBAR -->
 
 <nav>
 
@@ -461,184 +341,92 @@ CHAMPIONS ESPORTS
 <ul>
 
 <li><a href="dashboard.html">Dashboard</a></li>
+
 <li><a href="tournaments.html">Tournaments</a></li>
+
 <li><a href="ranking.html">Ranking</a></li>
+
 <li><a href="live.html">Live</a></li>
 
 </ul>
 
 </nav>
 
-<!-- HERO -->
+<div class="main-content">
 
-<section class="hero">
-
-<div class="live-badge">
-
-<div class="dot"></div>
-
-LIVE ESPORTS EVENTS
-
+<div class="section-title">
+<span class="live-badge">🔴 LIVE NOW</span>
+<h1>TOURNAMENT LIVESTREAM</h1>
+<p>Watch official matches and championship finals live.</p>
 </div>
 
-<h1>
-WATCH LIVE MATCHES
-</h1>
+<div class="stream-card">
 
-<p>
-Experience competitive esports battles, livestream finals and intense
-gaming action inside Champions Esports.
-</p>
-
-</section>
-
-<!-- LIVE CONTENT -->
-
-<section class="live-container">
-
-<!-- MAIN STREAM -->
-
-<div class="main-live">
-
-<div class="live-video">
-
-<div class="play-btn">
-▶
+<div class="video-container">
+<iframe src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allowfullscreen></iframe>
 </div>
 
-</div>
-
-<div class="live-content">
-
-<h2>
-eFootball Mobile Finals
-</h2>
-
-<p>
-Watch elite players battle for glory and cash prizes
-in the Champions Esports official livestream finals.
-</p>
-
-<div class="live-info">
-
-<div class="live-box">
-👁 1.2K Watching
-</div>
-
-<div class="live-box">
-🎮 eFootball Mobile
-</div>
-
-<div class="live-box">
-🏆 1500DH Prize
-</div>
-
-<div class="live-box">
-🔴 LIVE NOW
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- SIDE PANEL -->
-
-<div class="side-panel">
-
-<!-- UPCOMING -->
-
-<div class="panel-box">
-
-<h3>
-UPCOMING MATCHES
-</h3>
-
-<div class="match">
-
+<div class="stream-info">
 <div>
-
-<h4>YASSINE_PRO vs KING_FC</h4>
-<span>Today • 21:00</span>
-
+<h2>eFootball Mobile Cup — Final Stage</h2>
+<p>32 Players Competition • Official Stream</p>
 </div>
-
-<div class="status">
-LIVE
-</div>
-
-</div>
-
-<div class="match">
-
-<div>
-
-<h4>LEGEND_X vs SHADOW</h4>
-<span>Tomorrow • 19:30</span>
-
-</div>
-
-<div class="status">
-SOON
-</div>
-
-</div>
-
-<div class="match">
-
-<div>
-
-<h4>FINAL MATCH</h4>
-<span>Sunday • 22:00</span>
-
-</div>
-
-<div class="status">
-FINAL
 </div>
 
 </div>
 
 </div>
-
-<!-- LIVE CHAT -->
-
-<div class="panel-box">
-
-<h3>
-LIVE CHAT
-</h3>
-
-<div class="chat-message">
-<strong>YASSINE_PRO:</strong>
-Amazing goal 🔥
-</div>
-
-<div class="chat-message">
-<strong>KING_FC:</strong>
-Best match today 👏
-</div>
-
-<div class="chat-message">
-<strong>LEGEND_X:</strong>
-Final will be crazy 😎
-</div>
-
-<div class="chat-message">
-<strong>FIRE_PLAYER:</strong>
-Champions Esports on top 🏆
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 <footer>
 © 2026 Champions Esports — Built For Legends.
 </footer>
+
+<!-- FIREBASE AUTH -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+
+authDomain: "champions-esports-league.firebaseapp.com",
+
+projectId: "champions-esports-league",
+
+storageBucket: "champions-esports-league.firebasestorage.app",
+
+messagingSenderId: "618814749744",
+
+appId: "1:618814749744:web:308bbc15b4862b02f381f5",
+
+measurementId: "G-KRSG32J9J9"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href = "login.html";
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
