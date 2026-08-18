@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Champions Esports Tournaments</title>
+<title>Tournaments - Champions Esports</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -25,6 +25,21 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-track{
+background:#02030d;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#00ffae,#0088ff);
+border-radius:10px;
+}
+
 /* BACKGROUND */
 
 .bg{
@@ -35,9 +50,8 @@ top:0;
 left:0;
 z-index:-5;
 background:
-linear-gradient(rgba(0,0,0,.84),rgba(0,0,0,.95)),
+linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.95)),
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
-
 background-size:cover;
 background-position:center;
 }
@@ -48,17 +62,17 @@ position:absolute;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at top left, rgba(0,255,170,.16), transparent 30%),
+radial-gradient(circle at top left, rgba(0,255,170,.18), transparent 30%),
 radial-gradient(circle at bottom right, rgba(0,120,255,.16), transparent 30%);
 }
 
-/* LIGHTS */
+/* FLOATING LIGHTS */
 
 .light{
 position:absolute;
 border-radius:50%;
 filter:blur(120px);
-opacity:.14;
+opacity:.15;
 animation:float 8s infinite alternate;
 }
 
@@ -80,8 +94,12 @@ animation-delay:2s;
 }
 
 @keyframes float{
-0%{transform:translate(0,0);}
-100%{transform:translate(60px,60px);}
+0%{
+transform:translate(0,0);
+}
+100%{
+transform:translate(60px,60px);
+}
 }
 
 /* NAVBAR */
@@ -95,8 +113,8 @@ align-items:center;
 position:fixed;
 top:0;
 z-index:9999;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(14px);
+background:rgba(2,3,13,.7);
+backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,.06);
 }
 
@@ -145,51 +163,66 @@ list-style:none;
 
 nav ul li a{
 text-decoration:none;
-color:white;
-font-size:1.1rem;
+color:rgba(255,255,255,.8);
+font-size:1.15rem;
 font-weight:600;
 transition:.3s;
+position:relative;
 }
 
 nav ul li a:hover{
 color:#00ffae;
 }
 
-/* HERO */
+nav ul li a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#00ffae;
+transition:.3s;
+}
 
-.hero{
-padding:160px 6% 70px;
+nav ul li a:hover::after{
+width:100%;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+padding:160px 6% 80px;
+}
+
+.section-title{
+margin-bottom:40px;
 text-align:center;
 }
 
-.hero h1{
+.section-title h1{
+font-size:3.5rem;
 font-family:'Orbitron',sans-serif;
-font-size:5rem;
-line-height:1.1;
-margin-bottom:20px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+letter-spacing:2px;
+margin-bottom:10px;
+filter:drop-shadow(0 0 20px rgba(0,255,170,.2));
 }
 
-.hero p{
+.section-title p{
+color:rgba(255,255,255,.75);
 font-size:1.2rem;
-line-height:1.9;
-max-width:850px;
-margin:auto;
-color:rgba(255,255,255,.72);
 }
 
-/* TOURNAMENT GRID */
+/* GRID */
 
 .grid{
-padding:0 6% 90px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(370px,1fr));
 gap:35px;
 }
-
-/* CARD */
 
 .card{
 background:rgba(255,255,255,.04);
@@ -202,45 +235,17 @@ position:relative;
 }
 
 .card:hover{
-transform:translateY(-12px);
+transform:translateY(-10px);
 border-color:#00ffae;
-box-shadow:0 0 45px rgba(0,255,170,.18);
+box-shadow:0 0 45px rgba(0,255,170,.15);
 }
-
-/* ACTIVE CARD */
-
-.active{
-box-shadow:0 0 55px rgba(0,255,170,.15);
-}
-
-/* LOCKED */
-
-.locked{
-opacity:.6;
-}
-
-.locked::before{
-content:'COMING SOON';
-position:absolute;
-top:18px;
-right:18px;
-padding:10px 16px;
-border-radius:14px;
-background:#ff0055;
-font-size:.8rem;
-font-weight:700;
-z-index:10;
-}
-
-/* BANNER */
 
 .banner{
 width:100%;
 height:240px;
 object-fit:cover;
+border-bottom:1px solid rgba(255,255,255,.08);
 }
-
-/* CONTENT */
 
 .content{
 padding:32px;
@@ -250,21 +255,14 @@ padding:32px;
 display:flex;
 align-items:center;
 gap:18px;
-margin-bottom:22px;
+margin-bottom:20px;
 }
 
 .game-logo{
 width:90px;
 height:90px;
 object-fit:contain;
-filter:drop-shadow(0 0 25px rgba(0,255,170,.45));
-animation:floatLogo 3s infinite ease-in-out;
-}
-
-@keyframes floatLogo{
-0%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0);}
+filter:drop-shadow(0 0 10px rgba(255,255,255,.2));
 }
 
 .content h2{
@@ -274,11 +272,10 @@ font-size:2rem;
 
 .content p{
 line-height:1.9;
+font-size:1.1rem;
 color:rgba(255,255,255,.72);
 margin-bottom:25px;
 }
-
-/* INFO */
 
 .info{
 display:flex;
@@ -292,10 +289,16 @@ padding:12px 16px;
 border-radius:14px;
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.08);
-font-size:.95rem;
+font-size:1rem;
+font-weight:600;
+color:rgba(255,255,255,.9);
+transition:.3s;
 }
 
-/* JOIN BOX */
+.info-box:hover{
+border-color:#00ffae;
+color:#00ffae;
+}
 
 .join-box{
 background:rgba(255,255,255,.04);
@@ -309,43 +312,43 @@ margin-bottom:24px;
 font-family:'Orbitron',sans-serif;
 margin-bottom:15px;
 color:#00ffae;
-font-size:1rem;
+font-size:1.05rem;
+letter-spacing:1px;
 }
 
 .join-box p{
-margin:0;
-font-size:.95rem;
-line-height:1.9;
+margin-bottom:0;
+font-size:1.05rem;
 }
-
-/* BUTTON */
 
 .join-btn{
 display:inline-block;
-padding:18px 34px;
+width:100%;
+text-align:center;
+padding:18px 32px;
 border-radius:18px;
 background:linear-gradient(90deg,#00ffae,#00aaff);
 color:black;
+font-size:1.15rem;
 font-weight:700;
 text-decoration:none;
+box-shadow:0 0 30px rgba(0,255,170,.3);
 transition:.35s;
-box-shadow:0 0 30px rgba(0,255,170,.35);
 }
 
 .join-btn:hover{
-transform:translateY(-5px);
-box-shadow:0 0 45px rgba(0,255,170,.7);
+transform:translateY(-4px);
+box-shadow:0 0 45px rgba(0,255,170,.6);
 }
-
-/* FOOTER */
 
 footer{
 padding:50px 6%;
 text-align:center;
 color:rgba(255,255,255,.6);
+font-size:1.1rem;
+border-top:1px solid rgba(255,255,255,.05);
+background:rgba(2,3,13,.8);
 }
-
-/* MOBILE */
 
 @media(max-width:950px){
 
@@ -353,54 +356,16 @@ nav ul{
 display:none;
 }
 
-.hero h1{
-font-size:3rem;
+.section-title h1{
+font-size:2.5rem;
 }
 
 .grid{
 grid-template-columns:1fr;
 }
 
-}
-
-@media(max-width:600px){
-
-.hero{
-padding:130px 5% 60px;
-}
-
-.hero h1{
-font-size:2rem;
-}
-
-.hero p{
-font-size:1rem;
-}
-
 .logo-text{
-font-size:1.1rem;
-}
-
-.content{
-padding:24px;
-}
-
-.content h2{
-font-size:1.4rem;
-}
-
-.game-logo{
-width:70px;
-height:70px;
-}
-
-.join-btn{
-width:100%;
-text-align:center;
-}
-
-.grid{
-padding:0 5% 70px;
+font-size:1.3rem;
 }
 
 }
@@ -417,8 +382,6 @@ padding:0 5% 70px;
 <div class="light light2"></div>
 
 </div>
-
-<!-- NAVBAR -->
 
 <nav>
 
@@ -437,36 +400,27 @@ CHAMPIONS ESPORTS
 <ul>
 
 <li><a href="dashboard.html">Dashboard</a></li>
+
 <li><a href="tournaments.html">Tournaments</a></li>
+
 <li><a href="ranking.html">Ranking</a></li>
+
 <li><a href="live.html">Live</a></li>
 
 </ul>
 
 </nav>
 
-<!-- HERO -->
+<div class="main-content">
 
-<section class="hero">
+<div class="section-title">
+<h1>ACTIVE TOURNAMENTS</h1>
+<p>Choose your tournament, register and claim your victory.</p>
+</div>
 
-<h1>
-ESPORTS TOURNAMENTS
-</h1>
+<div class="grid">
 
-<p>
-Join elite competitive gaming tournaments and fight for glory,
-cash prizes and legendary rankings inside Champions Esports.
-</p>
-
-</section>
-
-<!-- TOURNAMENTS -->
-
-<section class="grid">
-
-<!-- EFOOTBALL ACTIVE -->
-
-<div class="card active">
+<div class="card">
 
 <img class="banner"
 src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
@@ -483,25 +437,26 @@ src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Konami_logo.svg">
 </div>
 
 <p>
-Official 32 Players Single Elimination tournament. Play via Friend Match Room and battle for the Champions Cup!
+Official tournament featuring competitive players,
+official certificates and livestream finals.
 </p>
 
 <div class="info">
 
 <div class="info-box">
-👥 32 Players (KO)
+👥 32 Players
 </div>
 
 <div class="info-box">
-⏱️ 10 Min Matches
+💰 Free Entry
 </div>
 
 <div class="info-box">
-⚔️ Extra Time & PK: ON
+🥇 Certificate Winner
 </div>
 
 <div class="info-box">
-🏆 Champions Trophy
+🥈 Certificate Runner-Up
 </div>
 
 </div>
@@ -509,188 +464,85 @@ Official 32 Players Single Elimination tournament. Play via Friend Match Room an
 <div class="join-box">
 
 <h3>
-MATCH SETTINGS & RULES
+HOW TO JOIN
 </h3>
 
 <p>
 
-1️⃣ <b>Match Type:</b> Friend Match (User Match)<br><br>
+1️⃣ Click JOIN NOW<br><br>
 
-2️⃣ <b>Player Condition:</b> Normal<br><br>
+2️⃣ Submit your information<br><br>
 
-3️⃣ <b>Disconnections:</b> Automatic Loss (3-0)<br><br>
+3️⃣ Admin team contacts you<br><br>
 
-4️⃣ <b>Home Player:</b> Creates Room & sends Code<br><br>
-
-5️⃣ <b>Match Result:</b> Post screenshot in group
+4️⃣ Receive tournament access
 
 </p>
 
 </div>
 
 <a href="join.html" class="join-btn">
-JOIN TOURNAMENT
+JOIN NOW
 </a>
 
 </div>
 
 </div>
 
-<!-- FREE FIRE ACTIVE -->
-
-<div class="card active">
-
-<img class="banner"
-src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
-
-<div class="content">
-
-<div class="game-top">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-
-<h2>Free Fire Championship</h2>
-
-</div>
-
-<p>
-Official Free Fire Clash Squad 1v1 tournament. Battle through the 32-player bracket and prove you are the last survivor!
-</p>
-
-<div class="info">
-
-<div class="info-box">
-👥 32 Players (KO)
-</div>
-
-<div class="info-box">
-💥 Clash Squad 1v1
-</div>
-
-<div class="info-box">
-🎯 Headshot Only: OFF
-</div>
-
-<div class="info-box">
-🏆 Champion Title
 </div>
 
 </div>
-
-<div class="join-box">
-
-<h3>
-MATCH SETTINGS & RULES
-</h3>
-
-<p>
-
-1️⃣ <b>Mode:</b> Custom Room (Clash Squad)<br><br>
-
-2️⃣ <b>Round Limit:</b> 13 Rounds / Competitive Store<br><br>
-
-3️⃣ <b>Character Skill:</b> YES / Gun Attributes: OFF<br><br>
-
-4️⃣ <b>Home Player:</b> Creates Custom Room & sends ID/Pass<br><br>
-
-5️⃣ <b>Proof:</b> Take screenshot of victory screen
-
-</p>
-
-</div>
-
-<a href="join.html" class="join-btn">
-JOIN TOURNAMENT
-</a>
-
-</div>
-
-</div>
-
-<!-- PUBG -->
-
-<div class="card locked">
-
-<img class="banner"
-src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
-
-<div class="content">
-
-<div class="game-top">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
-
-<h2>PUBG Mobile Battle</h2>
-
-</div>
-
-<p>
-Professional PUBG Mobile tournaments will be available soon
-inside Champions Esports.
-</p>
-
-<div class="info">
-
-<div class="info-box">
-🔒 Locked
-</div>
-
-<div class="info-box">
-🚀 Coming Soon
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- LEAGUE OF LEGENDS -->
-
-<div class="card locked">
-
-<img class="banner"
-src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1974&auto=format&fit=crop">
-
-<div class="content">
-
-<div class="game-top">
-
-<img class="game-logo"
-src="https://cdn-icons-png.flaticon.com/512/5968/5968703.png">
-
-<h2>League Of Legends</h2>
-
-</div>
-
-<p>
-High-level League Of Legends tournaments and rankings
-coming soon to the platform.
-</p>
-
-<div class="info">
-
-<div class="info-box">
-🔒 Locked
-</div>
-
-<div class="info-box">
-🚀 Coming Soon
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
 
 <footer>
 © 2026 Champions Esports — Built For Legends.
 </footer>
+
+<!-- FIREBASE AUTH -->
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+
+authDomain: "champions-esports-league.firebaseapp.com",
+
+projectId: "champions-esports-league",
+
+storageBucket: "champions-esports-league.firebasestorage.app",
+
+messagingSenderId: "618814749744",
+
+appId: "1:618814749744:web:308bbc15b4862b02f381f5",
+
+measurementId: "G-KRSG32J9J9"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth,(user)=>{
+
+if(!user){
+
+window.location.href = "login.html";
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
