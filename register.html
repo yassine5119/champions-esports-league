@@ -1,354 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Register - Champions Esports</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body{
-font-family:'Poppins',sans-serif;
-background:#050816;
-overflow-x:hidden;
-color:white;
-}
-
-/* SCROLLBAR */
-
-::-webkit-scrollbar{
-width:8px;
-}
-
-::-webkit-scrollbar-track{
-background:#050816;
-}
-
-::-webkit-scrollbar-thumb{
-background:linear-gradient(#00ffae,#0088ff);
-border-radius:10px;
-}
-
-/* BACKGROUND */
-
-.background{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-background:
-linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.94)),
-url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-z-index:-5;
-}
-
-.glow{
-position:absolute;
-width:400px;
-height:400px;
-background:#00ffae;
-filter:blur(160px);
-opacity:.12;
-border-radius:50%;
-top:-100px;
-left:-100px;
-animation:float 8s infinite alternate;
-}
-
-.glow2{
-position:absolute;
-width:400px;
-height:400px;
-background:#0088ff;
-filter:blur(160px);
-opacity:.12;
-border-radius:50%;
-bottom:-100px;
-right:-100px;
-animation-delay:2s;
-}
-
-@keyframes float{
-0%{transform:translate(0,0);}
-100%{transform:translate(60px,60px);}
-}
-
-/* CONTAINER */
-
-.container{
-width:100%;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:flex-start;
-padding:100px 18px 70px;
-}
-
-/* CARD */
-
-.card{
-width:100%;
-max-width:560px;
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-backdrop-filter:blur(16px);
-padding:45px;
-border-radius:32px;
-box-shadow:0 0 45px rgba(0,255,170,.08);
-animation:fadeUp 1s ease;
-transition:.35s;
-}
-
-.card:hover{
-border-color:rgba(0,255,170,.3);
-box-shadow:0 0 55px rgba(0,255,170,.15);
-}
-
-/* LOGO STYLES */
-
-.logo-container{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:15px;
-margin-bottom:15px;
-}
-
-.logo-icon{
-width:52px;
-height:52px;
-border-radius:16px;
-background:linear-gradient(135deg,#00ffae,#00aaff);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1.4rem;
-font-family:'Orbitron',sans-serif;
-font-weight:900;
-color:black;
-box-shadow:0 0 25px rgba(0,255,170,.4);
-animation:pulse 2s infinite alternate;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-100%{transform:scale(1.08);}
-}
-
-.logo-text{
-font-size:1.8rem;
-font-family:'Orbitron',sans-serif;
-font-weight:900;
-text-transform:uppercase;
-background:linear-gradient(90deg,#00ffae,#00aaff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-letter-spacing:1px;
-}
-
-.subtitle{
-text-align:center;
-color:rgba(255,255,255,.75);
-margin-bottom:35px;
-line-height:1.7;
-font-size:1rem;
-}
-
-/* INPUTS */
-
-.input-group{
-margin-bottom:22px;
-}
-
-.input-group label{
-display:block;
-margin-bottom:10px;
-font-size:.95rem;
-font-weight:500;
-color:rgba(255,255,255,.88);
-}
-
-.input-group input,
-.input-group select{
-width:100%;
-padding:18px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.08);
-background:rgba(255,255,255,.05);
-color:white;
-font-size:1rem;
-outline:none;
-transition:.3s;
-}
-
-.input-group select option{
-background:#050816;
-color:white;
-}
-
-.input-group input:focus,
-.input-group select:focus{
-border-color:#00ffae;
-background:rgba(255,255,255,.08);
-box-shadow:0 0 25px rgba(0,255,170,.25);
-}
-
-.input-group input::placeholder{
-color:rgba(255,255,255,.45);
-}
-
-/* BUTTON */
-
-.btn{
-width:100%;
-padding:19px;
-border:none;
-border-radius:18px;
-background:linear-gradient(90deg,#00ffae,#00aaff);
-font-size:1.05rem;
-font-weight:700;
-cursor:pointer;
-transition:.35s;
-color:black;
-margin-top:10px;
-box-shadow:0 0 30px rgba(0,255,170,.3);
-}
-
-.btn:hover{
-transform:translateY(-4px);
-box-shadow:0 0 45px rgba(0,255,170,.6);
-}
-
-/* LOGIN LINK */
-
-.login-link{
-text-align:center;
-margin-top:28px;
-color:rgba(255,255,255,.7);
-line-height:1.7;
-font-size:.95rem;
-}
-
-.login-link a{
-color:#00ffae;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-}
-
-.login-link a:hover{
-text-shadow:0 0 10px rgba(0,255,170,.5);
-}
-
-/* MESSAGE */
-
-.message{
-margin-top:20px;
-text-align:center;
-font-size:1rem;
-font-weight:600;
-}
-
-/* ANIMATION */
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-@media(max-width:600px){
-
-.container{
-padding:110px 14px 80px;
-}
-
-.card{
-padding:34px 22px;
-border-radius:24px;
-}
-
-.logo-text{
-font-size:1.3rem;
-}
-
-.logo-icon{
-width:42px;
-height:42px;
-font-size:1.1rem;
-}
-
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:#050816;overflow-x:hidden;color:white;}
+.background{position:fixed;width:100%;height:100%;top:0;left:0;background:linear-gradient(rgba(0,0,0,.86),rgba(0,0,0,.94)),url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');background-size:cover;background-position:center;z-index:-5;}
+.container{width:100%;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:100px 18px 70px;}
+.card{width:100%;max-width:560px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(16px);padding:45px;border-radius:32px;box-shadow:0 0 45px rgba(0,255,170,.08);}
+.logo-container{display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:15px;}
+.logo-icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#00ffae,#00aaff);display:flex;justify-content:center;align-items:center;font-size:1.4rem;font-family:'Orbitron',sans-serif;font-weight:900;color:black;}
+.logo-text{font-size:1.8rem;font-family:'Orbitron',sans-serif;font-weight:900;text-transform:uppercase;background:linear-gradient(90deg,#00ffae,#00aaff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.subtitle{text-align:center;color:rgba(255,255,255,.75);margin-bottom:35px;font-size:1rem;}
+.input-group{margin-bottom:22px;}
+.input-group label{display:block;margin-bottom:10px;font-size:.95rem;color:rgba(255,255,255,.88);}
+.input-group input,.input-group select{width:100%;padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);color:white;font-size:1rem;outline:none;}
+.input-group select option{background:#050816;color:white;}
+.btn{width:100%;padding:19px;border:none;border-radius:18px;background:linear-gradient(90deg,#00ffae,#00aaff);font-size:1.05rem;font-weight:700;cursor:pointer;color:black;margin-top:10px;}
+.login-link{text-align:center;margin-top:28px;color:rgba(255,255,255,.7);font-size:.95rem;}
+.login-link a{color:#00ffae;text-decoration:none;font-weight:700;}
+.message{margin-top:20px;text-align:center;font-size:1rem;font-weight:600;}
 </style>
-
 </head>
-
 <body>
 
-<div class="background">
-<div class="glow"></div>
-<div class="glow2"></div>
-</div>
+<div class="background"></div>
 
 <div class="container">
-
 <div class="card">
-
 <div class="logo-container">
 <div class="logo-icon">CE</div>
 <div class="logo-text">Champions Esports</div>
 </div>
-
-<div class="subtitle">
-Create your account and join the next generation of esports tournaments.
-Compete, rank up and become legendary.
-</div>
+<div class="subtitle">Create your account and join the next generation of esports tournaments.</div>
 
 <form id="registerForm">
-
 <div class="input-group">
 <label>Username</label>
 <input type="text" id="username" placeholder="Enter username" required>
 </div>
-
 <div class="input-group">
 <label>Email Address</label>
 <input type="email" id="email" placeholder="Enter email" required>
 </div>
-
 <div class="input-group">
 <label>Instagram Username</label>
 <input type="text" id="instagram" placeholder="@yourinstagram" required>
 </div>
-
 <div class="input-group">
 <label>Password</label>
-<input type="password" id="password" placeholder="Enter password (min 6 characters)" required>
+<input type="password" id="password" placeholder="Enter password" required>
 </div>
-
 <div class="input-group">
 <label>Select Game</label>
-
 <select id="game" required>
 <option>eFootball Mobile</option>
 <option>Free Fire</option>
@@ -357,83 +64,43 @@ Compete, rank up and become legendary.
 <option>Valorant</option>
 <option>FC Mobile</option>
 </select>
-
 </div>
-
 <div class="input-group">
 <label>Game ID</label>
 <input type="text" id="gameid" placeholder="Enter your Game ID" required>
 </div>
-
-<button class="btn" type="submit">
-CREATE ACCOUNT
-</button>
-
+<button class="btn" type="submit">CREATE ACCOUNT</button>
 </form>
 
 <div class="message" id="message"></div>
-
-<div class="login-link">
-Already have an account?<br>
-<a href="login.html">Login Here</a>
+<div class="login-link">Already have an account?<br><a href="login.html">Login Here</a></div>
+</div>
 </div>
 
-</div>
-
-</div>
-
-<!-- FIREBASE AUTH & FIRESTORE -->
-
+<!-- FIREBASE SDKs (CDN Version) -->
 <script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getAuth,
-createUserWithEmailAndPassword
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
-getFirestore,
-doc,
-setDoc
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
-
-apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
-
-authDomain: "champions-esports-league.firebaseapp.com",
-
-projectId: "champions-esports-league",
-
-storageBucket: "champions-esports-league.firebasestorage.app",
-
-messagingSenderId: "618814749744",
-
-appId: "1:618814749744:web:308bbc15b4862b02f381f5",
-
-measurementId: "G-KRSG32J9J9"
-
+  apiKey: "AIzaSyCsoPTD_3CdK19CEiHHjxDEHfx_9YIfsbU",
+  authDomain: "champions-esports-league.firebaseapp.com",
+  projectId: "champions-esports-league",
+  storageBucket: "champions-esports-league.firebasestorage.app",
+  messagingSenderId: "618814749744",
+  appId: "1:618814749744:web:30e21fa238e6c725f381f5"
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
-
 const db = getFirestore(app);
 
 const form = document.getElementById("registerForm");
-
 const message = document.getElementById("message");
 
 form.addEventListener("submit", async (e)=>{
-
 e.preventDefault();
-
 message.style.color = "#00ffae";
 message.innerHTML = "Creating account...";
 
@@ -445,7 +112,6 @@ const game = document.getElementById("game").value;
 const gameid = document.getElementById("gameid").value;
 
 try{
-
 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 const user = userCredential.user;
 
@@ -462,29 +128,19 @@ createdAt: new Date()
 
 message.style.color = "#00ffae";
 message.innerHTML = "Account Created Successfully 🔥";
-
-setTimeout(()=>{
-window.location.href = "login.html";
-},2000);
+setTimeout(()=>{ window.location.href = "login.html"; },2000);
 
 }catch(error){
-
 message.style.color = "#ff4d4d";
-
 if(error.code === 'auth/email-already-in-use'){
-message.innerHTML = "هذا البريد الإلكتروني مستخدم بالفعل! قم بتسجيل الدخول.";
+message.innerHTML = "هذا البريد الإلكتروني مستخدم بالفعل!";
 } else if(error.code === 'auth/weak-password'){
-message.innerHTML = "كلمة المرور ضعيفة جداً (يجب أن تتكون من 6 أحرف على الأقل).";
-} else if(error.code === 'auth/invalid-email'){
-message.innerHTML = "البريد الإلكتروني المدخل غير صالح.";
+message.innerHTML = "كلمة المرور قصيرة جداً (6 أحرف على الأقل).";
 } else {
-message.innerHTML = "حدث خطأ: " + error.message;
+message.innerHTML = "خطأ: " + error.message;
 }
-
 }
-
 });
-
 </script>
 
 </body>
