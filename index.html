@@ -18,11 +18,19 @@ box-sizing:border-box;
 scroll-behavior:smooth;
 }
 
+html{
+overflow-x:hidden;
+width:100%;
+max-width:100%;
+}
+
 body{
 font-family:'Poppins',sans-serif;
 background:#050816;
 color:white;
 overflow-x:hidden;
+width:100%;
+max-width:100%;
 }
 
 /* SCROLLBAR */
@@ -185,6 +193,39 @@ nav ul li a:hover::after{
 width:100%;
 }
 
+/* HAMBURGER (hidden on desktop) */
+
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+padding:8px;
+background:none;
+border:none;
+z-index:1001;
+}
+
+.hamburger span{
+width:26px;
+height:2px;
+background:#00ffae;
+border-radius:2px;
+transition:.3s;
+}
+
+.hamburger.open span:nth-child(1){
+transform:translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2){
+opacity:0;
+}
+
+.hamburger.open span:nth-child(3){
+transform:translateY(-7px) rotate(-45deg);
+}
+
 /* HERO */
 
 .hero{
@@ -199,13 +240,15 @@ flex-wrap:wrap;
 
 .hero-left{
 flex:1;
-min-width:320px;
+min-width:280px;
+max-width:100%;
 animation:fadeLeft 1s ease;
 }
 
 .hero-left h1{
-font-size:6.5rem;
-line-height:1;
+font-size:clamp(1.7rem, 9.5vw, 6.5rem);
+line-height:1.05;
+letter-spacing:-1px;
 font-family:'Orbitron',sans-serif;
 font-weight:900;
 margin-bottom:25px;
@@ -215,6 +258,8 @@ background:linear-gradient(90deg,#00ffae,#00aaff);
 -webkit-text-fill-color:transparent;
 text-shadow:0 0 40px rgba(0,255,170,.4);
 animation:glowText 3s infinite alternate;
+max-width:100%;
+overflow-wrap:break-word;
 }
 
 @keyframes glowText{
@@ -332,7 +377,7 @@ margin-bottom:70px;
 }
 
 .section-title h2{
-font-size:3rem;
+font-size:clamp(1.8rem, 4.5vw, 3rem);
 font-family:'Orbitron',sans-serif;
 color:#00ffae;
 margin-bottom:15px;
@@ -398,6 +443,7 @@ border-radius:28px;
 overflow:hidden;
 backdrop-filter:blur(12px);
 transition:.35s;
+position:relative;
 }
 
 .card:hover{
@@ -435,10 +481,83 @@ color:#00ffae;
 margin-bottom:20px;
 }
 
+.live-badge{
+position:absolute;
+top:18px;
+right:18px;
+display:flex;
+align-items:center;
+gap:8px;
+background:rgba(0,0,0,.55);
+border:1px solid rgba(255,80,80,.4);
+padding:7px 14px;
+border-radius:30px;
+font-size:.8rem;
+font-weight:700;
+letter-spacing:1px;
+backdrop-filter:blur(8px);
+z-index:2;
+}
+
+.live-dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#ff4d4d;
+box-shadow:0 0 10px #ff4d4d;
+animation:blink 1.4s infinite;
+}
+
+@keyframes blink{
+0%,100%{opacity:1;}
+50%{opacity:.25;}
+}
+
 /* LEADERBOARD */
 
 .leaderboard{
 padding:120px 7%;
+}
+
+.leaderboard-tabs{
+display:flex;
+justify-content:center;
+gap:14px;
+margin-bottom:45px;
+flex-wrap:wrap;
+}
+
+.tab-btn{
+padding:12px 28px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.1);
+background:rgba(255,255,255,.05);
+color:rgba(255,255,255,.7);
+font-weight:600;
+font-family:'Poppins',sans-serif;
+cursor:pointer;
+transition:.3s;
+}
+
+.tab-btn:hover{
+border-color:#00ffae;
+color:white;
+}
+
+.tab-btn.active{
+background:linear-gradient(90deg,#00ffae,#00aaff);
+color:black;
+box-shadow:0 0 25px rgba(0,255,170,.35);
+border-color:transparent;
+}
+
+.board{
+display:none;
+}
+
+.board.active{
+display:block;
+animation:fadeLeft .5s ease;
 }
 
 .table{
@@ -449,12 +568,27 @@ border:1px solid rgba(255,255,255,.08);
 backdrop-filter:blur(12px);
 }
 
+.table-head{
+display:grid;
+grid-template-columns:70px 1fr 110px 110px 90px;
+padding:16px 30px;
+font-size:.8rem;
+letter-spacing:1px;
+color:rgba(255,255,255,.5);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
 .table-row{
-display:flex;
-justify-content:space-between;
-padding:22px 30px;
+display:grid;
+grid-template-columns:70px 1fr 110px 110px 90px;
+align-items:center;
+padding:20px 30px;
 border-bottom:1px solid rgba(255,255,255,.08);
 transition:.3s;
+}
+
+.table-row:last-child{
+border-bottom:none;
 }
 
 .table-row:hover{
@@ -464,6 +598,56 @@ background:rgba(255,255,255,.04);
 .rank{
 color:#00ffae;
 font-weight:700;
+font-family:'Orbitron',sans-serif;
+}
+
+.rank.top1{color:#ffd94d;}
+.rank.top2{color:#c9d6e3;}
+.rank.top3{color:#e0a370;}
+
+.player-cell{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.avatar{
+width:42px;
+height:42px;
+min-width:42px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Orbitron',sans-serif;
+font-weight:700;
+font-size:.85rem;
+background:linear-gradient(135deg,#00ffae,#00aaff);
+color:black;
+}
+
+.player-name{
+font-weight:600;
+}
+
+.player-tag{
+font-size:.78rem;
+color:rgba(255,255,255,.5);
+}
+
+.stat{
+font-weight:600;
+color:rgba(255,255,255,.85);
+}
+
+.badge{
+font-size:1.2rem;
+}
+
+.table-row.simple{
+grid-template-columns:1fr auto;
+display:flex;
+justify-content:space-between;
 }
 
 /* FOOTER */
@@ -508,10 +692,6 @@ justify-content:center;
 text-align:center;
 }
 
-.hero-left h1{
-font-size:4rem;
-}
-
 .hero-left p{
 margin:auto auto 35px;
 }
@@ -524,6 +704,27 @@ nav ul{
 display:none;
 }
 
+.hamburger{
+display:flex;
+}
+
+nav ul.open{
+display:flex;
+flex-direction:column;
+position:fixed;
+top:78px;
+right:0;
+width:70%;
+max-width:280px;
+background:rgba(5,8,22,.97);
+backdrop-filter:blur(16px);
+border-left:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.08);
+padding:25px 30px;
+gap:22px;
+box-shadow:-10px 10px 40px rgba(0,0,0,.5);
+}
+
 .hero-right img{
 max-width:420px;
 }
@@ -532,22 +733,68 @@ max-width:420px;
 font-size:1.2rem;
 }
 
+.games{
+gap:14px;
+padding:60px 6%;
+}
+
+.game{
+padding:14px 22px;
+font-size:.92rem;
+}
+
+.features, .tournaments, .leaderboard{
+padding:80px 6%;
+}
+
+}
+
+@media(max-width:700px){
+
+.table-head{
+display:none;
+}
+
+.table-row{
+grid-template-columns:40px 1fr auto;
+gap:10px;
+padding:16px 20px;
+}
+
+.stat:nth-child(4){
+display:none;
+}
+
+.player-tag{
+display:none;
+}
+
 }
 
 @media(max-width:600px){
-
-.hero-left h1{
-font-size:3rem;
-}
-
-.section-title h2{
-font-size:2.2rem;
-}
 
 .logo-icon{
 width:48px;
 height:48px;
 font-size:1.1rem;
+}
+
+.hero{
+padding:120px 6% 60px;
+}
+
+.hero-left{
+min-width:0;
+width:100%;
+}
+
+.card-content{
+padding:24px;
+}
+
+.btn{
+padding:16px 28px;
+font-size:.92rem;
 }
 
 }
@@ -582,12 +829,18 @@ Champions Esports
 
 </div>
 
-<ul>
+<ul id="navLinks">
 <li><a href="index.html">Home</a></li>
 <li><a href="tournaments.html">Tournaments</a></li>
 <li><a href="register.html">Register</a></li>
 <li><a href="login.html">Login</a></li>
 </ul>
+
+<button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
 
 </nav>
 
@@ -598,14 +851,15 @@ Champions Esports
 <div class="hero-left">
 
 <h1>
-PLAY LIKE<br>
+PLAY<br>
+LIKE<br>
 LEGENDS
 </h1>
 
 <p>
 The biggest esports platform in Morocco. Compete in elite tournaments,
 dominate rankings and become legendary in eFootball, PUBG,
-Free Fire and League Of Legends.
+Free Fire, Call of Duty and League Of Legends.
 </p>
 
 <div class="hero-buttons">
@@ -624,7 +878,7 @@ WATCH LIVE
 
 <div class="hero-right">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
 
 </div>
 
@@ -637,6 +891,7 @@ WATCH LIVE
 <div class="game">⚽ eFootball</div>
 <div class="game">🔥 Free Fire</div>
 <div class="game">🎯 PUBG</div>
+<div class="game">🪖 Call of Duty</div>
 <div class="game">⚔️ League Of Legends</div>
 <div class="game">💥 Valorant</div>
 <div class="game">🏆 FC Mobile</div>
@@ -705,7 +960,9 @@ Massive prizes and professional esports battles.
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+<div class="live-badge"><span class="live-dot"></span> LIVE</div>
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
 
 <div class="card-content">
 
@@ -729,7 +986,7 @@ REGISTER NOW
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
 
 <div class="card-content">
 
@@ -753,7 +1010,7 @@ JOIN NOW
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
 
 <div class="card-content">
 
@@ -788,32 +1045,130 @@ ENTER EVENT
 <h2>TOP PLAYERS</h2>
 
 <p>
-Current esports rankings.
+Current esports rankings, per game.
 </p>
 
 </div>
 
+<div class="leaderboard-tabs">
+<button class="tab-btn active" onclick="showBoard('general', this)">🏆 GENERAL</button>
+<button class="tab-btn" onclick="showBoard('cod', this)">🪖 CALL OF DUTY</button>
+</div>
+
+<!-- GENERAL BOARD -->
+<div class="board active" id="board-general">
 <div class="table">
 
-<div class="table-row">
+<div class="table-row simple">
 <div class="rank">#1 YASSINE</div>
 <div>2450 PTS</div>
 </div>
 
-<div class="table-row">
+<div class="table-row simple">
 <div class="rank">#2 LEGEND_X</div>
 <div>2210 PTS</div>
 </div>
 
-<div class="table-row">
+<div class="table-row simple">
 <div class="rank">#3 KING_PRO</div>
 <div>2100 PTS</div>
 </div>
 
-<div class="table-row">
+<div class="table-row simple">
 <div class="rank">#4 FIRE_PLAYER</div>
 <div>1980 PTS</div>
 </div>
+
+</div>
+</div>
+
+<!-- COD BOARD -->
+<div class="board" id="board-cod">
+<div class="table">
+
+<div class="table-head">
+<div>RANK</div>
+<div>PLAYER</div>
+<div>K/D</div>
+<div>WINS</div>
+<div>PTS</div>
+</div>
+
+<div class="table-row">
+<div class="rank top1">🥇 #1</div>
+<div class="player-cell">
+<div class="avatar">GH</div>
+<div>
+<div class="player-name">GHOST_MA</div>
+<div class="player-tag">Team Atlas</div>
+</div>
+</div>
+<div class="stat">3.2</div>
+<div class="stat">58</div>
+<div class="stat">2870</div>
+</div>
+
+<div class="table-row">
+<div class="rank top2">🥈 #2</div>
+<div class="player-cell">
+<div class="avatar">RX</div>
+<div>
+<div class="player-name">REAPER_X</div>
+<div class="player-tag">Solo Queue</div>
+</div>
+</div>
+<div class="stat">2.9</div>
+<div class="stat">52</div>
+<div class="stat">2705</div>
+</div>
+
+<div class="table-row">
+<div class="rank top3">🥉 #3</div>
+<div class="player-cell">
+<div class="avatar">SN</div>
+<div>
+<div class="player-name">SNIPER_NX</div>
+<div class="player-tag">Team Atlas</div>
+</div>
+</div>
+<div class="stat">2.6</div>
+<div class="stat">45</div>
+<div class="stat">2540</div>
+</div>
+
+<div class="table-row">
+<div class="rank">#4</div>
+<div class="player-cell">
+<div class="avatar">KM</div>
+<div>
+<div class="player-name">KO_MASTER</div>
+<div class="player-tag">Solo Queue</div>
+</div>
+</div>
+<div class="stat">2.3</div>
+<div class="stat">39</div>
+<div class="stat">2310</div>
+</div>
+
+<div class="table-row">
+<div class="rank">#5</div>
+<div class="player-cell">
+<div class="avatar">ZR</div>
+<div>
+<div class="player-name">ZERO_RUSH</div>
+<div class="player-tag">Team Falcon</div>
+</div>
+</div>
+<div class="stat">2.1</div>
+<div class="stat">34</div>
+<div class="stat">2145</div>
+</div>
+
+</div>
+
+<p style="text-align:center;margin-top:18px;color:rgba(255,255,255,.4);font-size:.85rem;">
+Placeholder data — swap in real player names, K/D and points anytime.
+</p>
 
 </div>
 
@@ -822,6 +1177,27 @@ Current esports rankings.
 <footer>
 © 2026 Champions Esports — Built For Legends.
 </footer>
+
+<script>
+function toggleMenu(){
+document.getElementById('navLinks').classList.toggle('open');
+document.getElementById('hamburgerBtn').classList.toggle('open');
+}
+
+document.querySelectorAll('#navLinks a').forEach(link => {
+link.addEventListener('click', () => {
+document.getElementById('navLinks').classList.remove('open');
+document.getElementById('hamburgerBtn').classList.remove('open');
+});
+});
+
+function showBoard(id, btn){
+document.querySelectorAll('.board').forEach(b => b.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+document.getElementById('board-' + id).classList.add('active');
+btn.classList.add('active');
+}
+</script>
 
 </body>
 </html>
