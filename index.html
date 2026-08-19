@@ -1,1203 +1,1653 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
+
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
 
 <title>Champions Esports</title>
 
+
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
 
 <style>
 
+
+
 *{
+
 margin:0;
+
 padding:0;
+
 box-sizing:border-box;
+
 scroll-behavior:smooth;
+
 }
 
-html{
-overflow-x:hidden;
-width:100%;
-max-width:100%;
-}
+
 
 body{
+
 font-family:'Poppins',sans-serif;
+
 background:#050816;
+
 color:white;
+
 overflow-x:hidden;
-width:100%;
-max-width:100%;
+
 }
+
+
 
 /* SCROLLBAR */
 
+
+
 ::-webkit-scrollbar{
+
 width:10px;
+
 }
+
+
 
 ::-webkit-scrollbar-track{
+
 background:#050816;
+
 }
 
+
+
 ::-webkit-scrollbar-thumb{
+
 background:linear-gradient(#00ffae,#0088ff);
+
 border-radius:20px;
+
 }
+
+
 
 /* BACKGROUND */
 
+
+
 .background{
+
 position:fixed;
+
 width:100%;
+
 height:100%;
+
 top:0;
+
 left:0;
+
 background:
+
 linear-gradient(rgba(0,0,0,.82),rgba(0,0,0,.92)),
+
 url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+
 background-size:cover;
+
 background-position:center;
+
 z-index:-5;
+
 }
 
+
+
 .background::before{
+
 content:'';
+
 position:absolute;
+
 width:100%;
+
 height:100%;
+
 background:
+
 radial-gradient(circle at top left, rgba(0,255,170,.15), transparent 30%),
+
 radial-gradient(circle at bottom right, rgba(0,140,255,.15), transparent 30%);
+
 }
+
+
 
 /* PARTICLES */
 
+
+
 .particle{
+
 position:absolute;
+
 width:4px;
+
 height:4px;
+
 background:#00ffae;
+
 border-radius:50%;
+
 opacity:.5;
+
 animation:float 10s linear infinite;
+
 }
+
+
 
 .particle:nth-child(1){left:10%;top:100%;}
+
 .particle:nth-child(2){left:20%;top:100%;animation-delay:2s;}
+
 .particle:nth-child(3){left:40%;top:100%;animation-delay:4s;}
+
 .particle:nth-child(4){left:60%;top:100%;animation-delay:1s;}
+
 .particle:nth-child(5){left:80%;top:100%;animation-delay:5s;}
 
+
+
 @keyframes float{
+
 0%{
+
 transform:translateY(0px);
+
 opacity:0;
+
 }
+
 50%{
+
 opacity:1;
+
 }
+
 100%{
+
 transform:translateY(-1100px);
+
 opacity:0;
+
 }
+
 }
+
+
 
 /* NAVBAR */
 
+
+
 nav{
+
 width:100%;
+
 padding:20px 7%;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 position:fixed;
+
 top:0;
+
 z-index:999;
+
 background:rgba(0,0,0,.45);
+
 backdrop-filter:blur(14px);
+
 border-bottom:1px solid rgba(255,255,255,.08);
+
 }
+
+
 
 .logo{
+
 display:flex;
+
 align-items:center;
+
 gap:15px;
+
 }
+
+
 
 .logo-icon{
+
 width:58px;
+
 height:58px;
+
 border-radius:18px;
+
 background:linear-gradient(135deg,#00ffae,#00aaff);
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 font-size:1.5rem;
+
 font-family:'Orbitron',sans-serif;
+
 font-weight:900;
+
 color:black;
+
 box-shadow:0 0 30px rgba(0,255,170,.5);
+
 animation:pulse 2s infinite alternate;
+
 }
+
+
 
 @keyframes pulse{
+
 0%{transform:scale(1);}
+
 100%{transform:scale(1.08);}
+
 }
+
+
 
 .logo-text{
+
 font-size:2rem;
+
 font-family:'Orbitron',sans-serif;
+
 font-weight:900;
+
 text-transform:uppercase;
+
 background:linear-gradient(90deg,#00ffae,#00aaff);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 letter-spacing:2px;
+
 }
+
+
 
 nav ul{
+
 display:flex;
+
 list-style:none;
+
 gap:35px;
+
 }
+
+
 
 nav ul li a{
+
 color:white;
+
 text-decoration:none;
+
 font-size:1rem;
+
 transition:.3s;
+
 position:relative;
+
 }
+
+
 
 nav ul li a:hover{
+
 color:#00ffae;
+
 }
+
+
 
 nav ul li a::after{
+
 content:'';
+
 position:absolute;
+
 left:0;
+
 bottom:-6px;
+
 width:0%;
+
 height:2px;
+
 background:#00ffae;
+
 transition:.3s;
+
 }
+
+
 
 nav ul li a:hover::after{
+
 width:100%;
+
 }
 
-/* HAMBURGER (hidden on desktop) */
 
-.hamburger{
-display:none;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-padding:8px;
-background:none;
-border:none;
-z-index:1001;
-}
-
-.hamburger span{
-width:26px;
-height:2px;
-background:#00ffae;
-border-radius:2px;
-transition:.3s;
-}
-
-.hamburger.open span:nth-child(1){
-transform:translateY(7px) rotate(45deg);
-}
-
-.hamburger.open span:nth-child(2){
-opacity:0;
-}
-
-.hamburger.open span:nth-child(3){
-transform:translateY(-7px) rotate(-45deg);
-}
 
 /* HERO */
 
+
+
 .hero{
+
 min-height:100vh;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
+
 padding:140px 7% 80px;
+
 gap:50px;
+
 flex-wrap:wrap;
+
 }
+
+
 
 .hero-left{
+
 flex:1;
-min-width:280px;
-max-width:100%;
+
+min-width:320px;
+
 animation:fadeLeft 1s ease;
+
 }
+
+
 
 .hero-left h1{
-font-size:clamp(1.7rem, 9.5vw, 6.5rem);
-line-height:1.05;
-letter-spacing:-1px;
+
+font-size:6.5rem;
+
+line-height:1;
+
 font-family:'Orbitron',sans-serif;
+
 font-weight:900;
+
 margin-bottom:25px;
+
 text-transform:uppercase;
+
 background:linear-gradient(90deg,#00ffae,#00aaff);
+
 -webkit-background-clip:text;
+
 -webkit-text-fill-color:transparent;
+
 text-shadow:0 0 40px rgba(0,255,170,.4);
+
 animation:glowText 3s infinite alternate;
-max-width:100%;
-overflow-wrap:break-word;
+
 }
+
+
 
 @keyframes glowText{
+
 0%{
+
 filter:drop-shadow(0 0 10px rgba(0,255,170,.2));
+
 }
+
 100%{
+
 filter:drop-shadow(0 0 30px rgba(0,255,170,.8));
+
 }
+
 }
+
+
 
 .hero-left p{
+
 font-size:1.15rem;
+
 line-height:1.9;
+
 color:rgba(255,255,255,.72);
+
 max-width:700px;
+
 margin-bottom:40px;
+
 }
+
+
 
 .hero-buttons{
+
 display:flex;
+
 gap:20px;
+
 flex-wrap:wrap;
+
 }
+
+
 
 .btn{
+
 padding:18px 38px;
+
 border-radius:18px;
+
 text-decoration:none;
+
 font-weight:700;
+
 transition:.35s;
+
 display:inline-block;
+
 }
+
+
 
 .btn-primary{
+
 background:linear-gradient(90deg,#00ffae,#00aaff);
+
 color:black;
+
 box-shadow:0 0 35px rgba(0,255,170,.35);
+
 }
+
+
 
 .btn-primary:hover{
+
 transform:translateY(-6px) scale(1.03);
+
 box-shadow:0 0 45px rgba(0,255,170,.7);
+
 }
+
+
 
 .btn-secondary{
+
 border:1px solid rgba(255,255,255,.15);
+
 background:rgba(255,255,255,.06);
+
 color:white;
+
 }
 
+
+
 .btn-secondary:hover{
+
 background:rgba(255,255,255,.12);
+
 transform:translateY(-5px);
+
 }
+
+
 
 /* HERO IMAGE */
 
+
+
 .hero-right{
+
 flex:1;
+
 display:flex;
+
 justify-content:center;
+
 align-items:center;
+
 animation:fadeRight 1s ease;
+
 }
+
+
 
 .hero-right img{
+
 width:100%;
+
 max-width:650px;
+
 animation:floatPlayer 4s ease-in-out infinite;
+
 filter:drop-shadow(0 0 40px rgba(0,255,170,.25));
+
 }
 
+
+
 @keyframes floatPlayer{
+
 0%{transform:translateY(0px);}
+
 50%{transform:translateY(-20px);}
+
 100%{transform:translateY(0px);}
+
 }
+
+
 
 /* GAMES */
 
+
+
 .games{
+
 padding:70px 7%;
+
 display:flex;
+
 justify-content:center;
+
 gap:20px;
+
 flex-wrap:wrap;
+
 }
+
+
 
 .game{
+
 padding:18px 30px;
+
 border-radius:20px;
+
 background:rgba(255,255,255,.06);
+
 border:1px solid rgba(255,255,255,.08);
+
 backdrop-filter:blur(12px);
+
 font-weight:600;
+
 transition:.35s;
+
 }
 
+
+
 .game:hover{
+
 transform:translateY(-8px) scale(1.05);
+
 border-color:#00ffae;
+
 box-shadow:0 0 30px rgba(0,255,170,.2);
+
 }
+
+
 
 /* FEATURES */
 
+
+
 .features{
+
 padding:120px 7%;
+
 }
+
+
 
 .section-title{
+
 text-align:center;
+
 margin-bottom:70px;
+
 }
+
+
 
 .section-title h2{
-font-size:clamp(1.8rem, 4.5vw, 3rem);
+
+font-size:3rem;
+
 font-family:'Orbitron',sans-serif;
+
 color:#00ffae;
+
 margin-bottom:15px;
+
 }
+
+
 
 .section-title p{
+
 color:rgba(255,255,255,.7);
+
 }
+
+
 
 .feature-grid{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
 gap:25px;
+
 }
+
+
 
 .feature{
+
 padding:35px;
+
 background:rgba(255,255,255,.05);
+
 border-radius:25px;
+
 border:1px solid rgba(255,255,255,.08);
+
 backdrop-filter:blur(12px);
+
 transition:.35s;
+
 }
+
+
 
 .feature:hover{
+
 transform:translateY(-10px);
+
 border-color:#00ffae;
+
 box-shadow:0 0 35px rgba(0,255,170,.18);
+
 }
+
+
 
 .feature span{
+
 font-size:2.8rem;
+
 display:block;
+
 margin-bottom:18px;
+
 }
+
+
 
 .feature h3{
+
 font-size:1.4rem;
+
 margin-bottom:15px;
+
 }
 
+
+
 .feature p{
+
 line-height:1.8;
+
 color:rgba(255,255,255,.72);
+
 }
+
+
 
 /* TOURNAMENTS */
 
+
+
 .tournaments{
+
 padding:120px 7%;
+
 }
+
+
 
 .cards{
+
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
 gap:28px;
+
 }
+
+
 
 .card{
+
 background:rgba(255,255,255,.05);
+
 border:1px solid rgba(255,255,255,.08);
+
 border-radius:28px;
+
 overflow:hidden;
+
 backdrop-filter:blur(12px);
+
 transition:.35s;
-position:relative;
+
 }
+
+
 
 .card:hover{
+
 transform:translateY(-12px);
+
 border-color:#00ffae;
+
 box-shadow:0 0 40px rgba(0,255,170,.18);
+
 }
+
+
 
 .card img{
+
 width:100%;
+
 height:230px;
+
 object-fit:cover;
+
 }
+
+
 
 .card-content{
+
 padding:30px;
+
 }
+
+
 
 .card-content h3{
+
 font-size:2rem;
+
 margin-bottom:15px;
+
 font-family:'Orbitron',sans-serif;
+
 }
+
+
 
 .card-content p{
+
 line-height:1.8;
+
 color:rgba(255,255,255,.75);
+
 margin-bottom:20px;
+
 }
+
+
 
 .price{
+
 font-size:2rem;
+
 font-weight:800;
+
 color:#00ffae;
+
 margin-bottom:20px;
+
 }
 
-.live-badge{
-position:absolute;
-top:18px;
-right:18px;
-display:flex;
-align-items:center;
-gap:8px;
-background:rgba(0,0,0,.55);
-border:1px solid rgba(255,80,80,.4);
-padding:7px 14px;
-border-radius:30px;
-font-size:.8rem;
-font-weight:700;
-letter-spacing:1px;
-backdrop-filter:blur(8px);
-z-index:2;
-}
 
-.live-dot{
-width:8px;
-height:8px;
-border-radius:50%;
-background:#ff4d4d;
-box-shadow:0 0 10px #ff4d4d;
-animation:blink 1.4s infinite;
-}
-
-@keyframes blink{
-0%,100%{opacity:1;}
-50%{opacity:.25;}
-}
 
 /* LEADERBOARD */
 
+
+
 .leaderboard{
+
 padding:120px 7%;
+
 }
 
-.leaderboard-tabs{
-display:flex;
-justify-content:center;
-gap:14px;
-margin-bottom:45px;
-flex-wrap:wrap;
-}
 
-.tab-btn{
-padding:12px 28px;
-border-radius:14px;
-border:1px solid rgba(255,255,255,.1);
-background:rgba(255,255,255,.05);
-color:rgba(255,255,255,.7);
-font-weight:600;
-font-family:'Poppins',sans-serif;
-cursor:pointer;
-transition:.3s;
-}
-
-.tab-btn:hover{
-border-color:#00ffae;
-color:white;
-}
-
-.tab-btn.active{
-background:linear-gradient(90deg,#00ffae,#00aaff);
-color:black;
-box-shadow:0 0 25px rgba(0,255,170,.35);
-border-color:transparent;
-}
-
-.board{
-display:none;
-}
-
-.board.active{
-display:block;
-animation:fadeLeft .5s ease;
-}
 
 .table{
+
 background:rgba(255,255,255,.05);
+
 border-radius:28px;
+
 overflow:hidden;
+
 border:1px solid rgba(255,255,255,.08);
+
 backdrop-filter:blur(12px);
+
 }
 
-.table-head{
-display:grid;
-grid-template-columns:70px 1fr 110px 110px 90px;
-padding:16px 30px;
-font-size:.8rem;
-letter-spacing:1px;
-color:rgba(255,255,255,.5);
-border-bottom:1px solid rgba(255,255,255,.08);
-}
+
 
 .table-row{
-display:grid;
-grid-template-columns:70px 1fr 110px 110px 90px;
-align-items:center;
-padding:20px 30px;
+
+display:flex;
+
+justify-content:space-between;
+
+padding:22px 30px;
+
 border-bottom:1px solid rgba(255,255,255,.08);
+
 transition:.3s;
+
 }
 
-.table-row:last-child{
-border-bottom:none;
-}
+
 
 .table-row:hover{
+
 background:rgba(255,255,255,.04);
+
 }
+
+
 
 .rank{
+
 color:#00ffae;
+
 font-weight:700;
-font-family:'Orbitron',sans-serif;
+
 }
 
-.rank.top1{color:#ffd94d;}
-.rank.top2{color:#c9d6e3;}
-.rank.top3{color:#e0a370;}
 
-.player-cell{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.avatar{
-width:42px;
-height:42px;
-min-width:42px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:'Orbitron',sans-serif;
-font-weight:700;
-font-size:.85rem;
-background:linear-gradient(135deg,#00ffae,#00aaff);
-color:black;
-}
-
-.player-name{
-font-weight:600;
-}
-
-.player-tag{
-font-size:.78rem;
-color:rgba(255,255,255,.5);
-}
-
-.stat{
-font-weight:600;
-color:rgba(255,255,255,.85);
-}
-
-.badge{
-font-size:1.2rem;
-}
-
-.table-row.simple{
-grid-template-columns:1fr auto;
-display:flex;
-justify-content:space-between;
-}
 
 /* FOOTER */
 
+
+
 footer{
+
 padding:50px 7%;
+
 text-align:center;
+
 border-top:1px solid rgba(255,255,255,.08);
+
 color:rgba(255,255,255,.6);
+
 }
+
+
 
 /* ANIMATIONS */
 
+
+
 @keyframes fadeLeft{
+
 from{
+
 opacity:0;
+
 transform:translateX(-60px);
-}
-to{
-opacity:1;
-transform:translateX(0);
-}
+
 }
 
-@keyframes fadeRight{
-from{
-opacity:0;
-transform:translateX(60px);
-}
 to{
+
 opacity:1;
+
 transform:translateX(0);
+
 }
+
 }
+
+
+
+@keyframes fadeRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+
 
 /* MOBILE */
 
+
+
 @media(max-width:950px){
 
+
+
 .hero{
+
 justify-content:center;
+
 text-align:center;
+
 }
+
+
+
+.hero-left h1{
+
+font-size:4rem;
+
+}
+
+
 
 .hero-left p{
+
 margin:auto auto 35px;
+
 }
+
+
 
 .hero-buttons{
+
 justify-content:center;
+
 }
+
+
 
 nav ul{
+
 display:none;
+
 }
 
-.hamburger{
-display:flex;
-}
 
-nav ul.open{
-display:flex;
-flex-direction:column;
-position:fixed;
-top:78px;
-right:0;
-width:70%;
-max-width:280px;
-background:rgba(5,8,22,.97);
-backdrop-filter:blur(16px);
-border-left:1px solid rgba(255,255,255,.08);
-border-bottom:1px solid rgba(255,255,255,.08);
-padding:25px 30px;
-gap:22px;
-box-shadow:-10px 10px 40px rgba(0,0,0,.5);
-}
 
 .hero-right img{
+
 max-width:420px;
+
 }
+
+
 
 .logo-text{
+
 font-size:1.2rem;
-}
-
-.games{
-gap:14px;
-padding:60px 6%;
-}
-
-.game{
-padding:14px 22px;
-font-size:.92rem;
-}
-
-.features, .tournaments, .leaderboard{
-padding:80px 6%;
-}
 
 }
 
-@media(max-width:700px){
 
-.table-head{
-display:none;
-}
-
-.table-row{
-grid-template-columns:40px 1fr auto;
-gap:10px;
-padding:16px 20px;
-}
-
-.stat:nth-child(4){
-display:none;
-}
-
-.player-tag{
-display:none;
-}
 
 }
+
+
 
 @media(max-width:600px){
 
+
+
+.hero-left h1{
+
+font-size:3rem;
+
+}
+
+
+
+.section-title h2{
+
+font-size:2.2rem;
+
+}
+
+
+
 .logo-icon{
+
 width:48px;
+
 height:48px;
+
 font-size:1.1rem;
-}
-
-.hero{
-padding:120px 6% 60px;
-}
-
-.hero-left{
-min-width:0;
-width:100%;
-}
-
-.card-content{
-padding:24px;
-}
-
-.btn{
-padding:16px 28px;
-font-size:.92rem;
-}
 
 }
+
+
+
+}
+
+
 
 </style>
 
+
+
 </head>
+
+
 
 <body>
 
+
+
 <div class="background"></div>
 
+
+
 <div class="particle"></div>
+
 <div class="particle"></div>
+
 <div class="particle"></div>
+
 <div class="particle"></div>
+
 <div class="particle"></div>
+
+
 
 <!-- NAVBAR -->
 
+
+
 <nav>
+
+
 
 <div class="logo">
 
+
+
 <div class="logo-icon">
+
 CE
+
 </div>
+
+
 
 <div class="logo-text">
+
 Champions Esports
-</div>
 
 </div>
 
-<ul id="navLinks">
+
+
+</div>
+
+
+
+<ul>
+
 <li><a href="index.html">Home</a></li>
+
 <li><a href="tournaments.html">Tournaments</a></li>
+
 <li><a href="register.html">Register</a></li>
+
 <li><a href="login.html">Login</a></li>
+
 </ul>
 
-<button class="hamburger" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Toggle menu">
-<span></span>
-<span></span>
-<span></span>
-</button>
+
 
 </nav>
 
+
+
 <!-- HERO -->
+
+
 
 <section class="hero">
 
+
+
 <div class="hero-left">
 
+
+
 <h1>
-PLAY<br>
-LIKE<br>
+
+PLAY LIKE<br>
+
 LEGENDS
+
 </h1>
 
+
+
 <p>
+
 The biggest esports platform in Morocco. Compete in elite tournaments,
+
 dominate rankings and become legendary in eFootball, PUBG,
-Free Fire, Call of Duty and League Of Legends.
+
+Free Fire and League Of Legends.
+
 </p>
+
+
 
 <div class="hero-buttons">
 
+
+
 <a href="register.html" class="btn btn-primary">
+
 JOIN TOURNAMENT
+
 </a>
+
+
 
 <a href="register.html" class="btn btn-secondary">
+
 WATCH LIVE
+
 </a>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 <div class="hero-right">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
+
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+
+
 
 </div>
 
+
+
 </section>
+
+
 
 <!-- GAMES -->
 
+
+
 <section class="games">
 
+
+
 <div class="game">⚽ eFootball</div>
+
 <div class="game">🔥 Free Fire</div>
+
 <div class="game">🎯 PUBG</div>
-<div class="game">🪖 Call of Duty</div>
+
 <div class="game">⚔️ League Of Legends</div>
+
 <div class="game">💥 Valorant</div>
+
 <div class="game">🏆 FC Mobile</div>
 
+
+
 </section>
+
+
 
 <!-- FEATURES -->
 
+
+
 <section class="features">
 
+
+
 <div class="section-title">
+
+
 
 <h2>WHY CHOOSE US</h2>
 
+
+
 <p>
+
 Professional tournaments, rankings and esports competition.
+
 </p>
 
+
+
 </div>
+
+
 
 <div class="feature-grid">
 
+
+
 <div class="feature">
+
 <span>🏆</span>
+
 <h3>Elite Tournaments</h3>
+
 <p>Compete against top players and dominate the competition.</p>
+
 </div>
 
+
+
 <div class="feature">
+
 <span>⚡</span>
+
 <h3>Fast Match System</h3>
+
 <p>Automated brackets and smooth tournament progression.</p>
+
 </div>
 
+
+
 <div class="feature">
+
 <span>🎮</span>
+
 <h3>Gaming Squads</h3>
+
 <p>Create your squad and battle for glory.</p>
+
 </div>
+
+
 
 <div class="feature">
+
 <span>📈</span>
+
 <h3>Live Rankings</h3>
+
 <p>Track player stats, MVP awards and performance.</p>
-</div>
 
 </div>
+
+
+
+</div>
+
+
 
 </section>
+
+
 
 <!-- TOURNAMENTS -->
 
+
+
 <section class="tournaments">
 
+
+
 <div class="section-title">
+
+
 
 <h2>LIVE TOURNAMENTS</h2>
 
+
+
 <p>
+
 Massive prizes and professional esports battles.
+
 </p>
 
+
+
 </div>
+
+
 
 <div class="cards">
 
+
+
 <div class="card">
 
-<div class="live-badge"><span class="live-dot"></span> LIVE</div>
 
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
+
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop">
+
+
 
 <div class="card-content">
+
+
 
 <h3>WEEKLY CUP</h3>
 
+
+
 <p>
+
 Weekly esports tournaments with rankings and rewards.
+
 </p>
 
+
+
 <div class="price">
+
 30DH ENTRY
+
 </div>
+
+
 
 <a href="register.html" class="btn btn-primary">
+
 REGISTER NOW
+
 </a>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
+
+
+<img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1971&auto=format&fit=crop">
+
+
 
 <div class="card-content">
+
+
 
 <h3>CHAMPIONS LEAGUE</h3>
 
+
+
 <p>
+
 The biggest competition featuring elite players in Morocco.
+
 </p>
 
+
+
 <div class="price">
+
 1000DH PRIZE
+
 </div>
+
+
 
 <a href="register.html" class="btn btn-primary">
+
 JOIN NOW
+
 </a>
 
-</div>
+
 
 </div>
+
+
+
+</div>
+
+
 
 <div class="card">
 
-<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop" alt="Champions Esports" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#062018,#02101e)';">
+
+
+<img src="https://images.unsplash.com/photo-1548686304-89d188a80029?q=80&w=1974&auto=format&fit=crop">
+
+
 
 <div class="card-content">
 
+
+
 <h3>GLOBAL ARENA</h3>
 
+
+
 <p>
+
 Multi-game esports events with livestreams and rankings.
+
 </p>
 
+
+
 <div class="price">
+
 LIVE EVENTS
+
 </div>
+
+
 
 <a href="register.html" class="btn btn-primary">
+
 ENTER EVENT
+
 </a>
 
-</div>
+
 
 </div>
 
+
+
 </div>
+
+
+
+</div>
+
+
 
 </section>
+
+
 
 <!-- LEADERBOARD -->
 
+
+
 <section class="leaderboard">
+
+
 
 <div class="section-title">
 
+
+
 <h2>TOP PLAYERS</h2>
 
+
+
 <p>
-Current esports rankings, per game.
+
+Current esports rankings.
+
 </p>
 
+
+
 </div>
 
-<div class="leaderboard-tabs">
-<button class="tab-btn active" onclick="showBoard('general', this)">🏆 GENERAL</button>
-<button class="tab-btn" onclick="showBoard('cod', this)">🪖 CALL OF DUTY</button>
-</div>
 
-<!-- GENERAL BOARD -->
-<div class="board active" id="board-general">
+
 <div class="table">
 
-<div class="table-row simple">
+
+
+<div class="table-row">
+
 <div class="rank">#1 YASSINE</div>
+
 <div>2450 PTS</div>
+
 </div>
 
-<div class="table-row simple">
+
+
+<div class="table-row">
+
 <div class="rank">#2 LEGEND_X</div>
+
 <div>2210 PTS</div>
+
 </div>
 
-<div class="table-row simple">
+
+
+<div class="table-row">
+
 <div class="rank">#3 KING_PRO</div>
+
 <div>2100 PTS</div>
+
 </div>
 
-<div class="table-row simple">
+
+
+<div class="table-row">
+
 <div class="rank">#4 FIRE_PLAYER</div>
+
 <div>1980 PTS</div>
-</div>
-
-</div>
-</div>
-
-<!-- COD BOARD -->
-<div class="board" id="board-cod">
-<div class="table">
-
-<div class="table-head">
-<div>RANK</div>
-<div>PLAYER</div>
-<div>K/D</div>
-<div>WINS</div>
-<div>PTS</div>
-</div>
-
-<div class="table-row">
-<div class="rank top1">🥇 #1</div>
-<div class="player-cell">
-<div class="avatar">GH</div>
-<div>
-<div class="player-name">GHOST_MA</div>
-<div class="player-tag">Team Atlas</div>
-</div>
-</div>
-<div class="stat">3.2</div>
-<div class="stat">58</div>
-<div class="stat">2870</div>
-</div>
-
-<div class="table-row">
-<div class="rank top2">🥈 #2</div>
-<div class="player-cell">
-<div class="avatar">RX</div>
-<div>
-<div class="player-name">REAPER_X</div>
-<div class="player-tag">Solo Queue</div>
-</div>
-</div>
-<div class="stat">2.9</div>
-<div class="stat">52</div>
-<div class="stat">2705</div>
-</div>
-
-<div class="table-row">
-<div class="rank top3">🥉 #3</div>
-<div class="player-cell">
-<div class="avatar">SN</div>
-<div>
-<div class="player-name">SNIPER_NX</div>
-<div class="player-tag">Team Atlas</div>
-</div>
-</div>
-<div class="stat">2.6</div>
-<div class="stat">45</div>
-<div class="stat">2540</div>
-</div>
-
-<div class="table-row">
-<div class="rank">#4</div>
-<div class="player-cell">
-<div class="avatar">KM</div>
-<div>
-<div class="player-name">KO_MASTER</div>
-<div class="player-tag">Solo Queue</div>
-</div>
-</div>
-<div class="stat">2.3</div>
-<div class="stat">39</div>
-<div class="stat">2310</div>
-</div>
-
-<div class="table-row">
-<div class="rank">#5</div>
-<div class="player-cell">
-<div class="avatar">ZR</div>
-<div>
-<div class="player-name">ZERO_RUSH</div>
-<div class="player-tag">Team Falcon</div>
-</div>
-</div>
-<div class="stat">2.1</div>
-<div class="stat">34</div>
-<div class="stat">2145</div>
-</div>
 
 </div>
 
-<p style="text-align:center;margin-top:18px;color:rgba(255,255,255,.4);font-size:.85rem;">
-Placeholder data — swap in real player names, K/D and points anytime.
-</p>
+
 
 </div>
+
+
 
 </section>
 
+
+
 <footer>
+
 © 2026 Champions Esports — Built For Legends.
+
 </footer>
 
-<script>
-function toggleMenu(){
-document.getElementById('navLinks').classList.toggle('open');
-document.getElementById('hamburgerBtn').classList.toggle('open');
-}
 
-document.querySelectorAll('#navLinks a').forEach(link => {
-link.addEventListener('click', () => {
-document.getElementById('navLinks').classList.remove('open');
-document.getElementById('hamburgerBtn').classList.remove('open');
-});
-});
-
-function showBoard(id, btn){
-document.querySelectorAll('.board').forEach(b => b.classList.remove('active'));
-document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
-document.getElementById('board-' + id).classList.add('active');
-btn.classList.add('active');
-}
-</script>
 
 </body>
+
 </html>
